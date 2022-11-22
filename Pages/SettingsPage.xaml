@@ -16,7 +16,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <StackPanel Style="{DynamicResource StackSettings}">
                 <TextBlock Text="Еще какая то настройка"/>
             </StackPanel>
-            <Button Content="Сохранить изменения" Click="Button_Click"/>
+            <Button Style="{StaticResource MainBtn}" Content="Сохранить изменения" Click="Button_Click"/>
         </DockPanel>
     </Border>
 </Page>
