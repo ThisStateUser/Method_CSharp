@@ -1,0 +1,123 @@
+﻿<Page x:Class="MethodHelper.Pages.MethodElement.CRUD"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MethodHelper.Pages.MethodElement"
+      mc:Ignorable="d" 
+      d:DesignHeight="860" d:DesignWidth="1540"
+      Title="CRUD">
+    <Border Padding="25">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Preview" Grid.Column="0" FontSize="22"/>
+            
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Border CornerRadius="10" Background="{StaticResource panelColor}" Padding="10">
+                    <StackPanel Background="Transparent" MinWidth="300" MaxWidth="400">
+
+                        <Label Content="Добавление данных"/>
+                        <TextBox x:Name="addTextBox" Margin="0 0 0 10"/>
+                        <ComboBox x:Name="addComboBox" Margin="0 0 0 10">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding title}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Button x:Name="addElement" Content="Добавить" Click="addElement_Click"/>
+
+                        <Label Content="Редактирование данных (введите id элемента)" Margin="0 20 0 0"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="ID" Margin="0 0 10 0"/>
+                            <TextBox MinWidth="100" x:Name="UpdateIdElement" Margin="0 0 0 10"/>
+                        </StackPanel>
+                        
+                        <TextBox x:Name="UpdateTextBox" Margin="0 0 0 10"/>
+                        <ComboBox x:Name="UpdateComboBox" Margin="0 0 0 10">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding title}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Button x:Name="UpdateElement" Content="Обновить" Click="UpdateElement_Click"/>
+
+                        <Label Content="Получение данных (введите id элемента)" Margin="0 20 0 0"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="ID" Margin="0 0 10 0"/>
+                            <TextBox x:Name="GetIdElement" MinWidth="100" Margin="0 0 0 10"/>
+                        </StackPanel>
+                        
+                        <TextBlock Background="{StaticResource whitecolor}" x:Name="GetTextBox" Margin="0 0 0 10"/>
+                        <TextBlock Background="{StaticResource whitecolor}" x:Name="GetComboBox" Margin="0 0 0 10"/>
+                        <Button x:Name="GetElement" Content="Получить" Click="GetElement_Click"/>
+
+                        <Label Content="Удаление данных (введите id элемента)" Margin="0 20 0 0"/>
+                        <TextBox x:Name="ElementIdRemove" Margin="0 0 0 10"/>
+                        <Button x:Name="RemoveElement" Content="Удалить" Click="RemoveElement_Click"/>
+
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="Code" FontSize="22"/>
+                    <TextBlock Text="5gsf56d dsgsdfg5 3dfs5g3sd"/>
+                </StackPanel>
+
+                <Grid Grid.Row="1">                
+                    <TextBlock Text="DataBase" FontSize="22"/>
+                    <DataGrid x:Name="DataDG" Margin="0 50 0 0" IsReadOnly="True" CanUserResizeColumns="False" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="id"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding id}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="TextBox"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding TextBox}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="ComboBox"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ComboBox}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </Border>
+</Page>
