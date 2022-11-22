@@ -65,4 +65,10 @@
     <Color x:Key="scolor9">#07F3C0</Color>
     <Color x:Key="scolor10">#F8A1AA</Color>
 
+    <!--Оттенки белого-->
+    <Color x:Key="colorWhite1">#fff</Color>
+    <Color x:Key="colorWhite2">#dadada</Color>
+    <Color x:Key="colorWhite3">#4ADAEC</Color>
+    <Color x:Key="colorWhite4">#FB5398</Color>
+
 </ResourceDictionary>

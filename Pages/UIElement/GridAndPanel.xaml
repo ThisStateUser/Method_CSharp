@@ -1,0 +1,104 @@
+﻿<Page x:Class="MethodHelper.Pages.UIElement.GridAndPanel"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MethodHelper.Pages.MethodElement"
+      mc:Ignorable="d" 
+      d:DesignHeight="860" d:DesignWidth="1540"
+      Title="CRUD">
+    <Border Padding="25">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Preview" Grid.Column="0" FontSize="22"/>
+                <StackPanel Margin="0 10" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Style="{StaticResource MainBtn}" Content="Grid" Margin="10 0"/>
+                    <Button Style="{StaticResource MainBtn}" Content="StackPanel" Margin="10 0"/>
+                    <Button Style="{StaticResource MainBtn}" Content="DockPanel" Margin="10 0"/>
+                    <Button Style="{StaticResource MainBtn}" Content="WrapPanel" Margin="10 0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Bottom" Margin="0 10">
+                <TextBlock Text="Изменение контента" Grid.Column="0" FontSize="22" Margin="0 0 0 20"/>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button x:Name="ResizeGridFirst" Content="Откат" Margin="0 0 10 0" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeGridFirst_Click"/>
+                    <Button x:Name="ResizeGridLast" Content="Увеличить" Margin="0 0 10 0" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeGridLast_Click"/>
+                    <Button x:Name="ResizeGridUpDown" Width="150" Content="Увеличить высоту" Margin="0 0 10 0" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeGridUpDown_Click"/>
+                    <Button x:Name="ResizeGridLeftRight" Width="150" Content="Увеличить ширину" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeGridLeftRight_Click"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid x:Name="GridUI" Width="500" Height="400">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Grid.Column="0" Background="#E285DE"/>
+                    <Border Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Background="#784DFD"/>
+                    <Border Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Background="#4ADAEC"/>
+                    <Border Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1" Background="#FB5398"/>
+                    <Border Grid.Row="1" Grid.Column="2" Background="#7E82FC"/>
+                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#FFC047">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Border Width="20" Height="20" HorizontalAlignment="Left" Background="#4ADAEC"/>
+                            <Border Width="20" Height="20" HorizontalAlignment="Center" Background="#FB5398"/>
+                            <Border Width="20" Height="20" HorizontalAlignment="Right" Background="#7E82FC"/>
+                        </Grid>
+
+                        <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
+                            <Border Width="20" Height="20" VerticalAlignment="Top" Background="#07F3C0"/>
+                            <Border Width="20" Height="20" VerticalAlignment="Center" Background="#78A3FC"/>
+                            <Border Width="20" Height="20" VerticalAlignment="Bottom" Background="#EF6C96"/>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Grid.Column="0">
+                            <Border Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Red"/>
+                            <Border Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Background="Green"/>
+                            <Border Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Blue"/>
+
+                            <Border Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Background="RosyBrown"/>
+                            <Border Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Gainsboro"/>
+                            <Border Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right" Background="SaddleBrown"/>
+
+                            <Border Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="OldLace"/>
+                            <Border Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Background="Yellow"/>
+                            <Border Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="Magenta"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Code" FontSize="22"/>
+                <TextBlock Text="5gsf56d dsgsdfg5 3dfs5g3sd"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Page>
+

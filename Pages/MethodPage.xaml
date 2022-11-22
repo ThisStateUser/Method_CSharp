@@ -11,85 +11,35 @@
 
     <Border Padding="25">
         <WrapPanel>
-            <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
+            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1" Click="GoCrud_Click"
                     Content="CRUD" 
                     Tag="(Create Read Update Delete) 
-                    Создание получение редактирование удаление 
-                    объектов" Click="GoCrud_Click">
-                <Button.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="{DynamicResource scolor2}" Offset="0.3"/>
-                        <GradientStop Color="{DynamicResource scolor3}" Offset="0.7"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
+                    Создание получение редактирование удаление объектов"/>
 
 
-            <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
+            <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
                     Content="Валидатор" 
-                    Tag="TextBox ComboBox CheckBox">
-                <Button.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="{DynamicResource scolor3}" Offset="0.3"/>
-                        <GradientStop Color="{DynamicResource scolor4}" Offset="0.7"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
+                    Tag="TextBox ComboBox CheckBox"/>
 
-            <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
+            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
                     Content="Анимация" 
-                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов">
-                <Button.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="{DynamicResource scolor4}" Offset="0.3"/>
-                        <GradientStop Color="{DynamicResource scolor5}" Offset="0.7"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-    
-            <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
-                    Content="CRUD" 
-                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов">
-                <Button.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="{DynamicResource scolor5}" Offset="0.3"/>
-                        <GradientStop Color="{DynamicResource scolor6}" Offset="0.7"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
+                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
 
-            <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
+            <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
-                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов">
-                <Button.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="{DynamicResource scolor6}" Offset="0.3"/>
-                        <GradientStop Color="{DynamicResource scolor7}" Offset="0.7"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-    
-            <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
+                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
+
+            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
-                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов">
-                <Button.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="{DynamicResource scolor7}" Offset="0.3"/>
-                        <GradientStop Color="{DynamicResource scolor8}" Offset="0.7"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-    
-            <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
+                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
+
+            <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
-                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов">
-                <Button.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="{DynamicResource scolor8}" Offset="0.3"/>
-                        <GradientStop Color="{DynamicResource scolor9}" Offset="0.7"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
+                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
+            
+            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
+                    Content="CRUD" 
+                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
 
         </WrapPanel>
     </Border>

@@ -30,7 +30,7 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <Button x:Name="addElement" Content="Добавить" Click="addElement_Click"/>
+                        <Button x:Name="addElement" Style="{StaticResource MainBtn}" Content="Добавить" Click="addElement_Click"/>
 
                         <Label Content="Редактирование данных (введите id элемента)" Margin="0 20 0 0"/>
                         <StackPanel Orientation="Horizontal">
@@ -46,7 +46,7 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <Button x:Name="UpdateElement" Content="Обновить" Click="UpdateElement_Click"/>
+                        <Button x:Name="UpdateElement" Style="{StaticResource MainBtn}" Content="Обновить" Click="UpdateElement_Click"/>
 
                         <Label Content="Получение данных (введите id элемента)" Margin="0 20 0 0"/>
                         <StackPanel Orientation="Horizontal">
@@ -54,13 +54,13 @@
                             <TextBox x:Name="GetIdElement" MinWidth="100" Margin="0 0 0 10"/>
                         </StackPanel>
                         
-                        <TextBlock Background="{StaticResource whitecolor}" x:Name="GetTextBox" Margin="0 0 0 10"/>
-                        <TextBlock Background="{StaticResource whitecolor}" x:Name="GetComboBox" Margin="0 0 0 10"/>
-                        <Button x:Name="GetElement" Content="Получить" Click="GetElement_Click"/>
+                        <TextBlock Background="Transparent" x:Name="GetTextBox" Margin="0 0 0 10"/>
+                        <TextBlock Background="Transparent" x:Name="GetComboBox" Margin="0 0 0 10"/>
+                        <Button x:Name="GetElement" Style="{StaticResource MainBtn}" Content="Получить" Click="GetElement_Click"/>
 
                         <Label Content="Удаление данных (введите id элемента)" Margin="0 20 0 0"/>
                         <TextBox x:Name="ElementIdRemove" Margin="0 0 0 10"/>
-                        <Button x:Name="RemoveElement" Content="Удалить" Click="RemoveElement_Click"/>
+                        <Button x:Name="RemoveElement" Style="{StaticResource MainBtn}" Content="Удалить" Click="RemoveElement_Click"/>
 
                     </StackPanel>
                 </Border>

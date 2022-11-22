@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MethodHelper.Controllers;
+using MethodHelper.Pages.UIElement;
 
 namespace MethodHelper.Pages
 {
@@ -24,6 +25,11 @@ namespace MethodHelper.Pages
         public UIPage()
         {
             InitializeComponent();
+        }
+
+        private void GridAndPanel_Click(object sender, RoutedEventArgs e)
+        {
+            FrameObj.MainFrame.Navigate(new GridAndPanel());
         }
     }
 }

@@ -147,11 +147,12 @@
     </Style>
 
     <Style x:Key="ToggleSettings" TargetType="{x:Type ToggleButton}">
-        <Setter Property="Background" Value="{DynamicResource whitecolor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource secondarycolor}"/>
+        <Setter Property="Background" Value="{DynamicResource secondarycolor}"/>
+        <Setter Property="Foreground" Value="{StaticResource whitecolor}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Height" Value="30"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -168,10 +169,10 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Ellipse Panel.ZIndex="2" Grid.Column="0" HorizontalAlignment="Left" Fill="Aqua" x:Name="elipse" 
+                            <Ellipse Panel.ZIndex="2" Grid.Column="0" HorizontalAlignment="Left" Fill="{StaticResource whitecolor}" x:Name="elipse" 
                                      Width="24" Height="24"/>
-                            <TextBlock x:Name="on" Visibility="Collapsed" Grid.Column="0" FontSize="12" Text="Вкл" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock x:Name="off" Grid.Column="1" FontSize="12" Text="Выкл" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="on" Visibility="Collapsed" Foreground="{TemplateBinding Foreground}" Grid.Column="0" FontSize="12" Text="Вкл" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="off" Grid.Column="1" Foreground="{TemplateBinding Foreground}" FontSize="12" Text="Выкл" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <ContentPresenter Grid.Column="1" x:Name="contentPresenter"/>
                         </Grid>
 
@@ -182,6 +183,7 @@
                             <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="{StaticResource successcolor}"/>
                             <Setter Property="Grid.Column" TargetName="elipse" Value="1"/>
                             <Setter Property="HorizontalAlignment" TargetName="elipse" Value="Right"/>
                             <Setter Property="Visibility" TargetName="off" Value="Collapsed"/>

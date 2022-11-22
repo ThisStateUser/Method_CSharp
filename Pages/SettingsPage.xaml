@@ -9,14 +9,35 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       Title="CRUD">
     <Border Padding="25">
         <DockPanel>
-            <StackPanel Style="{DynamicResource StackSettings}">
-                <TextBlock Text="Анимация выдвижения меню"/>
-                <ToggleButton x:Name="MenuAnim" Height="30" Style="{DynamicResource ToggleSettings}"/>
-            </StackPanel>
-            <StackPanel Style="{DynamicResource StackSettings}">
-                <TextBlock Text="Еще какая то настройка"/>
-            </StackPanel>
-            <Button Style="{StaticResource MainBtn}" Width="180" Content="Сохранить изменения" Click="Button_Click"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Style="{DynamicResource TextSettings}" Text="Анимация выдвижения меню"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Style="{DynamicResource TextSettings}" Text="Еще какая то настройка"/>
+
+                <ToggleButton Grid.Column="1" Grid.Row="0" Style="{DynamicResource ToggleSettings}" x:Name="MenuAnim"/>
+                <ToggleButton Grid.Column="1" Grid.Row="1" Style="{DynamicResource ToggleSettings}" x:Name="MenuAnim1"/>
+                
+            </Grid>
+
+            <Button Style="{StaticResource MainBtn}" Width="200" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Сохранить изменения" Click="Button_Click"/>
         </DockPanel>
     </Border>
 </Page>

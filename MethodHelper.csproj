@@ -172,6 +172,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BD\app_settings.cs" />
+    <Compile Include="BD\method_crud.cs" />
+    <Compile Include="BD\method_crud_combobox.cs" />
+    <Compile Include="BD\Model1.cs" />
     <Compile Include="Controllers\Connect.cs" />
     <Compile Include="Controllers\FrameObj.cs" />
     <Compile Include="Controllers\Win.cs" />
@@ -193,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UIElement\GridAndPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -226,6 +234,9 @@
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UIElement\GridAndPanel.xaml.cs">
+      <DependentUpon>GridAndPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UIPage.xaml.cs">
       <DependentUpon>UIPage.xaml</DependentUpon>
     </Compile>
@@ -256,8 +267,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BD\" />
-    <Folder Include="Pages\UIElement\" />
     <Folder Include="Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
