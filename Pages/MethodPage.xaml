@@ -10,38 +10,51 @@
       Title="MethodPage">
 
     <Border Padding="25">
-        <WrapPanel>
-            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1" Click="GoCrud_Click"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="47"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderThickness="0" Height="32" CornerRadius="10" Width="515" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Padding="5 0 0 0" Text="" TextChanged="SearchMethod_TextChanged" x:Name="SearchMethod" VerticalAlignment="Center" FontSize="16" Grid.Row="0" BorderThickness="0" Width="485" HorizontalAlignment="Left" Background="Transparent"/>
+                    <Icon:PackIconMaterial Kind="Magnify" Width="30" Height="20" VerticalAlignment="Center" Foreground="{StaticResource secondarycolor}" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <WrapPanel x:Name="WrapMethodBtn" Grid.Row="1">
+                <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1" Click="GoCrud_Click"
                     Content="CRUD" 
                     Tag="(Create Read Update Delete) 
                     Создание получение редактирование удаление объектов"/>
 
-
-            <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
                     Content="Валидатор" 
                     Tag="TextBox ComboBox CheckBox"/>
 
-            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
                     Content="Анимация" 
                     Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
 
-            <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
                     Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
 
-            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
                     Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
 
-            <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
                     Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
-            
-            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
+                
+                <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
                     Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
 
-        </WrapPanel>
+            </WrapPanel>
+        </Grid>
     </Border>
     
 </Page>

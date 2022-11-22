@@ -32,5 +32,15 @@ namespace MethodHelper.Pages
         {
             FrameObj.MainFrame.Navigate(new CRUD());
         }
+
+        private void SearchMethod_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //Button[] button = new Button[10];
+            //for
+
+            //WrapMethodBtn.Children
+            //Button button = ;
+            //MessageBox.Show(button.Content.ToString());
+        }
     }
 }
