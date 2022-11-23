@@ -27,14 +27,22 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
+
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Style="{DynamicResource TextSettings}" Text="Анимация выдвижения меню"/>
-                <TextBlock Grid.Column="0" Grid.Row="1" Style="{DynamicResource TextSettings}" Text="Еще какая то настройка"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Style="{DynamicResource TextSettings}" Text="Начальный экран"/>
 
                 <ToggleButton Grid.Column="1" Grid.Row="0" Style="{DynamicResource ToggleSettings}" x:Name="MenuAnim"/>
-                <ToggleButton Grid.Column="1" Grid.Row="1" Style="{DynamicResource ToggleSettings}" x:Name="MenuAnim1"/>
-                
+
+                <ComboBox  Height="30" BorderBrush="Transparent" BorderThickness="0" Width="90" Grid.Column="1" Grid.Row="1" x:Name="StartupPage">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding name}" Foreground="Black"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </Grid>
 
             <Button Style="{StaticResource MainBtn}" Width="200" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Сохранить изменения" Click="Button_Click"/>

@@ -1,18 +1,11 @@
 ﻿using MethodHelper.Controllers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
+using MethodHelper.BD;
 
 namespace MethodHelper.Pages
 {
@@ -25,11 +18,15 @@ namespace MethodHelper.Pages
         {
             InitializeComponent();
             MenuAnim.IsChecked = WinObj.settings.menu_anim.Value;
+            StartupPage.ItemsSource = Connect.data.start_page_desk.ToList();
+            StartupPage.SelectedIndex = WinObj.settings.start_page.Value;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var setting = Connect.data.app_settings.Where(x => x.id == WinObj.settings.id).FirstOrDefault();
+            var setting = Connect.data.app_settings.Where(x => x.user_id == WinObj.settings.user_id).FirstOrDefault();
+            if (setting == null)
+                return;
             try
             {
                 bool v_menu_anim = WinObj.settings.menu_anim.Value;
@@ -45,8 +42,9 @@ namespace MethodHelper.Pages
                         break;
                 }
                 setting.menu_anim = v_menu_anim;
+                setting.start_page = StartupPage.SelectedIndex;
                 Connect.data.SaveChanges();
-                WinObj.settings = Connect.data.app_settings.Where(x => x.id == 1).FirstOrDefault();
+                WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == 1).FirstOrDefault();
                 MessageBox.Show("Изменения сохранены");
             }
             catch (Exception ex)

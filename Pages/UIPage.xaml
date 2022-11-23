@@ -10,36 +10,59 @@
       Title="MethodPage">
 
     <Border Padding="25">
-        <WrapPanel>
-            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1" Click="GridAndPanel_Click"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="47"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="UI Стили" FontSize="24" VerticalAlignment="Top"/>
+
+                <Border BorderThickness="0" Grid.Column="1" Height="32" CornerRadius="10" Width="515" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Padding="5 0 0 0" Text="" TextChanged="SearchUI_TextChanged" x:Name="SearchUI" VerticalAlignment="Center" FontSize="16" Grid.Row="0" BorderThickness="0" Width="475" HorizontalAlignment="Left" Background="Transparent"/>
+                        <Icon:PackIconMaterial Kind="Magnify" Width="40" Height="20" VerticalAlignment="Center" Foreground="{StaticResource secondarycolor}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <WrapPanel x:Name="WrapUIBtn" Grid.Row="1">
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1" Click="GridAndPanel_Click"
                     Content="Сетки и панели" 
                     Tag="StackPanel, DockPanel, Grid, WrapPanel"/>
 
 
-            <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
                     Content="Закругление" 
                     Tag="Закругленные края у Button, StackPanel, TextBox и тд."/>
 
-            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
                     Content="Анимация" 
                     Tag="Увеличение размеров, сдвиг предметов, обработчики событий"/>
 
-            <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
                     Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
 
-            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
                     Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
 
-            <Button Style="{DynamicResource SMPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
                     Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
 
-            <Button Style="{DynamicResource FMPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
                     Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
-        </WrapPanel>
+            </WrapPanel>
+        </Grid>
     </Border>
 
 </Page>

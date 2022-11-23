@@ -22,14 +22,34 @@ namespace MethodHelper.Pages
     /// </summary>
     public partial class UIPage : Page
     {
+        List<Button> AllButton = new List<Button>();
         public UIPage()
         {
             InitializeComponent();
+            foreach (var item in WrapUIBtn.Children)
+            {
+                AllButton.Add((Button)item);
+            };
         }
 
         private void GridAndPanel_Click(object sender, RoutedEventArgs e)
         {
             FrameObj.MainFrame.Navigate(new GridAndPanel());
+        }
+
+        private void SearchUI_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            WrapUIBtn.Children.Clear();
+            List<Button> SBtn = AllButton.Where(x =>
+                            x.Content.ToString().ToLower().Contains(SearchUI.Text.ToLower().Trim()) ||
+                            x.Tag.ToString().ToLower().Contains(SearchUI.Text.ToLower().Trim())).ToList();
+            if (SBtn != null)
+            {
+                foreach (var item in SBtn)
+                {
+                    WrapUIBtn.Children.Add(item);
+                }
+            }
         }
     }
 }

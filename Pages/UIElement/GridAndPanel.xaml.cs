@@ -89,5 +89,41 @@ namespace MethodHelper.Pages.UIElement
             GridUI.BeginAnimation(WidthProperty, resize);
             GridUI.BeginAnimation(HeightProperty, resize2);
         }
+
+        private void Collapse()
+        {
+            GridUI.Visibility = Visibility.Collapsed;
+            StackPanelUI.Visibility = Visibility.Collapsed;
+            DockPanelUI.Visibility = Visibility.Collapsed;
+            WrapPanelUI.Visibility = Visibility.Collapsed;
+        }
+
+        private void GridPage_Click(object sender, RoutedEventArgs e)
+        {
+            Collapse();
+            GridPage.Background = (SolidColorBrush)FindResource("buttonOverColor");
+            GridUI.Visibility = Visibility.Visible;
+        }
+
+        private void StackPage_Click(object sender, RoutedEventArgs e)
+        {
+            Collapse();
+            StackPage.Background = (SolidColorBrush)FindResource("buttonOverColor");
+            StackPanelUI.Visibility = Visibility.Visible;
+        }
+
+        private void DockPage_Click(object sender, RoutedEventArgs e)
+        {
+            Collapse();
+            DockPage.Background = (SolidColorBrush)FindResource("buttonOverColor");
+            DockPanelUI.Visibility = Visibility.Visible;
+        }
+
+        private void WrapPage_Click(object sender, RoutedEventArgs e)
+        {
+            Collapse();
+            WrapPage.Background = (SolidColorBrush)FindResource("buttonOverColor");
+            WrapPanelUI.Visibility = Visibility.Visible;
+        }
     }
 }

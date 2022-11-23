@@ -21,11 +21,15 @@ namespace MethodHelper.Pages
     /// Логика взаимодействия для MethodPage.xaml
     /// </summary>
     public partial class MethodPage : Page
-    {
+    {           
+        List<Button> AllButton = new List<Button>();
         public MethodPage()
         {
             InitializeComponent();
-
+            foreach (var item in WrapMethodBtn.Children)
+            {
+                AllButton.Add((Button)item);
+            };
         }
 
         private void GoCrud_Click(object sender, RoutedEventArgs e)
@@ -35,12 +39,17 @@ namespace MethodHelper.Pages
 
         private void SearchMethod_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //Button[] button = new Button[10];
-            //for
-
-            //WrapMethodBtn.Children
-            //Button button = ;
-            //MessageBox.Show(button.Content.ToString());
+            WrapMethodBtn.Children.Clear();
+            List<Button> SBtn = AllButton.Where(x => 
+                            x.Content.ToString().ToLower().Contains(SearchMethod.Text.ToLower().Trim()) || 
+                            x.Tag.ToString().ToLower().Contains(SearchMethod.Text.ToLower().Trim())).ToList();
+            if (SBtn != null)
+            {
+                foreach (var item in SBtn)
+                {
+                    WrapMethodBtn.Children.Add(item);
+                }
+            }
         }
     }
 }

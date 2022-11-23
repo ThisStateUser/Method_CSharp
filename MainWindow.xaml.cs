@@ -21,11 +21,32 @@ namespace MethodHelper
         {
             InitializeComponent();
             Connect.data = new BD.Model1();
-            WinObj.settings = Connect.data.app_settings.Where(x => x.id == 1).FirstOrDefault();
+            WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == WinObj.user).FirstOrDefault();
             FrameObj.MainFrame = MainFrame;
             Win.method = this;
-            HomePage.IsChecked = true;
-            FrameObj.MainFrame.Navigate(new HomePage());
+            switch (WinObj.settings.start_page)
+            {
+                case 0:
+                    FrameObj.MainFrame.Navigate(new HomePage());
+                    HomePage.IsChecked = true;
+                    break;
+                case 1:
+                    FrameObj.MainFrame.Navigate(new UIPage());
+                    UIPage.IsChecked = true;
+                    break;
+                case 2:
+                    FrameObj.MainFrame.Navigate(new MethodPage());
+                    MethodPage.IsChecked = true;
+                    break;
+                case 3:
+                    FrameObj.MainFrame.Navigate(new SettingsPage());
+                    SettingsPage.IsChecked = true;
+                    break;
+                default:
+                    FrameObj.MainFrame.Navigate(new HomePage());
+                    HomePage.IsChecked = true;
+                    break;
+            }
         }
 
         private void CloseWin_Click(object sender, RoutedEventArgs e)

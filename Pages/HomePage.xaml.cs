@@ -25,5 +25,10 @@ namespace MethodHelper.Pages
         {
             InitializeComponent();
         }
+
+        private void SearchMain_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
