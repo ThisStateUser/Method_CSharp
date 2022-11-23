@@ -17,7 +17,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <StackPanel>
                 <TextBlock Text="Preview" Grid.Column="0" FontSize="22"/>
                 <StackPanel Margin="0 10" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource MainBtn}" Margin="10 0" Background="{StaticResource buttonOverColor}" x:Name="GridPage" Click="GridPage_Click" Content="Grid"  />
+                    <Button Style="{StaticResource MainBtn}" Margin="10 0" Background="{StaticResource color2}" x:Name="GridPage" Click="GridPage_Click" Content="Grid"  />
                     <Button Style="{StaticResource MainBtn}" Margin="10 0" x:Name="StackPage" Click="StackPage_Click" Content="StackPanel"/>
                     <Button Style="{StaticResource MainBtn}" Margin="10 0" x:Name="DockPage" Click="DockPage_Click" Content="DockPanel"/>
                     <Button Style="{StaticResource MainBtn}" Margin="10 0" x:Name="WrapPage" Click="WrapPage_Click" Content="WrapPanel"/>
@@ -26,16 +26,23 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 
             <StackPanel VerticalAlignment="Bottom" Margin="0 10">
                 <TextBlock Text="Изменение контента" Grid.Column="0" FontSize="22" Margin="0 0 0 20"/>
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Button x:Name="ResizeGridFirst" Content="Откат" Margin="0 0 10 0" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeGridFirst_Click"/>
-                    <Button x:Name="ResizeGridLast" Content="Увеличить" Margin="0 0 10 0" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeGridLast_Click"/>
-                    <Button x:Name="ResizeGridUpDown" Width="150" Content="Увеличить высоту" Margin="0 0 10 0" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeGridUpDown_Click"/>
-                    <Button x:Name="ResizeGridLeftRight" Width="150" Content="Увеличить ширину" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeGridLeftRight_Click"/>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">                    
+                        <Button Content="Откат" Margin="0 0 10 0" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeFirst_Click"/>
+                        <Button Content="Увеличить" Margin="0 0 10 0" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeLast_Click"/>
+                        <Button Width="150" Content="Увеличить высоту" Margin="0 0 10 0" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeUpDown_Click"/>
+                        <Button Width="150" Content="Увеличить ширину" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeLeftRight_Click"/>
+                    </StackPanel>
+                    <StackPanel x:Name="WrapChange" Visibility="Collapsed" Orientation="Horizontal" Margin="0 10 0 0">
+                        <Button Width="140" Content="Откат WrapPanel 3" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeWrap_Click"/>
+                        <Button Width="240" Content="Увеличить высоту WrapPanel 3" Margin="10 0 0 0" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeWrap1_Click"/>
+                        <Button Width="240" Content="Уменьшить высоту WrapPanel 3" Margin="10 0 0 0" Style="{StaticResource MainBtn}" Height="30" FontSize="14" Click="ResizeWrap2_Click"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Grid x:Name="GridUI" Visibility="Visible" Width="500" Height="400">
+                <Grid x:Name="GridUI" Visibility="Visible" Width="400" Height="400">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -47,53 +54,57 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Border Grid.Row="0" Grid.Column="0" Background="#E285DE"/>
-                    <Border Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Background="#784DFD"/>
-                    <Border Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Background="#4ADAEC"/>
-                    <Border Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1" Background="#FB5398"/>
-                    <Border Grid.Row="1" Grid.Column="2" Background="#7E82FC"/>
-                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#FFC047">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
+                    <Border Background="#E285DE">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="1"/>
+                    </Border>
+                    
+                    <Border Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1" Background="#FB5398">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="2"/>
+                    </Border>
+                    
+                    <Border Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Background="#4ADAEC">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="3"/>
+                    </Border>
 
+                    <Border Grid.Row="1" Grid.Column="2" Background="#7E82FC">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="4"/>
+                    </Border>
+
+                    <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#FFC047">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="5"/>
+                    </Border>
+
+                    <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Row="0" Grid.Column="0">
-                            <Border Width="20" Height="20" HorizontalAlignment="Left" Background="#4ADAEC"/>
-                            <Border Width="20" Height="20" HorizontalAlignment="Center" Background="#FB5398"/>
-                            <Border Width="20" Height="20" HorizontalAlignment="Right" Background="#7E82FC"/>
-                        </Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80 px"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
-                            <Border Width="20" Height="20" VerticalAlignment="Top" Background="#07F3C0"/>
-                            <Border Width="20" Height="20" VerticalAlignment="Center" Background="#78A3FC"/>
-                            <Border Width="20" Height="20" VerticalAlignment="Bottom" Background="#EF6C96"/>
-                        </Grid>
-
-                        <Grid Grid.Row="1" Grid.Column="0">
-                            <Border Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Red"/>
-                            <Border Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Background="Green"/>
-                            <Border Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Blue"/>
-
-                            <Border Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Background="RosyBrown"/>
-                            <Border Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Gainsboro"/>
-                            <Border Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right" Background="SaddleBrown"/>
-
-                            <Border Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="OldLace"/>
-                            <Border Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Background="Yellow"/>
-                            <Border Width="20" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="Magenta"/>
-                        </Grid>
+                        <Border Background="#07F3C0">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="6.1"/>
+                        </Border>
+                        <Border Grid.Column="1" Background="#6610f2">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="6.2"/>
+                        </Border>
+                        <Border Grid.Row="1" Background="#212529">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="6.3"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="1" Background="#17a2b8">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="6.4"/>
+                        </Border>
                     </Grid>
+                    
                 </Grid>
 
-                <StackPanel x:Name="StackPanelUI" Visibility="Collapsed" Width="500" Height="500">
+                <StackPanel x:Name="StackPanelUI" Background="#222" Visibility="Collapsed" Width="400" Height="400">
 
                     <TextBlock HorizontalAlignment="Center" Text="Ширина и высота отсутствуют"/>
 
@@ -122,7 +133,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     </StackPanel>
 
                     <TextBlock HorizontalAlignment="Center" Text="Fix ширина и высота"/>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <StackPanel Background="#fff" Orientation="Horizontal" Height="100" Width="100">
                             <Border Width="20" Height="20" VerticalAlignment="Top" Background="#07F3C0"/>
                             <Border Width="20" Height="20" VerticalAlignment="Center" Background="#78A3FC"/>
@@ -134,16 +145,124 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                             <Border Width="20" Height="20" HorizontalAlignment="Center" Background="Aqua"/>
                             <Border Width="20" Height="20" HorizontalAlignment="Right" Background="SaddleBrown"/>
                         </StackPanel>
+
+                        <StackPanel Background="#333" Orientation="Vertical" FlowDirection="RightToLeft" Width="100" Height="100">
+                            <Border Width="20" Height="20" HorizontalAlignment="Left" Background="RosyBrown"/>
+                            <Border Width="20" Height="20" HorizontalAlignment="Center" Background="Aqua"/>
+                            <Border Width="20" Height="20" HorizontalAlignment="Right" Background="SaddleBrown"/>
+                        </StackPanel>
                     </StackPanel>
 
                 </StackPanel>
 
-                <DockPanel x:Name="DockPanelUI" Visibility="Collapsed">
+                <DockPanel x:Name="DockPanelUI" Visibility="Collapsed" Background="#222" Width="400" Height="400" LastChildFill="True">
+                    <!--LastChildFill означает заполнение пустого места полностью последним элементом-->
+                    <!--Какой элемент выше в коде тот и находится поверх другого, 
+                    то есть если нам надо чтобы Bottom был полностью на месте, то нам надо его 
+                    расположить после Top, иначе объекты Left и Right займут некоторое его место-->
+                    <Border Background="#07F3C0" DockPanel.Dock="Top">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="1.1"/>
+                    </Border>
                     
+                    <Border Background="#0d6efd" DockPanel.Dock="Top">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="1.2"/>
+                    </Border>
+                    
+                    <Border Background="#6610f2" DockPanel.Dock="Bottom">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="5"/>
+                    </Border>          
+                    
+                    <Border Background="#FFC047" Width="60" DockPanel.Dock="Left">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="2"/>
+                    </Border>
+
+                    <Border Background="#4ADAEC" Width="60" DockPanel.Dock="Right">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="4"/>
+                    </Border>
+                    <!--Объект находящийся по центру должен быть последним-->
+                    <Border Background="#7E82FC">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="3"/>
+                    </Border>
                 </DockPanel>
 
-                <WrapPanel x:Name="WrapPanelUI" Visibility="Collapsed">
-                    
+                <WrapPanel x:Name="WrapPanelUI" Visibility="Collapsed" MaxHeight="550" Background="#222" Height="400" Width="400">
+                    <WrapPanel Width="{Binding Width, ElementName=WrapPanelUI}">
+                        <Border Background="#07F3C0">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="1.1"/>
+                        </Border>
+
+                        <Border Background="#6610f2" Height="30">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="1.2"/>
+                        </Border>
+
+                        <Border Background="#FFC047" Width="80" Height="20">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="1.3"/>
+                        </Border>
+
+                        <Border Background="#4ADAEC" Width="90">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="1.4"/>
+                        </Border>
+
+                        <Border Background="#0d6efd" Width="150">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="1.5"/>
+                        </Border>
+
+                        <Border Background="#fd7e14" Width="100">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="1.6"/>
+                        </Border>
+                    </WrapPanel>
+
+                    <WrapPanel Margin="0 40 0 0" ItemHeight="30" ItemWidth="100" Orientation="Horizontal">
+                        <Border Background="#07F3C0">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="2.1"/>
+                        </Border>
+
+                        <Border Background="#6610f2">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="2.2"/>
+                        </Border>
+
+                        <Border Background="#FFC047">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="2.3"/>
+                        </Border>
+
+                        <Border Background="#4ADAEC">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="2.4"/>
+                        </Border>
+
+                        <Border Background="#0d6efd">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="2.5"/>
+                        </Border>
+
+                        <Border Background="#fd7e14">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="2.6"/>
+                        </Border>
+                    </WrapPanel>
+
+                    <WrapPanel Orientation="Vertical" Background="#333" Margin="0 40 0 0" Height="120" x:Name="WrapVert3" Width="{Binding Width, ElementName=WrapPanelUI}">
+                        <Border Background="#07F3C0" Height="40">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="3.1"/>
+                        </Border>
+
+                        <Border Background="#6610f2">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="3.2"/>
+                        </Border>
+
+                        <Border Background="#FFC047" Width="40">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="3.3"/>
+                        </Border>
+
+                        <Border Background="#4ADAEC" >
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="3.4"/>
+                        </Border>
+
+                        <Border Background="#0d6efd" Width="60">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="3.5"/>
+                        </Border>
+
+                        <Border Background="#fd7e14" Height="60">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="3.6"/>
+                        </Border>
+                    </WrapPanel>
                 </WrapPanel>
             </StackPanel>
 

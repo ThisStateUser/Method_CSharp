@@ -35,7 +35,6 @@
         </Style.Triggers>
     </Style>
 
-
     <Style x:Key="ExpanderHeaderFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -147,7 +146,7 @@
     </Style>
 
     <Style x:Key="ToggleSettings" TargetType="{x:Type ToggleButton}">
-        <Setter Property="Background" Value="{DynamicResource secondarycolor}"/>
+        <Setter Property="Background" Value="{DynamicResource graycolor}"/>
         <Setter Property="Foreground" Value="{StaticResource whitecolor}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -183,7 +182,7 @@
                             <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" Value="{StaticResource successcolor}"/>
+                            <Setter Property="Background" Value="{StaticResource greencolor}"/>
                             <Setter Property="Grid.Column" TargetName="elipse" Value="1"/>
                             <Setter Property="HorizontalAlignment" TargetName="elipse" Value="Right"/>
                             <Setter Property="Visibility" TargetName="off" Value="Collapsed"/>

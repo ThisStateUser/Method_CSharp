@@ -37,17 +37,21 @@
     <SolidColorBrush x:Key="panelOverColor" Color="#281269"/>
     <SolidColorBrush x:Key="panelActiveColor" Color="#2B1372"/>
     
-    <!--Bootstrap color-->
-    <SolidColorBrush x:Key="primarycolor" Color="#007BFF"/>
-    <SolidColorBrush x:Key="infocolor" Color="#17A2B8"/>
-    <SolidColorBrush x:Key="successcolor" Color="#28A745"/>
-    <SolidColorBrush x:Key="warningcolor" Color="#FFC107"/>
-    <SolidColorBrush x:Key="dangercolor" Color="#DC3545"/>
-    <SolidColorBrush x:Key="darkcolor" Color="#343A40"/>
-    <SolidColorBrush x:Key="secondarycolor" Color="#6C757D"/>
-    <SolidColorBrush x:Key="lightcolor" Color="#F8F9FA"/>
-    <SolidColorBrush x:Key="whitecolor" Color="#FFF"/>
-
+    <!--Bootstrap color-->    
+    <SolidColorBrush x:Key="bluecolor" Color="#0d6efd"/>
+    <SolidColorBrush x:Key="indigocolor" Color="#6610f2"/>
+    <SolidColorBrush x:Key="purplecolor" Color="#6f42c1"/>
+    <SolidColorBrush x:Key="pinkcolor" Color="#d63384"/>
+    <SolidColorBrush x:Key="redcolor" Color="#dc3545"/>
+    <SolidColorBrush x:Key="orangecolor" Color="#fd7e14"/>
+    <SolidColorBrush x:Key="yellowcolor" Color="#ffc107"/>
+    <SolidColorBrush x:Key="greencolor" Color="#28a745"/>
+    <SolidColorBrush x:Key="tealcolor" Color="#20c997"/>
+    <SolidColorBrush x:Key="cyancolor" Color="#17a2b8"/>
+    <SolidColorBrush x:Key="graycolor" Color="#adb5bd"/>
+    <SolidColorBrush x:Key="darkcolor" Color="#212529"/>
+    <SolidColorBrush x:Key="whitecolor" Color="#f9fafb"/>
+    
     <!--Button color-->
     <SolidColorBrush x:Key="buttonColor" Color="#34208F"/>
     <SolidColorBrush x:Key="buttonOverColor" Color="#44209F"/>

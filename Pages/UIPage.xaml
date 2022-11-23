@@ -27,7 +27,7 @@
                 <Border BorderThickness="0" Grid.Column="1" Height="32" CornerRadius="10" Width="515" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White">
                     <StackPanel Orientation="Horizontal">
                         <TextBox Padding="5 0 0 0" Text="" TextChanged="SearchUI_TextChanged" x:Name="SearchUI" VerticalAlignment="Center" FontSize="16" Grid.Row="0" BorderThickness="0" Width="475" HorizontalAlignment="Left" Background="Transparent"/>
-                        <Icon:PackIconMaterial Kind="Magnify" Width="40" Height="20" VerticalAlignment="Center" Foreground="{StaticResource secondarycolor}" HorizontalAlignment="Center"/>
+                        <Icon:PackIconMaterial Kind="Magnify" Width="40" Height="20" VerticalAlignment="Center" Foreground="{StaticResource graycolor}" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>
             </Grid>

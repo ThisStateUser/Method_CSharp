@@ -45,7 +45,7 @@ namespace MethodHelper.Pages
                 setting.start_page = StartupPage.SelectedIndex;
                 Connect.data.SaveChanges();
                 WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == 1).FirstOrDefault();
-                MessageBox.Show("Изменения сохранены");
+                Win.method.ShowErrorMessage("Успех", "Изменения сохранены", "ok", 3);
             }
             catch (Exception ex)
             {

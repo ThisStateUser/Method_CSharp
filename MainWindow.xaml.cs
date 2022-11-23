@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace MethodHelper
 {
@@ -16,14 +17,21 @@ namespace MethodHelper
     public partial class MainWindow : Window
     {
         bool MinMaxWin = false;
+        int time = 0;
+        DispatcherTimer timer = new DispatcherTimer();
 
         public MainWindow()
         {
             InitializeComponent();
+            //connect
             Connect.data = new BD.Model1();
             WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == WinObj.user).FirstOrDefault();
             FrameObj.MainFrame = MainFrame;
             Win.method = this;
+            //other
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+
             switch (WinObj.settings.start_page)
             {
                 case 0:
@@ -49,6 +57,24 @@ namespace MethodHelper
             }
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+                        ErrorTimer.Text = time.ToString();
+            switch (time)
+            {
+                case 0:            
+                    AnimErrorWindow(-320, 0);
+                    time = 0;
+                    timer.Stop();
+                    break;
+                default:
+                    time--;
+                    break;
+            }
+        }
+
+
+        //ToolBar
         private void CloseWin_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -122,6 +148,56 @@ namespace MethodHelper
             }
         }
 
+        //Анимированное окно уведомления
+        private void AnimErrorWindow(int startPos, int endPos)
+        {
+            ErrorWindow.Visibility = Visibility.Visible;
+            ErrorTimer.Text = time.ToString();
+
+            TranslateTransform ShowTrans = new TranslateTransform();
+            ErrorWindow.RenderTransform = ShowTrans;
+            DoubleAnimation ShowAnimX = new DoubleAnimation(startPos, endPos, TimeSpan.FromMilliseconds(200));
+            ShowTrans.BeginAnimation(TranslateTransform.XProperty, ShowAnimX);
+        }
+
+        private void HideErrorBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AnimErrorWindow(-320, 0);
+            time = 0;
+            timer.Stop();
+        }
+
+        private void TextMsgIn(string error, string errormessage)
+        {
+            ErrorTitle.Text = error;
+            ErrorDesk.Text = errormessage;
+        }
+
+        public void ShowErrorMessage(string error, string errormessage, string status, int delay = 5)
+        {
+            time = delay;
+            AnimErrorWindow(0, -320);
+
+            timer.Start();
+            switch (status.ToLower())
+            {
+                case "error":
+                    ErrorWindow.Background = (SolidColorBrush)FindResource("redcolor");
+                    break;
+                case "ok":
+                    ErrorWindow.Background = (SolidColorBrush)FindResource("greencolor");
+                    break;
+                case "info":
+                    ErrorWindow.Background = (SolidColorBrush)FindResource("yellowcolor");
+                    break;
+                default:
+                    TextMsgIn("Неизвестная ошибка", ":(");
+                    ErrorWindow.Background = (SolidColorBrush)FindResource("redcolor");
+                    break;
+            }
+            TextMsgIn(error, errormessage);
+        }
+
         //Навигация
         private void HomePage_Click(object sender, RoutedEventArgs e)
         {
@@ -165,7 +241,5 @@ namespace MethodHelper
             FrameObj.MainFrame.GoBack();
             }
         }
-
-
     }
 }
