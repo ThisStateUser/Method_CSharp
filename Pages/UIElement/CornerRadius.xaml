@@ -27,7 +27,7 @@
             
 
             <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-
+                <Border/>
             </StackPanel>
 
             <StackPanel Grid.Column="1">
