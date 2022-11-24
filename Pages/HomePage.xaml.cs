@@ -21,6 +21,7 @@ namespace MethodHelper.Pages
     /// </summary>
     public partial class HomePage : Page
     {
+        List<Button> AllButton = new List<Button>();
         public HomePage()
         {
             InitializeComponent();
@@ -28,7 +29,17 @@ namespace MethodHelper.Pages
 
         private void SearchMain_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            WrapHomeBtn.Children.Clear();
+            List<Button> SBtn = AllButton.Where(x =>
+                            x.Content.ToString().ToLower().Contains(SearchMain.Text.ToLower().Trim()) ||
+                            x.Tag.ToString().ToLower().Contains(SearchMain.Text.ToLower().Trim())).ToList();
+            if (SBtn != null)
+            {
+                foreach (var item in SBtn)
+                {
+                    WrapHomeBtn.Children.Add(item);
+                }
+            }
         }
     }
 }

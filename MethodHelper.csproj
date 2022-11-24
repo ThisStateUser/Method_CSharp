@@ -201,6 +201,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\UIElement\CornerRadius.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\UIElement\GridAndPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -234,6 +238,9 @@
     </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UIElement\CornerRadius.xaml.cs">
+      <DependentUpon>CornerRadius.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UIElement\GridAndPanel.xaml.cs">
       <DependentUpon>GridAndPanel.xaml</DependentUpon>
