@@ -96,7 +96,7 @@ namespace MethodHelper.Pages.UIElement
             AnimGridAndPanel(WrapVert3, "height", 80);
         }
 
-        private void Collapse()
+        private void RepeatMethod()
         {
             GridUI.Visibility = Visibility.Collapsed;
             StackPanelUI.Visibility = Visibility.Collapsed;
@@ -109,38 +109,73 @@ namespace MethodHelper.Pages.UIElement
             WrapPage.Background = (SolidColorBrush)FindResource("buttonColor");
 
             WrapChange.Visibility = Visibility.Collapsed;
+            ShowWH();
+        }
+
+        private void ShowWH()
+        {
+            StackPanel stackPanel = XShowWH;
+            stackPanel.Children.Clear();
+
+            Binding bindingWidth = new Binding();
+            bindingWidth.ElementName = panel.Name.ToString();
+            bindingWidth.Path = new PropertyPath("ActualWidth");
+
+            Binding bindingHeight = new Binding();
+            bindingHeight.ElementName = panel.Name.ToString();
+            bindingHeight.Path = new PropertyPath("ActualHeight");
+
+            TextBlock textBlockWidth = new TextBlock();
+            textBlockWidth.Text = "Width: ";
+
+            TextBlock textWidth = new TextBlock();
+            textWidth.Margin = new Thickness(0,0,10,0);
+            textWidth.MaxWidth = (double)26;
+            textWidth.SetBinding(TextBlock.TextProperty, bindingWidth);
+
+            TextBlock textBlockHeight = new TextBlock();
+            textBlockHeight.Text = "Height: ";
+
+            TextBlock textHeight = new TextBlock();
+            textHeight.MaxWidth = (double)26;
+            textHeight.SetBinding(TextBlock.TextProperty, bindingHeight);
+
+            stackPanel.Children.Add(textBlockWidth);
+            stackPanel.Children.Add(textWidth);
+            stackPanel.Children.Add(textBlockHeight);
+            stackPanel.Children.Add(textHeight);
         }
 
         private void GridPage_Click(object sender, RoutedEventArgs e)
         {
-            Collapse();
             panel = GridUI;
+            RepeatMethod();
             GridPage.Background = (SolidColorBrush)FindResource("color2");
             GridUI.Visibility = Visibility.Visible;
         }
 
         private void StackPage_Click(object sender, RoutedEventArgs e)
         {
-            Collapse();
             panel = StackPanelUI;
+            RepeatMethod();
             StackPage.Background = (SolidColorBrush)FindResource("color2");
             StackPanelUI.Visibility = Visibility.Visible;
         }
 
         private void DockPage_Click(object sender, RoutedEventArgs e)
         {
-            Collapse();
             panel = DockPanelUI;
+            RepeatMethod();
             DockPage.Background = (SolidColorBrush)FindResource("color2");
             DockPanelUI.Visibility = Visibility.Visible;
         }
 
         private void WrapPage_Click(object sender, RoutedEventArgs e)
         {
-            Collapse();
-            WrapChange.Visibility = Visibility.Visible;
             panel = WrapPanelUI;
+            RepeatMethod();
             WrapPage.Background = (SolidColorBrush)FindResource("color2");
+            WrapChange.Visibility = Visibility.Visible;
             WrapPanelUI.Visibility = Visibility.Visible;
         }
     }

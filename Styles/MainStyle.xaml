@@ -3,18 +3,21 @@
                     xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
 
     <Style x:Key="TitleTB" TargetType="{x:Type TextBlock}">
-        <Setter Property="FontSize" Value="24"/>
-        <Setter Property="Foreground" Value="{DynamicResource titleColor2}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
+        <Setter Property="Foreground" Value="{DynamicResource titleColor1}"/>
         <Setter Property="Margin" Value="10 0 0 0"/>
     </Style>
 
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
         <Setter Property="Foreground" Value="{DynamicResource titleColor2}"/>
     </Style>
 
     <Style TargetType="{x:Type Label}">
         <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
         <Setter Property="Foreground" Value="{DynamicResource titleColor2}"/>
     </Style>
 
@@ -22,6 +25,7 @@
         <Setter Property="Background" Value="{DynamicResource buttonColor}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
         <Setter Property="Height" Value="32"/>
         <Setter Property="Width" Value="130"/>
         <Setter Property="Foreground" Value="{DynamicResource titleColor2}"/>
@@ -49,6 +53,7 @@
     <Style x:Key="MPanel" TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
         <Setter Property="Width" Value="250"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Margin" Value="0 0 15 15"/>
@@ -86,6 +91,7 @@
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{DynamicResource titleColor2}"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -97,18 +103,32 @@
     <Style TargetType="{x:Type TextBox}" x:Key="authTB">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0 0 0 1"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="5"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="5 5 5 0"/>
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Foreground" Value="{StaticResource darkcolor}" />
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="BorderBrush" Value="{StaticResource color5}"/>
-        <Setter Property="FontWeight" Value="Medium"/>
-        <Setter Property="FontFamily" Value="Bahnschrift Light"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
+    </Style>
+
+    <Style TargetType="{x:Type PasswordBox}" x:Key="authPB">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0 0 0 1"/>
+        <Setter Property="Padding" Value="5 5 5 0"/>
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Foreground" Value="{StaticResource darkcolor}" />
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="BorderBrush" Value="{StaticResource color5}"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
     </Style>
 
     <Style x:Key="SystemButton" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Width" Value="50"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
         <Setter Property="Foreground" Value="{DynamicResource textColor1}"/>
 
         <Setter Property="Template">
@@ -135,10 +155,29 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="SHButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width" Value="26"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Margin" Value="-26 0 0 0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="SystemCloseButton" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Width" Value="50"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
         <Setter Property="Foreground" Value="{DynamicResource textColor1}"/>
 
         <Setter Property="Template">
@@ -169,6 +208,7 @@
         <Setter Property="Height" Value="50"/>
         <Setter Property="Margin" Value="-5 0 0 5"/>
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
         <Setter Property="Foreground" Value="{StaticResource textColor1}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Template">
@@ -216,6 +256,7 @@
 
     <Style x:Key="TextSettings" TargetType="TextBlock">
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
         <Setter Property="Foreground" Value="{StaticResource titleColor1}"/>
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Height" Value="30" />

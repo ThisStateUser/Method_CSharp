@@ -3,7 +3,6 @@ using MethodHelper.Pages;
 using System;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -59,10 +58,10 @@ namespace MethodHelper
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-                        ErrorTimer.Text = time.ToString();
+            ErrorTimer.Text = time.ToString();
             switch (time)
             {
-                case 0:            
+                case 0:
                     AnimErrorWindow(-320, 0);
                     time = 0;
                     timer.Stop();
@@ -72,7 +71,6 @@ namespace MethodHelper
                     break;
             }
         }
-
 
         //ToolBar
         private void CloseWin_Click(object sender, RoutedEventArgs e)
@@ -153,7 +151,6 @@ namespace MethodHelper
         {
             ErrorWindow.Visibility = Visibility.Visible;
             ErrorTimer.Text = time.ToString();
-
             TranslateTransform ShowTrans = new TranslateTransform();
             ErrorWindow.RenderTransform = ShowTrans;
             DoubleAnimation ShowAnimX = new DoubleAnimation(startPos, endPos, TimeSpan.FromMilliseconds(200));
@@ -219,27 +216,22 @@ namespace MethodHelper
             FrameObj.MainFrame.Navigate(new SettingsPage());
         }
 
-        //Вернуться назад
-        public bool checkBack()
+        private void InfoPage_Click(object sender, RoutedEventArgs e)
         {
-            if (!FrameObj.MainFrame.CanGoBack)
-            {
-                backtext.Foreground = (SolidColorBrush)FindResource("textColor3");
-                backicon.Foreground = (SolidColorBrush)FindResource("textColor3");
-                return false;
-            }
-            backtext.Foreground = (SolidColorBrush)FindResource("titleColor2");
-            backicon.Foreground = (SolidColorBrush)FindResource("titleColor2");
-            return true;
+            FrameObj.MainFrame.Navigate(new InfoPage());
         }
 
-        private void GoBack_Click(object sender, RoutedEventArgs e)
+        private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            checkBack();
-            if (checkBack() == true)
+            var exit = Connect.data.ip_address.Where(x => x.computer_name == Connect.host && x.ip_auth_address == Connect.ip).FirstOrDefault();
+            if (exit != null)
             {
-            FrameObj.MainFrame.GoBack();
+                Connect.data.ip_address.Remove(exit);
+                Connect.data.SaveChanges();
             }
+            AuthWindow window = new AuthWindow();
+            window.Show();
+            this.Close();
         }
     }
 }

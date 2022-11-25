@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MethodHelper.BD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,11 @@ namespace MethodHelper.Controllers
 {
     class Connect
     {
-        public static BD.Model1 data;
+        public static Model1 data;
+
+        public static users user;
+
+        public static string host;
+        public static string ip;
     }
 }

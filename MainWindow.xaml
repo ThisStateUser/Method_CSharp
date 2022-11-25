@@ -11,6 +11,7 @@
         WindowStyle="None"
         Background="Transparent"
         ResizeMode="CanMinimize"
+        Title="MethodHelper"
         WindowStartupLocation="CenterScreen"
         Height="900" Width="1600">
     <Border CornerRadius="10" BorderThickness="1">
@@ -75,14 +76,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
 
-                <StackPanel>
-                    <Button Visibility="Collapsed" Width="{Binding Width, ElementName=NavBar}" Style="{DynamicResource SystemBurger}" x:Name="GoBack" Click="GoBack_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <Icon:PackIconMaterial Style="{StaticResource menuBtnIcon}" x:Name="backicon" Kind="ArrowLeftBoldCircle"/>
-                            <TextBlock Width="auto" x:Name="backtext" Text="Назад"/>
-                        </StackPanel>
-                    </Button>
-
+                <DockPanel>
                     <RadioButton DockPanel.Dock="Top" Tag="{StaticResource color8}" Style="{StaticResource MenuBtn}" x:Name="HomePage" Click="HomePage_Click">
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial Kind="HomeVariant" Style="{StaticResource menuBtnIcon}"/>
@@ -107,8 +101,20 @@
                             <TextBlock Width="auto" Text="Настройки"/>
                         </StackPanel>
                     </RadioButton>
-
-                </StackPanel>
+                    <Separator DockPanel.Dock="Bottom" Visibility="Hidden"/>
+                    <RadioButton DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Tag="{StaticResource color2}" Style="{StaticResource MenuBtn}" x:Name="Exit" Click="Exit_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="LogoutVariant" Style="{StaticResource menuBtnIcon}"/>
+                            <TextBlock Width="auto" Text="Выход"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Tag="{StaticResource color3}" Style="{StaticResource MenuBtn}" x:Name="InfoPage" Click="InfoPage_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="InformationOutline" Style="{StaticResource menuBtnIcon}"/>
+                            <TextBlock Width="auto" Text="Информация"/>
+                        </StackPanel>
+                    </RadioButton>
+                </DockPanel>
             </Border>
 
             <Frame Margin="60 0 0 0" Grid.Column="1" Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden"/>

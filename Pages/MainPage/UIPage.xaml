@@ -47,12 +47,12 @@
                     Tag="Увеличение размеров, сдвиг предметов, обработчики событий"/>
 
                 <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
-                    Content="CRUD" 
-                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
+                    Content="Свойства объектов" 
+                    Tag="Эффекты при нажатии/наводке, градиент, тени, "/>
 
                 <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
-                    Content="CRUD" 
-                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
+                    Content="DataContext" 
+                    Tag=""/>
 
                 <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 
