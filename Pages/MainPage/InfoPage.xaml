@@ -31,7 +31,7 @@
 
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0" Grid.Row="0" Style="{DynamicResource TextSettings}" Text="Version: 2022.11.25.9"/>
+                <TextBlock Grid.Column="0" Grid.Row="0" Style="{DynamicResource TextSettings}" Text="Version: 2022.11.25.8"/>
             </Grid>
         </DockPanel>
     </Border>
