@@ -64,7 +64,7 @@
             <DockPanel Grid.Row="1">
                 <Border VerticalAlignment="Center" CornerRadius="10" Padding="10" Background="{StaticResource whitecolor}" Width="300" Height="auto">
                     <StackPanel>
-                        <StackPanel x:Name="AuthPage" Height="195" Visibility="Visible">
+                        <StackPanel x:Name="AuthPage" Height="195">
                             <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock FontSize="24" Text="Method and UI helper" Foreground="{StaticResource darkcolor}"/>
                                 <Image Source="/Resources/UI/icon.ico" Height="24" Margin="10 0 0 20"/>
@@ -104,7 +104,13 @@
                             <TextBox x:Name="r_first_name_tb" Padding="5 8 5 0" Style="{StaticResource authTB}" Margin="0 0 0 10"/>
 
                             <TextBlock Text="Выберите группу" Foreground="{StaticResource darkcolor}"/>
-                            <TextBox x:Name="r_class_tb" Padding="5 8 5 0" Style="{StaticResource authTB}" Margin="0 0 0 10"/>
+                            <ComboBox Style="{DynamicResource authCB}" x:Name="r_class_cb" Margin="0 0 0 10">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Padding="5 6 5 0" FontSize="16" Foreground="{StaticResource darkcolor}" Text="{Binding _class}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
 
                             <TextBlock Text="Введите логин" Foreground="{StaticResource darkcolor}"/>
                             <TextBox x:Name="r_login_tb" Padding="5 8 5 0" Style="{StaticResource authTB}" Margin="0 0 0 10"/>

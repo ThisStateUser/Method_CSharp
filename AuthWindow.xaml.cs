@@ -25,7 +25,7 @@ namespace MethodHelper
         public AuthWindow()
         {
             InitializeComponent();            
-            Connect.data = new BD.Model1();      
+            Connect.data = new Model1();      
             
             string host = Dns.GetHostName();
             IPAddress address = Dns.GetHostEntry(host).AddressList[1];
@@ -40,6 +40,9 @@ namespace MethodHelper
                 window.Show();
                 this.Close();
             }
+
+            r_class_cb.ItemsSource = Connect.data.user_class.ToList();
+            r_class_cb.SelectedIndex = 0;
         }
 
         private void CloseWin_Click(object sender, RoutedEventArgs e)
