@@ -2,6 +2,7 @@
 using MethodHelper.BD;
 using MethodHelper.Controllers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -34,8 +35,10 @@ namespace MethodHelper
             Connect.host = host;
             Connect.ip = sip;
 
-            if (Connect.data.ip_address.Where(x => x.computer_name == host && x.ip_auth_address == sip).FirstOrDefault() != null)
+            var auth = Connect.data.ip_address.Where(x => x.computer_name == host && x.ip_auth_address == sip).FirstOrDefault();
+            if (auth != null)
             {
+                Connect.user = Connect.data.users.Where(x => x.id == auth.user_id).FirstOrDefault();
                 MainWindow window = new MainWindow();
                 window.Show();
                 this.Close();
@@ -181,7 +184,13 @@ namespace MethodHelper
                     }
                 } 
 
+                if (Connect.data.users.Where(x => x.token == stoken).FirstOrDefault() != null)
+                {
+                    return;
+                }
+
                 auth.token = stoken;
+                Connect.user = auth;
 
                 Connect.data.SaveChanges();
 
@@ -191,14 +200,108 @@ namespace MethodHelper
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Fatal error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
 
+        int erMas;
+        private void validator()
+        {
+            erMas = 0;
+            switch (r_TbOrPb_pass)
+            {
+                case true:
+                    r_pass_pb.Password = r_pass_tb.Text;
+                    break;
+                default:
+                    r_pass_tb.Text = r_pass_pb.Password;
+                    break;
+            }
+
+            if (r_first_name_tb.Text.Length == 0)
+            {
+                name_er.Text = "заполните поле";
+            } 
+            else if (r_first_name_tb.Text.Length <= 1)
+            {
+                name_er.Text = "мин. 2 символа";
+            } else
+            {
+                erMas++;
+                name_er.Text = "";
+            }
+            if (r_class_cb.SelectedIndex == 0)
+            {
+                class_er.Text = "выберите группу";
+            }
+            else
+            {
+                erMas++;
+                class_er.Text = "";
+            }
+            if (r_login_tb.Text.Length == 0)
+            {
+                login_er.Text = "заполните поле";
+            }
+            else if (r_login_tb.Text.Length <= 3)
+            {
+                login_er.Text = "мин. 4 символа";
+            } else if (Connect.data.users.Where(x => x.login == r_login_tb.Text.Trim()).FirstOrDefault() != null)
+            {
+                login_er.Text = "логин занят";
+            }
+            else
+            {
+                erMas++;
+                login_er.Text = "";
+            }
+            if (r_pass_tb.Text.Length == 0)
+            {
+                pass_er.Text = "заполните поле";
+            }
+            else if (r_pass_tb.Text.Length <= 3)
+            {
+                pass_er.Text = "мин. 4 символа";
+            }
+            else
+            {
+                erMas++;
+                pass_er.Text = "";
+            }
+        }
+
         private void GoReg_Click(object sender, RoutedEventArgs e)
         {
-
+            validator();
+            if (erMas == 4)
+            {
+                try
+                {
+                    int role = 3;
+                    if (r_class_cb.SelectedIndex == 5)
+                    {
+                        role = 2;
+                    }
+                    users users = new users()
+                    {
+                        first_name = r_first_name_tb.Text.Trim(),
+                        login = r_login_tb.Text.Trim(),
+                        password = r_pass_tb.Text.Trim(),
+                        class_id = ((user_class)r_class_cb.SelectedItem).id,
+                        role_id = role,
+                        user_role = Connect.data.user_role.Where(x => x.id == role).FirstOrDefault(),
+                    };
+                    Connect.data.users.Add(users);
+                    Connect.data.SaveChanges();
+                    MessageBox.Show("Успешная регистрация", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    GoPage_Click(null, null);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Fatal error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
     }
 }

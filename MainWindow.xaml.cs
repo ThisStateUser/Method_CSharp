@@ -227,8 +227,9 @@ namespace MethodHelper
             if (exit != null)
             {
                 Connect.data.ip_address.Remove(exit);
-                Connect.data.SaveChanges();
             }
+            Connect.data.users.Where(x => x.token == Connect.user.token).FirstOrDefault().token = null;
+            Connect.data.SaveChanges();
             AuthWindow window = new AuthWindow();
             window.Show();
             this.Close();

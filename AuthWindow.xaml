@@ -88,7 +88,7 @@
 
                             <DockPanel Margin="0 0 0 0">
                                 <CheckBox VerticalAlignment="Center" x:Name="remember" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
-                                    <TextBlock Text="Запомнить меня" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                    <TextBlock Text="Запомнить меня" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
                                 </CheckBox>
                                 <Button HorizontalAlignment="Right" Content="Войти" Style="{StaticResource MainBtn}" x:Name="GoAuth" Click="GoAuth_Click"/>
                             </DockPanel>
@@ -100,10 +100,16 @@
                                 <Image Source="/Resources/UI/icon.ico" Height="24" Margin="10 0 0 20"/>
                             </DockPanel>
 
-                            <TextBlock Text="Введите имя" Foreground="{StaticResource darkcolor}"/>
+                            <DockPanel>
+                                <TextBlock Text="Введите имя" Foreground="{StaticResource darkcolor}"/>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="name_er" FontSize="12" Foreground="{StaticResource redcolor}"/>
+                            </DockPanel>
                             <TextBox x:Name="r_first_name_tb" Padding="5 8 5 0" Style="{StaticResource authTB}" Margin="0 0 0 10"/>
 
-                            <TextBlock Text="Выберите группу" Foreground="{StaticResource darkcolor}"/>
+                            <DockPanel>
+                                <TextBlock Text="Выберите группу" Foreground="{StaticResource darkcolor}"/>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="class_er" FontSize="12" Foreground="{StaticResource redcolor}"/>
+                            </DockPanel>
                             <ComboBox Style="{DynamicResource authCB}" x:Name="r_class_cb" Margin="0 0 0 10">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
@@ -112,10 +118,16 @@
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
 
-                            <TextBlock Text="Введите логин" Foreground="{StaticResource darkcolor}"/>
+                            <DockPanel>
+                                <TextBlock Text="Введите логин" Foreground="{StaticResource darkcolor}"/>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="login_er" FontSize="12" Foreground="{StaticResource redcolor}"/>
+                            </DockPanel>
                             <TextBox x:Name="r_login_tb" Padding="5 8 5 0" Style="{StaticResource authTB}" Margin="0 0 0 10"/>
-
-                            <TextBlock Text="Введите пароль" Foreground="{StaticResource darkcolor}"/>
+                            
+                            <DockPanel>
+                                <TextBlock Text="Введите пароль" Foreground="{StaticResource darkcolor}"/>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="pass_er" FontSize="12" Foreground="{StaticResource redcolor}"/>
+                            </DockPanel>
                             <DockPanel Margin="0 0 0 10">
                                 <TextBox Width="290" Visibility="Collapsed" x:Name="r_pass_tb" Padding="5 8 32 0" Style="{StaticResource authTB}"/>
                                 <PasswordBox x:Name="r_pass_pb" Width="290" Padding="5 8 32 0" Style="{StaticResource authPB}"/>
