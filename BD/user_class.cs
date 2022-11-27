@@ -14,6 +14,7 @@ namespace MethodHelper.BD
             users = new HashSet<users>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         [Column("class")]

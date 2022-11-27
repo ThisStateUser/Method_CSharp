@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     
     <!--Background-->
     <Color x:Key="primaryBackColor1">#0A003A</Color>
@@ -74,5 +75,7 @@
     <Color x:Key="colorWhite2">#dadada</Color>
     <Color x:Key="colorWhite3">#4ADAEC</Color>
     <Color x:Key="colorWhite4">#FB5398</Color>
+    
+    
 
 </ResourceDictionary>

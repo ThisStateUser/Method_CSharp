@@ -8,14 +8,16 @@ namespace MethodHelper.BD
 
     public partial class app_settings
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int user_id { get; set; }
+        public int id { get; set; }
 
-        public bool? menu_anim { get; set; }
+        public int user_id { get; set; }
 
         public int? start_page { get; set; }
 
+        public bool? menu_anim { get; set; }
+
         public virtual start_page_desk start_page_desk { get; set; }
+
+        public virtual users users { get; set; }
     }
 }

@@ -21,5 +21,7 @@ namespace MethodHelper.BD
         public string computer_name { get; set; }
 
         public bool remember { get; set; }
+
+        public virtual users users { get; set; }
     }
 }

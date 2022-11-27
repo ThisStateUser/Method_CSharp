@@ -8,6 +8,13 @@ namespace MethodHelper.BD
 
     public partial class users
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public users()
+        {
+            app_settings = new HashSet<app_settings>();
+            ip_address = new HashSet<ip_address>();
+        }
+
         public int id { get; set; }
 
         [StringLength(50)]
@@ -32,6 +39,12 @@ namespace MethodHelper.BD
 
         [StringLength(50)]
         public string token { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<app_settings> app_settings { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ip_address> ip_address { get; set; }
 
         public virtual user_class user_class { get; set; }
 

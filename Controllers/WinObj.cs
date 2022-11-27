@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using MethodHelper.BD;
 
 namespace MethodHelper.Controllers
 {
     internal class WinObj
     {
-        public static int user = 1;
-
         public static app_settings settings;
 
         public static string generateToken()
@@ -43,6 +42,11 @@ namespace MethodHelper.Controllers
                 return token.ToString();
             }
             return "";
+        }
+
+        public static void fatalError(Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Fatal error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

@@ -24,12 +24,14 @@ namespace MethodHelper
             InitializeComponent();
             //connect
             Connect.data = new BD.Model1();
-            WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == WinObj.user).FirstOrDefault();
             FrameObj.MainFrame = MainFrame;
             Win.method = this;
+            WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == Connect.user.id).FirstOrDefault();
             //other
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
+
+            profiletitle.Text = Connect.user.last_name + " " + Connect.user.first_name;
 
             switch (WinObj.settings.start_page)
             {
@@ -233,6 +235,7 @@ namespace MethodHelper
             AuthWindow window = new AuthWindow();
             window.Show();
             this.Close();
+            WinObj.settings = null;
         }
     }
 }

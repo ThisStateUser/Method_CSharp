@@ -21,10 +21,8 @@
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
-                <TextBlock Grid.Column="0" Text="Методы" FontSize="24" VerticalAlignment="Top"/>
 
-                <ComboBox/>
+                <TextBlock Grid.Column="0" Text="Методы" FontSize="24" VerticalAlignment="Top"/>
 
                 <Border BorderThickness="0" Grid.Column="1" Height="32" CornerRadius="10" Width="515" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White">
                     <StackPanel Orientation="Horizontal">

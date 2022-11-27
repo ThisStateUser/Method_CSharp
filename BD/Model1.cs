@@ -17,7 +17,6 @@ namespace MethodHelper.BD
         public virtual DbSet<method_crud> method_crud { get; set; }
         public virtual DbSet<method_crud_combobox> method_crud_combobox { get; set; }
         public virtual DbSet<start_page_desk> start_page_desk { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<user_class> user_class { get; set; }
         public virtual DbSet<user_role> user_role { get; set; }
         public virtual DbSet<users> users { get; set; }
@@ -93,6 +92,18 @@ namespace MethodHelper.BD
             modelBuilder.Entity<users>()
                 .Property(e => e.token)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<users>()
+                .HasMany(e => e.app_settings)
+                .WithRequired(e => e.users)
+                .HasForeignKey(e => e.user_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<users>()
+                .HasMany(e => e.ip_address)
+                .WithRequired(e => e.users)
+                .HasForeignKey(e => e.user_id)
+                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -52,6 +52,13 @@
                     <TextBlock VerticalAlignment="Center" Text="Method and UI helper" Style="{DynamicResource TitleTB}"/>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Style="{DynamicResource SystemButton}" Width="auto" Margin="0 0 10 0" x:Name="ProfilePage">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="AccountBox" Margin="10 0 10 0" Width="17" Height="19"/>
+                                <TextBlock Foreground="{StaticResource textColor1}" Margin="0 1 10 0" x:Name="profiletitle" Text="(Марянян Николай)"/>
+                            </StackPanel>
+                        </Button>
+                        
                         <Button Style="{DynamicResource SystemButton}" x:Name="CollapseWin" Click="CollapseWin_Click">
                             <Icon:PackIconMaterial Kind="Minus"/>
                         </Button>

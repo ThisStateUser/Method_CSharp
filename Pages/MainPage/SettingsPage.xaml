@@ -13,36 +13,32 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="400"/>
                     <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Style="{DynamicResource TextSettings}" Text="Анимация выдвижения меню"/>
-                <TextBlock Grid.Column="0" Grid.Row="1" Style="{DynamicResource TextSettings}" Text="Начальный экран"/>
-
                 <ToggleButton Grid.Column="1" Grid.Row="0" Style="{DynamicResource ToggleSettings}" x:Name="MenuAnim"/>
 
-                <ComboBox  Height="30" BorderBrush="Transparent" BorderThickness="0" Width="90" Grid.Column="1" Grid.Row="1" x:Name="StartupPage">
+                
+                
+                <TextBlock Grid.Column="3" Grid.Row="0" Style="{DynamicResource TextSettings}" Text="Начальный экран"/>
+                <ComboBox Style="{DynamicResource settingCB}" Height="30" BorderBrush="Transparent" 
+                          BorderThickness="0" Width="130" Grid.Column="4" Grid.Row="0" x:Name="StartupPage">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding name}" Foreground="Black"/>
+                            <TextBlock Text="{Binding name}" Margin="0 3 0 0" Foreground="{StaticResource whitecolor}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
+                
+                
             </Grid>
 
             <Button Style="{StaticResource MainBtn}" Width="200" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Сохранить изменения" Click="Button_Click"/>

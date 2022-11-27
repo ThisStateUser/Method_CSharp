@@ -44,12 +44,11 @@ namespace MethodHelper.Pages
                 setting.menu_anim = v_menu_anim;
                 setting.start_page = StartupPage.SelectedIndex;
                 Connect.data.SaveChanges();
-                WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == 1).FirstOrDefault();
                 Win.method.ShowErrorMessage("Успех", "Изменения сохранены", "ok", 3);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                WinObj.fatalError(ex);
             }
         }
     }

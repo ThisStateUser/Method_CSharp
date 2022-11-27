@@ -39,6 +39,7 @@ namespace MethodHelper
             if (auth != null)
             {
                 Connect.user = Connect.data.users.Where(x => x.id == auth.user_id).FirstOrDefault();
+                WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == auth.user_id).FirstOrDefault();
                 MainWindow window = new MainWindow();
                 window.Show();
                 this.Close();
@@ -160,15 +161,14 @@ namespace MethodHelper
             try
             {
                 var auth = Connect.data.users.Where(x => x.login == login_tb.Text && x.password == pass_tb.Text).FirstOrDefault();
-                var ip = Connect.data.ip_address.Where(x => x.user_id == auth.id && x.ip_auth_address == Connect.ip).FirstOrDefault();
                 if (auth == null)
                 {
                     MessageBox.Show("Неверный логин или пароль");
                     return;
                 }
+                var ip = Connect.data.ip_address.Where(x => x.user_id == auth.id && x.ip_auth_address == Connect.ip).FirstOrDefault();
 
 
-                string stoken = WinObj.generateToken();
                 if (remember.IsChecked == true)
                 {                
                     if (ip == null)
@@ -182,17 +182,17 @@ namespace MethodHelper
                         };
                         Connect.data.ip_address.Add(adress);
                     }
-                } 
+                }
 
-                if (Connect.data.users.Where(x => x.token == stoken).FirstOrDefault() != null)
-                {
-                    return;
+                string stoken = WinObj.generateToken();
+                if (Connect.data.users.Where(x => x.token == stoken).FirstOrDefault() != null) {
+                    stoken = WinObj.generateToken();
                 }
 
                 auth.token = stoken;
                 Connect.user = auth;
-
                 Connect.data.SaveChanges();
+                WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == auth.id).FirstOrDefault();
 
                 MainWindow window = new MainWindow();
                 window.Show();
@@ -200,7 +200,7 @@ namespace MethodHelper
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Fatal error", MessageBoxButton.OK, MessageBoxImage.Error);
+                WinObj.fatalError(ex);
             }
 
         }
@@ -292,14 +292,22 @@ namespace MethodHelper
                         role_id = role,
                         user_role = Connect.data.user_role.Where(x => x.id == role).FirstOrDefault(),
                     };
+                    app_settings app_set = new app_settings()
+                    {
+                        user_id = users.id,
+                        menu_anim = true,
+                        start_page = 0,
+                        start_page_desk = Connect.data.start_page_desk.Where(x => x.id == 0).FirstOrDefault(),
+                    };
                     Connect.data.users.Add(users);
+                    Connect.data.app_settings.Add(app_set);
                     Connect.data.SaveChanges();
                     MessageBox.Show("Успешная регистрация", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                     GoPage_Click(null, null);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Fatal error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    WinObj.fatalError(ex);
                 }
             }
         }
