@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:MethodHelper.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="860" d:DesignWidth="1540"
-      Title="MethodPage">
+      Title="UIPage">
 
     <Border Padding="25">
         <Grid>
@@ -22,7 +22,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="UI Стили" FontSize="24" VerticalAlignment="Top"/>
+                <TextBlock Grid.Column="0" Text="UI Стили" FontSize="22" Margin="0 3 0 0" VerticalAlignment="Top"/>
 
                 <Border BorderThickness="0" Grid.Column="1" Height="32" CornerRadius="10" Width="515" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White">
                     <StackPanel Orientation="Horizontal">

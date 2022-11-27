@@ -164,11 +164,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AuthWindow.xaml">
+    <Page Include="MVVM\Views\AuthWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="MVVM\Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -176,7 +176,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AuthWindow.xaml.cs">
+    <Compile Include="MVVM\Views\AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="BD\app_settings.cs" />
@@ -193,7 +193,7 @@
     <Compile Include="Controllers\FrameObj.cs" />
     <Compile Include="Controllers\Win.cs" />
     <Compile Include="Controllers\WinObj.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="MVVM\Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -202,6 +202,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MainPage\InfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage\PrefComPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,6 +222,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MainPage\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PrefComElement\Basket.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -253,6 +261,9 @@
     <Compile Include="Pages\MainPage\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MainPage\PrefComPage.xaml.cs">
+      <DependentUpon>PrefComPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
@@ -264,6 +275,9 @@
     </Compile>
     <Compile Include="Pages\MainPage\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PrefComElement\Basket.xaml.cs">
+      <DependentUpon>Basket.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UIElement\CornerRadius.xaml.cs">
       <DependentUpon>CornerRadius.xaml</DependentUpon>

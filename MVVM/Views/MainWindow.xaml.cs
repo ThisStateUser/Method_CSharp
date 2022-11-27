@@ -77,6 +77,8 @@ namespace MethodHelper
         //ToolBar
         private void CloseWin_Click(object sender, RoutedEventArgs e)
         {
+            Connect.data.users.Where(x => x.token == Connect.user.token).FirstOrDefault().token = null;
+            Connect.data.SaveChanges();
             this.Close();
         }
 

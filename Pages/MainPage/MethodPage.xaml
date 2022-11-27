@@ -22,7 +22,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="Методы" FontSize="24" VerticalAlignment="Top"/>
+                <TextBlock Grid.Column="0" Text="Методы" FontSize="22" Margin="0 3 0 0" VerticalAlignment="Top"/>
 
                 <Border BorderThickness="0" Grid.Column="1" Height="32" CornerRadius="10" Width="515" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White">
                     <StackPanel Orientation="Horizontal">
@@ -36,15 +36,20 @@
                 <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1" Click="GoCrud_Click"
                     Content="CRUD" 
                     Tag="(Create Read Update Delete) 
-                    Создание получение редактирование удаление объектов"/>
+                    Создание получение редактирование удаление объектов (Нативный, TextBlock, TextBox)"/>
+
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
+                    Content="CRUD" 
+                    Tag="(Create Read Update Delete) 
+                    Создание получение редактирование удаление объектов (ListView, ListBox, DataGrid)"/>
 
                 <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
                     Content="Валидатор" 
-                    Tag="TextBox ComboBox CheckBox"/>
+                    Tag="Проверка на 'правильность' ввода/выбора данных в TextBox, ComboBox, CheckBox и тд."/>
 
                 <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
-                    Content="Анимация" 
-                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
+                    Content="Асинхронные функции" 
+                    Tag="Что такое, зачем нужны, пример работы с асинхронными функциями"/>
 
                 <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
                     Content="CRUD" 

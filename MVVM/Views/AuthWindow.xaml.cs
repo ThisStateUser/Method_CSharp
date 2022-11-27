@@ -2,9 +2,10 @@
 using MethodHelper.BD;
 using MethodHelper.Controllers;
 using System;
-using System.Collections.Generic;
+using System.IO.Pipes;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,9 +26,10 @@ namespace MethodHelper
 
         public AuthWindow()
         {
-            InitializeComponent();            
-            Connect.data = new Model1();      
-            
+            InitializeComponent();
+
+            Connect.data = new Model1();
+
             string host = Dns.GetHostName();
             IPAddress address = Dns.GetHostEntry(host).AddressList[1];
             string sip = IPAddress.Parse(address.ToString()).ToString();
@@ -43,10 +45,13 @@ namespace MethodHelper
                 MainWindow window = new MainWindow();
                 window.Show();
                 this.Close();
+                return;
             }
 
             r_class_cb.ItemsSource = Connect.data.user_class.ToList();
             r_class_cb.SelectedIndex = 0;
+
+            login_tb.Focus();
         }
 
         private void CloseWin_Click(object sender, RoutedEventArgs e)
@@ -136,6 +141,7 @@ namespace MethodHelper
                     downauthtext.Text = "Уже есть аккаунт?";
                     GoPage.Content = "Авторизироваться";
                     title.Text = "Регистрация";
+                    r_first_name_tb.Focus();
                     PageAorR = false;
                     break;
 
@@ -148,6 +154,7 @@ namespace MethodHelper
                     downauthtext.Text = "Нет аккаунта?";
                     GoPage.Content = "Перейти к регистрации";
                     title.Text = "Авторизация";
+                    login_tb.Focus();
                     PageAorR = true;
                     break;
                 default:
@@ -157,7 +164,16 @@ namespace MethodHelper
 
         private void GoAuth_Click(object sender, RoutedEventArgs e)
         {
-            pass_tb.Text = pass_pb.Password;
+            switch (TbOrPb_pass)
+            {
+                case true:
+                    pass_pb.Password = pass_tb.Text;
+                    break;
+                default:
+                    pass_tb.Text = pass_pb.Password;
+                    break;
+            }
+
             try
             {
                 var auth = Connect.data.users.Where(x => x.login == login_tb.Text && x.password == pass_tb.Text).FirstOrDefault();
@@ -170,7 +186,7 @@ namespace MethodHelper
 
 
                 if (remember.IsChecked == true)
-                {                
+                {
                     if (ip == null)
                     {
                         ip_address adress = new ip_address()
@@ -185,7 +201,8 @@ namespace MethodHelper
                 }
 
                 string stoken = WinObj.generateToken();
-                if (Connect.data.users.Where(x => x.token == stoken).FirstOrDefault() != null) {
+                if (Connect.data.users.Where(x => x.token == stoken).FirstOrDefault() != null)
+                {
                     stoken = WinObj.generateToken();
                 }
 
@@ -222,11 +239,12 @@ namespace MethodHelper
             if (r_first_name_tb.Text.Length == 0)
             {
                 name_er.Text = "заполните поле";
-            } 
+            }
             else if (r_first_name_tb.Text.Length <= 1)
             {
                 name_er.Text = "мин. 2 символа";
-            } else
+            }
+            else
             {
                 erMas++;
                 name_er.Text = "";
@@ -247,7 +265,8 @@ namespace MethodHelper
             else if (r_login_tb.Text.Length <= 3)
             {
                 login_er.Text = "мин. 4 символа";
-            } else if (Connect.data.users.Where(x => x.login == r_login_tb.Text.Trim()).FirstOrDefault() != null)
+            }
+            else if (Connect.data.users.Where(x => x.login == r_login_tb.Text.Trim()).FirstOrDefault() != null)
             {
                 login_er.Text = "логин занят";
             }
@@ -309,6 +328,76 @@ namespace MethodHelper
                 {
                     WinObj.fatalError(ex);
                 }
+            }
+        }
+
+        //Переход по полям на кнопку
+
+        private void login_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                switch (TbOrPb_pass)
+                {
+                    case true:
+                        pass_tb.Focus();
+                        break;
+                    case false:
+                        pass_pb.Focus();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void pass_tpb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                GoAuth_Click(null, null);
+            }
+        }
+
+        private void r_first_name_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                r_class_cb.Focus();
+                r_class_cb.IsDropDownOpen = true;
+            }
+        }
+
+        private void r_class_cb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                r_login_tb.Focus();
+            }
+        }
+        private void r_login_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                switch (r_TbOrPb_pass)
+                {
+                    case true:
+                        r_pass_tb.Focus();
+                        break;
+                    case false:
+                        r_pass_pb.Focus();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void r_pass_tpb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                GoReg_Click(null, null);
             }
         }
     }
