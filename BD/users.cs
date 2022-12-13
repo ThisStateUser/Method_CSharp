@@ -12,6 +12,7 @@ namespace MethodHelper.BD
         public users()
         {
             app_settings = new HashSet<app_settings>();
+            basket = new HashSet<basket>();
             ip_address = new HashSet<ip_address>();
         }
 
@@ -42,6 +43,9 @@ namespace MethodHelper.BD
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<app_settings> app_settings { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<basket> basket { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ip_address> ip_address { get; set; }

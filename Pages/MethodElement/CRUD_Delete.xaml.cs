@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MethodHelper.Pages.MainPage
+namespace MethodHelper.Pages.MethodElement
 {
     /// <summary>
-    /// Логика взаимодействия для InfoPage.xaml
+    /// Логика взаимодействия для CRUD_Delete.xaml
     /// </summary>
-    public partial class InfoPage : Page
+    public partial class CRUD_Delete : Page
     {
-        public InfoPage()
+        public CRUD_Delete()
         {
             InitializeComponent();
         }

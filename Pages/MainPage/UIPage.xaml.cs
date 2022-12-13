@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using MethodHelper.Controllers;
 using MethodHelper.Pages.UIElement;
 
-namespace MethodHelper.Pages
+namespace MethodHelper.Pages.MainPage
 {
     /// <summary>
     /// Логика взаимодействия для UIPage.xaml

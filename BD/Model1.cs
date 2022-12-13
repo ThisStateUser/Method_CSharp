@@ -13,9 +13,13 @@ namespace MethodHelper.BD
         }
 
         public virtual DbSet<app_settings> app_settings { get; set; }
+        public virtual DbSet<basket> basket { get; set; }
         public virtual DbSet<ip_address> ip_address { get; set; }
         public virtual DbSet<method_crud> method_crud { get; set; }
         public virtual DbSet<method_crud_combobox> method_crud_combobox { get; set; }
+        public virtual DbSet<order> order { get; set; }
+        public virtual DbSet<point> point { get; set; }
+        public virtual DbSet<product> product { get; set; }
         public virtual DbSet<start_page_desk> start_page_desk { get; set; }
         public virtual DbSet<user_class> user_class { get; set; }
         public virtual DbSet<user_role> user_role { get; set; }
@@ -23,12 +27,18 @@ namespace MethodHelper.BD
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<basket>()
+                .HasMany(e => e.order)
+                .WithRequired(e => e.basket)
+                .HasForeignKey(e => e.basket_id)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<ip_address>()
                 .Property(e => e.ip_auth_address)
                 .IsUnicode(false);
 
             modelBuilder.Entity<method_crud>()
-                .Property(e => e.TextBox)
+                .Property(e => e.row_text)
                 .IsUnicode(false);
 
             modelBuilder.Entity<method_crud_combobox>()
@@ -38,7 +48,27 @@ namespace MethodHelper.BD
             modelBuilder.Entity<method_crud_combobox>()
                 .HasMany(e => e.method_crud)
                 .WithOptional(e => e.method_crud_combobox)
-                .HasForeignKey(e => e.ComboBox);
+                .HasForeignKey(e => e.row_int);
+
+            modelBuilder.Entity<point>()
+                .HasMany(e => e.order)
+                .WithRequired(e => e.point)
+                .HasForeignKey(e => e.point_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<product>()
+                .Property(e => e.price)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<product>()
+                .Property(e => e.desk)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<product>()
+                .HasMany(e => e.basket)
+                .WithRequired(e => e.product)
+                .HasForeignKey(e => e.product_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<start_page_desk>()
                 .Property(e => e.name)
@@ -95,6 +125,12 @@ namespace MethodHelper.BD
 
             modelBuilder.Entity<users>()
                 .HasMany(e => e.app_settings)
+                .WithRequired(e => e.users)
+                .HasForeignKey(e => e.user_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<users>()
+                .HasMany(e => e.basket)
                 .WithRequired(e => e.users)
                 .HasForeignKey(e => e.user_id)
                 .WillCascadeOnDelete(false);

@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="860" d:DesignWidth="1540"
       Title="CRUD">
-    <Border Padding="25">
+    <!--<Border Padding="25">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -119,5 +119,5 @@
 
             </Grid>
         </Grid>
-    </Border>
+    </Border>-->
 </Page>

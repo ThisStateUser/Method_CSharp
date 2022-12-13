@@ -1,5 +1,5 @@
 ﻿using MethodHelper.Controllers;
-using MethodHelper.Pages;
+using MethodHelper.Pages.MainPage;
 using System;
 using System.Linq;
 using System.Windows;
@@ -215,6 +215,16 @@ namespace MethodHelper
             FrameObj.MainFrame.Navigate(new MethodPage());
         }
 
+        private void PrefPage_Click(object sender, RoutedEventArgs e)
+        {
+            FrameObj.MainFrame.Navigate(new PrefComPage());
+        }
+
+        private void Favorit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void SettingsPage_Click(object sender, RoutedEventArgs e)
         {
             FrameObj.MainFrame.Navigate(new SettingsPage());
@@ -239,5 +249,7 @@ namespace MethodHelper
             this.Close();
             WinObj.settings = null;
         }
+
+
     }
 }

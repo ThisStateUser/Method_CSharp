@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-      xmlns:local="clr-namespace:MethodHelper.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="860" d:DesignWidth="1540"
       Title="PrefComPage">
@@ -26,14 +25,14 @@
 
                 <Border BorderThickness="0" Grid.Column="1" Height="32" CornerRadius="10" Width="515" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White">
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Padding="5 0 0 0" Text="" TextChanged="SearchMethod_TextChanged" x:Name="SearchMethod" VerticalAlignment="Center" FontSize="16" Grid.Row="0" BorderThickness="0" Width="475" HorizontalAlignment="Left" Background="Transparent"/>
+                        <TextBox Padding="5 0 0 0" Text="" x:Name="SearchMethod" VerticalAlignment="Center" FontSize="16" Grid.Row="0" BorderThickness="0" Width="475" HorizontalAlignment="Left" Background="Transparent"/>
                         <Icon:PackIconMaterial Kind="Magnify" Width="40" Height="20" VerticalAlignment="Center" Foreground="{StaticResource graycolor}" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>
             </Grid>
 
             <WrapPanel x:Name="WrapMethodBtn" Grid.Row="1">
-                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1" Click="GoCrud_Click"
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
                     Content="Корзина" 
                     Tag="Простая корзина"/>
 

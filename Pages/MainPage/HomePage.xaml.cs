@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MethodHelper.Controllers;
 
-namespace MethodHelper.Pages
+namespace MethodHelper.Pages.MainPage
 {
     /// <summary>
     /// Логика взаимодействия для HomePage.xaml

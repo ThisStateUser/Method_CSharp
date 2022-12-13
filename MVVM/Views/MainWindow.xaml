@@ -55,7 +55,7 @@
                         <Button Style="{DynamicResource SystemButton}" Width="auto" Margin="0 0 10 0" x:Name="ProfilePage">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="AccountBox" Margin="10 0 10 0" Width="17" Height="19"/>
-                                <TextBlock Foreground="{StaticResource textColor1}" Margin="0 1 10 0" x:Name="profiletitle" Text="(Марянян Николай)"/>
+                                <TextBlock Foreground="{StaticResource textColor1}" Margin="0 1 10 0" x:Name="profiletitle" Text="Profile"/>
                             </StackPanel>
                         </Button>
                         
@@ -90,7 +90,7 @@
                             <TextBlock Width="auto" Text="Главная"/>
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton DockPanel.Dock="Top" Tag="{StaticResource color6}" Style="{StaticResource MenuBtn}" x:Name="UIPage" Click="UIPage_Click">
+                    <RadioButton DockPanel.Dock="Top" Tag="{StaticResource color10}" Style="{StaticResource MenuBtn}" x:Name="UIPage" Click="UIPage_Click">
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial Kind="BookOpenBlankVariant" Style="{StaticResource menuBtnIcon}"/>
                             <TextBlock Width="auto" Text="UI стили"/>
@@ -100,6 +100,18 @@
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial Kind="Counter" Style="{StaticResource menuBtnIcon}"/>
                             <TextBlock Width="auto" Text="Методы"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton DockPanel.Dock="Top" Tag="{StaticResource color3}" Style="{StaticResource MenuBtn}" x:Name="PrefPage" Click="PrefPage_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Radar" Style="{StaticResource menuBtnIcon}"/>
+                            <TextBlock Width="auto" Text="Готовые решения"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton DockPanel.Dock="Top" Tag="{StaticResource color6}" Style="{StaticResource MenuBtn}" x:Name="Favorit" Click="Favorit_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Star" Style="{StaticResource menuBtnIcon}"/>
+                            <TextBlock Width="auto" Text="Избранное"/>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton DockPanel.Dock="Top" Tag="{StaticResource color7}" Style="{StaticResource MenuBtn}" x:Name="SettingsPage" Click="SettingsPage_Click">

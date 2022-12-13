@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using MethodHelper.Controllers;
 using MethodHelper.Pages.MethodElement;
 
-namespace MethodHelper.Pages
+namespace MethodHelper.Pages.MainPage
 {
     /// <summary>
     /// Логика взаимодействия для MethodPage.xaml
@@ -35,6 +35,10 @@ namespace MethodHelper.Pages
         private void GoCrud_Click(object sender, RoutedEventArgs e)
         {
             FrameObj.MainFrame.Navigate(new CRUD());
+        }
+        private void GoCrudRead_Click(object sender, RoutedEventArgs e)
+        {
+            FrameObj.MainFrame.Navigate(new CRUD_Read());
         }
 
         private void SearchMethod_TextChanged(object sender, TextChangedEventArgs e)

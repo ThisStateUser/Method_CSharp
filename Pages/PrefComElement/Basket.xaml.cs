@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,24 @@ namespace MethodHelper.Pages.PrefComElement
         public Basket()
         {
             InitializeComponent();
+        }
+
+        private void BasketBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string path = "";
+            var file = new OpenFileDialog();
+            file.Filter = "Изображение Img|*.png;*.jpg";
+            if (file.ShowDialog() == true)
+            {
+                path = file.FileName;
+                BitmapImage image = new BitmapImage();
+                MemoryStream ms = new MemoryStream(File.ReadAllBytes(path));
+                image.BeginInit();
+                image.StreamSource = ms;
+                image.EndInit();
+
+
+            }
         }
     }
 }

@@ -129,7 +129,7 @@
                     </Border>
                 </Themes:SystemDropShadowChrome>
             </Popup>
-            
+
             <ToggleButton x:Name="toggleButton" Background="{TemplateBinding Background}" 
                           BorderBrush="{TemplateBinding BorderBrush}" 
                           BorderThickness="{TemplateBinding BorderThickness}" 
@@ -229,7 +229,7 @@
                 <Themes:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MinWidth="{Binding ActualWidth, ElementName=templateRoot}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
                     <Border Width="{TemplateBinding MinWidth}" CornerRadius="0 0 5 5" 
                         Padding="0 0 0 5" x:Name="dropDownBorder"
-                        Background="{StaticResource graycolor}"
+                        Background="{StaticResource indigocolor}"
                         BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" 
                         BorderThickness="0">
                         <ScrollViewer x:Name="DropDownScrollViewer">
@@ -284,7 +284,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Height" Value="30" />
         <Setter Property="MinWidth" Value="{Binding ActualWidth, RelativeSource={RelativeSource Mode=Self}}"/>
-        <Setter Property="Foreground" Value="{StaticResource whitecolor}"/>
+        <Setter Property="Foreground" Value="{StaticResource darkcolor}"/>
         <Setter Property="BorderBrush" Value="{StaticResource whitecolor}"/>
         <Setter Property="BorderThickness" Value="0 0 0 1"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -297,9 +297,6 @@
             <Trigger Property="IsEditable" Value="true">
                 <Setter Property="IsTabStop" Value="false"/>
                 <Setter Property="Padding" Value="2"/>
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="true">
-
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -7,7 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using MethodHelper.BD;
 
-namespace MethodHelper.Pages
+namespace MethodHelper.Pages.MainPage
 {
     /// <summary>
     /// Логика взаимодействия для SettingsPage.xaml

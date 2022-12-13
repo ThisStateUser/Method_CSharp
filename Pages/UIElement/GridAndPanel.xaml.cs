@@ -28,6 +28,7 @@ namespace MethodHelper.Pages.UIElement
         {
             InitializeComponent();
             panel = GridUI;
+            ShowWH();
         }
 
         private void AnimGridAndPanel(Panel UIelement, string WidthOrHeight, int property)
@@ -150,7 +151,7 @@ namespace MethodHelper.Pages.UIElement
         {
             panel = GridUI;
             RepeatMethod();
-            GridPage.Background = (SolidColorBrush)FindResource("color2");
+            GridPage.Background = (SolidColorBrush)FindResource("cyancolor");
             GridUI.Visibility = Visibility.Visible;
         }
 
@@ -158,7 +159,7 @@ namespace MethodHelper.Pages.UIElement
         {
             panel = StackPanelUI;
             RepeatMethod();
-            StackPage.Background = (SolidColorBrush)FindResource("color2");
+            StackPage.Background = (SolidColorBrush)FindResource("cyancolor");
             StackPanelUI.Visibility = Visibility.Visible;
         }
 
@@ -166,7 +167,7 @@ namespace MethodHelper.Pages.UIElement
         {
             panel = DockPanelUI;
             RepeatMethod();
-            DockPage.Background = (SolidColorBrush)FindResource("color2");
+            DockPage.Background = (SolidColorBrush)FindResource("cyancolor");
             DockPanelUI.Visibility = Visibility.Visible;
         }
 
@@ -174,7 +175,7 @@ namespace MethodHelper.Pages.UIElement
         {
             panel = WrapPanelUI;
             RepeatMethod();
-            WrapPage.Background = (SolidColorBrush)FindResource("color2");
+            WrapPage.Background = (SolidColorBrush)FindResource("cyancolor");
             WrapChange.Visibility = Visibility.Visible;
             WrapPanelUI.Visibility = Visibility.Visible;
         }

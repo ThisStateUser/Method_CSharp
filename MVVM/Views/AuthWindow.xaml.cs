@@ -121,9 +121,6 @@ namespace MethodHelper
             };
             stack.BeginAnimation(HeightProperty, animswipe);
         }
-        public delegate void ThreadStart();
-
-
 
         private async void GoPage_Click(object sender, RoutedEventArgs e)
         {
@@ -183,7 +180,6 @@ namespace MethodHelper
                     return;
                 }
                 var ip = Connect.data.ip_address.Where(x => x.user_id == auth.id && x.ip_auth_address == Connect.ip).FirstOrDefault();
-
 
                 if (remember.IsChecked == true)
                 {

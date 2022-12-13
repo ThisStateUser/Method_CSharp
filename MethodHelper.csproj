@@ -176,6 +176,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BD\basket.cs" />
+    <Compile Include="BD\Model1.cs" />
+    <Compile Include="BD\order.cs" />
+    <Compile Include="BD\point.cs" />
+    <Compile Include="BD\product.cs" />
     <Compile Include="MVVM\Views\AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
     </Compile>
@@ -183,7 +188,6 @@
     <Compile Include="BD\ip_address.cs" />
     <Compile Include="BD\method_crud.cs" />
     <Compile Include="BD\method_crud_combobox.cs" />
-    <Compile Include="BD\Model1.cs" />
     <Compile Include="BD\start_page_desk.cs" />
     <Compile Include="BD\sysdiagrams.cs" />
     <Compile Include="BD\users.cs" />
@@ -222,6 +226,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MainPage\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MethodElement\CRUD_Create.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MethodElement\CRUD_Delete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MethodElement\CRUD_Edit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MethodElement\CRUD_Read.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -276,6 +296,18 @@
     <Compile Include="Pages\MainPage\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MethodElement\CRUD_Create.xaml.cs">
+      <DependentUpon>CRUD_Create.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MethodElement\CRUD_Delete.xaml.cs">
+      <DependentUpon>CRUD_Delete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MethodElement\CRUD_Edit.xaml.cs">
+      <DependentUpon>CRUD_Edit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MethodElement\CRUD_Read.xaml.cs">
+      <DependentUpon>CRUD_Read.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PrefComElement\Basket.xaml.cs">
       <DependentUpon>Basket.xaml</DependentUpon>
     </Compile>
@@ -314,11 +346,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\UI\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\not-available.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -104,7 +104,7 @@
                                 <TextBlock Text="Введите имя" Foreground="{StaticResource darkcolor}"/>
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="name_er" FontSize="12" Foreground="{StaticResource redcolor}"/>
                             </DockPanel>
-                            <TextBox x:Name="r_first_name_tb" KeyDown="r_first_name_tb_KeyDown" Padding="5 8 5 0" Style="{StaticResource authTB}" Margin="0 0 0 10"/>
+                            <TextBox x:Name="r_first_name_tb" MaxLength="50" KeyDown="r_first_name_tb_KeyDown" Padding="5 8 5 0" Style="{StaticResource authTB}" Margin="0 0 0 10"/>
 
                             <DockPanel>
                                 <TextBlock Text="Выберите группу" Foreground="{StaticResource darkcolor}"/>
@@ -122,15 +122,15 @@
                                 <TextBlock Text="Введите логин" Foreground="{StaticResource darkcolor}"/>
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="login_er" FontSize="12" Foreground="{StaticResource redcolor}"/>
                             </DockPanel>
-                            <TextBox x:Name="r_login_tb" Padding="5 8 5 0" KeyDown="r_login_tb_KeyDown" Style="{StaticResource authTB}" Margin="0 0 0 10"/>
+                            <TextBox x:Name="r_login_tb" MaxLength="50" Padding="5 8 5 0" KeyDown="r_login_tb_KeyDown" Style="{StaticResource authTB}" Margin="0 0 0 10"/>
                             
                             <DockPanel>
                                 <TextBlock Text="Введите пароль" Foreground="{StaticResource darkcolor}"/>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="pass_er" FontSize="12" Foreground="{StaticResource redcolor}"/>
+                                <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Right" x:Name="pass_er" FontSize="12" Foreground="{StaticResource redcolor}"/>
                             </DockPanel>
                             <DockPanel Margin="0 0 0 10">
-                                <TextBox Width="290" Visibility="Collapsed" KeyDown="r_pass_tpb_KeyDown" x:Name="r_pass_tb" Padding="5 8 32 0" Style="{StaticResource authTB}"/>
-                                <PasswordBox x:Name="r_pass_pb" Width="290" KeyDown="r_pass_tpb_KeyDown" Padding="5 8 32 0" Style="{StaticResource authPB}"/>
+                                <TextBox Width="290" MaxLength="90" Visibility="Collapsed" KeyDown="r_pass_tpb_KeyDown" x:Name="r_pass_tb" Padding="5 8 32 0" Style="{StaticResource authTB}"/>
+                                <PasswordBox x:Name="r_pass_pb" MaxLength="90" Width="290" KeyDown="r_pass_tpb_KeyDown" Padding="5 8 32 0" Style="{StaticResource authPB}"/>
                                 <Button x:Name="r_SeeHideBtn" Style="{StaticResource SHButton}" Click="r_SeeHideBtn_Click">
                                     <Icon:PackIconMaterial x:Name="r_SHicon" Width="20" Height="20" Kind="EyeOff"/>
                                 </Button>
