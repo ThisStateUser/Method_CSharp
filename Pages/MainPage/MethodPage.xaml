@@ -73,10 +73,6 @@
                     Content="CRUD" 
                     Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
 
-                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
-                    Content="CRUD" 
-                    Tag="Создание редактирование обновление удаление объектов объектов объектов объектов"/>
-
             </WrapPanel>
         </Grid>
     </Border>
