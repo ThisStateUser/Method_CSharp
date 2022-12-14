@@ -3,12 +3,113 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MethodHelper.Pages.MethodElement"
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="860" d:DesignWidth="1540"
       Title="CRUD_Create">
 
-    <Grid>
-        
-    </Grid>
+    <Border Padding="25">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Preview" Grid.Column="0" FontSize="22"/>
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Border CornerRadius="10" Background="{StaticResource panelColor}" Width="500" Padding="10">
+                    <StackPanel>
+                        <TextBlock Text="TextBox"/>
+                        <TextBox Background="Transparent" x:Name="TextBoxEl" FontSize="16" Foreground="White" BorderThickness="0 0 0 1" Padding="5" Margin="0 5"/>
+
+                        <TextBlock Text="ComboBox" Margin="0 5 0 0"/>
+                        <ComboBox Background="White" x:Name="ComboBoxEl" FontSize="16" Foreground="Black" Padding="5" Margin="0 5">
+                            <ComboBoxItem>
+                                <TextBlock Foreground="Black" Text="1"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <TextBlock Foreground="Black" Text="2"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <TextBlock Foreground="Black" Text="3"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <TextBlock Foreground="Black" Text="4"/>
+                            </ComboBoxItem>
+                        </ComboBox>
+
+                        <TextBlock Text="ComboBox (С привязкой)" Margin="0 5 0 0"/>
+                        <ComboBox Background="White" x:Name="ComboBoxEl2" FontSize="16"  Padding="5" Margin="0 5">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" Text="{Binding title}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock Text="CheckBox" Margin="0 5 0 0"/>
+                        <CheckBox Foreground="White" x:Name="CheckBoxEl" Content="true/false" FontSize="16" Margin="0 5"/>
+
+                        <TextBlock Text="Image" Margin="0 5 0 0"/>
+                        <Button Content="Выбрать изображение" Background="Black" FontSize="16" Foreground="White" Padding="5" Margin="0 5" x:Name="selectImg" Click="selectImg_Click"/>
+                        <Button Style="{StaticResource MainBtn}" Margin="0 20 0 0" Content="Отправить" Click="SendCrud_Click"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="Code" FontSize="22"/>
+                    <TextBlock Text="5gsf56d dsgsdfg5 3dfs5g3sd"/>
+                </StackPanel>
+
+                <Grid Grid.Row="1">
+                    <TextBlock Text="DataBase" FontSize="22"/>
+                    <DataGrid x:Name="DataDG" Margin="0 50 0 0" IsReadOnly="True" CanUserResizeColumns="False" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="id"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding id}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="TextBox"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding TextBox}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="ComboBox"/>
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ComboBox}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </Border>
 </Page>

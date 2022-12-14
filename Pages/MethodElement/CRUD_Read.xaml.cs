@@ -43,6 +43,7 @@ namespace MethodHelper.Pages.MethodElement
         {
             AllHide();
             ListBoxPage.Background = (SolidColorBrush)FindResource("cyancolor");
+            LB_ListBox.ItemsSource = Connect.data.method_crud.ToList();
             await Task.Delay(600);
             anim(LB_ListBox, 630);
         }
@@ -99,7 +100,7 @@ namespace MethodHelper.Pages.MethodElement
                 Border border = new Border();
                 border.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("Black");
                 border.Padding = new Thickness(5);
-                border.Width = (double)450;
+                border.Width = (double)550;
                 border.Margin = new Thickness(0, 5, 0, 5);
                 border.CornerRadius = new CornerRadius(10);
 
@@ -115,7 +116,11 @@ namespace MethodHelper.Pages.MethodElement
                 { Text = "Текст: ", };
 
                 TextBlock textBlock_3_2 = new TextBlock()
-                { Text = item.row_text, };
+                {
+                    Text = item.row_text,
+                    TextWrapping = TextWrapping.Wrap,
+                    Width = (double)298,
+                };
 
                 StackPanel stackPanel_4 = new StackPanel();
                 stackPanel_4.Orientation = Orientation.Horizontal;
@@ -156,11 +161,15 @@ namespace MethodHelper.Pages.MethodElement
                 {
                     BorderThickness = new Thickness(1),
                     BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("White"),
-                    CornerRadius = new CornerRadius(100),
+                    CornerRadius = new CornerRadius(5),
                 };
 
-                Image image_6_2 = new Image() 
-                { Source = item.picture };
+                Image image_6_2 = new Image()
+                { 
+                    Width = (double)80,
+                    Height = (double)80,
+                    Source = item.picture, 
+                };
 
 
                 NV_StackPanel.Children.Add(border);

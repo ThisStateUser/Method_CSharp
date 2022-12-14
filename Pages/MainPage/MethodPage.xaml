@@ -37,7 +37,7 @@
                     Tag="(Create Read Update Delete) 
                     Создание получение редактирование удаление объектов (Нативный, TextBlock, TextBox)"/>
 
-                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1" Click="GoCrudCreate_Click"
                     Content="Создание/Запись (Create)" 
                     Tag="Запись/отправка данных в бд через TextBox, ComboBox, CheckBox и т.д."/>
 

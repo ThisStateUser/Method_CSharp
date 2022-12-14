@@ -40,6 +40,10 @@ namespace MethodHelper.Pages.MainPage
         {
             FrameObj.MainFrame.Navigate(new CRUD_Read());
         }
+        private void GoCrudCreate_Click(object sender, RoutedEventArgs e)
+        {
+            FrameObj.MainFrame.Navigate(new CRUD_Create());
+        }
 
         private void SearchMethod_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -55,5 +59,7 @@ namespace MethodHelper.Pages.MainPage
                 }
             }
         }
+
+
     }
 }

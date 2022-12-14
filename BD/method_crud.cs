@@ -8,7 +8,6 @@ namespace MethodHelper.BD
     using System.Data.Entity.Spatial;
     using System.Windows.Media;
     using System.IO;
-
     public partial class method_crud
     {
         public int id { get; set; }
@@ -22,10 +21,10 @@ namespace MethodHelper.BD
 
         [Column(TypeName = "image")]
         public byte[] row_image { get; set; }
-
-        public ImageSource picture {
-            get 
-            { 
+        public ImageSource picture
+        {
+            get
+            {
                 if (row_image != null)
                 {
                     BitmapImage bitmap = new BitmapImage();
@@ -45,8 +44,17 @@ namespace MethodHelper.BD
                 notAviable.StreamSource = memoryStream1;
                 notAviable.EndInit();
                 return notAviable as ImageSource;
-            } 
+            }
         }
+
+        public int? row_combo { get; set; }
+
         public virtual method_crud_combobox method_crud_combobox { get; set; }
     }
 }
+
+
+
+
+
+

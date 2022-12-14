@@ -189,7 +189,6 @@
     <Compile Include="BD\method_crud.cs" />
     <Compile Include="BD\method_crud_combobox.cs" />
     <Compile Include="BD\start_page_desk.cs" />
-    <Compile Include="BD\sysdiagrams.cs" />
     <Compile Include="BD\users.cs" />
     <Compile Include="BD\user_class.cs" />
     <Compile Include="BD\user_role.cs" />

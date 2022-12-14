@@ -48,5 +48,6 @@ namespace MethodHelper.Controllers
         {
             MessageBox.Show(ex.Message, "Fatal error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
     }
 }

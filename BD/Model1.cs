@@ -48,7 +48,7 @@ namespace MethodHelper.BD
             modelBuilder.Entity<method_crud_combobox>()
                 .HasMany(e => e.method_crud)
                 .WithOptional(e => e.method_crud_combobox)
-                .HasForeignKey(e => e.row_int);
+                .HasForeignKey(e => e.row_combo);
 
             modelBuilder.Entity<point>()
                 .HasMany(e => e.order)

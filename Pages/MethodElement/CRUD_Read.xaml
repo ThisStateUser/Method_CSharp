@@ -18,7 +18,7 @@
             <TextBlock Text="Preview" Grid.Column="0" FontSize="22"/>
 
             <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Border CornerRadius="10" Background="{StaticResource panelColor}" Width="500" Height="700" Padding="10">
+                <Border CornerRadius="10" Background="{StaticResource panelColor}" Width="600" Height="700" Padding="10">
                     <StackPanel Background="Transparent">
                         <StackPanel Margin="0 0 0 10" Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button x:Name="ListViewPage" Style="{StaticResource MainBtn}" Background="{StaticResource cyancolor}" Content="ListView" Width="115" Click="ListViewPage_Click"/>
@@ -27,15 +27,15 @@
                             <Button x:Name="NativePage" Style="{StaticResource MainBtn}" Content="Native" Width="120" Click="NativePage_Click"/>
                         </StackPanel>
 
-                        <ListView Background="Transparent" BorderThickness="0" Width="480" Height="630" x:Name="LV_ListView">
+                        <ListView Background="Transparent" BorderThickness="0" Width="580" Height="630" x:Name="LV_ListView">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Background="Black" Width="450" Padding="5" CornerRadius="10">
+                                    <Border Background="Black" Width="550" Padding="5" CornerRadius="10">
                                         <StackPanel Orientation="Horizontal">
                                             <StackPanel>
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="Текст: "/>
-                                                    <TextBlock Text="{Binding row_text}"/>
+                                                    <TextBlock Width="298" TextWrapping="Wrap" Text="{Binding row_text}"/>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="Число: "/>
@@ -52,8 +52,8 @@
                                             <StackPanel Margin="5 0 0 0">
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="Изображение: "/>
-                                                    <Border BorderThickness="1" BorderBrush="White" CornerRadius="100">
-                                                        <Image Source="{Binding picture}"/>
+                                                    <Border BorderThickness="1" BorderBrush="White" CornerRadius="5">
+                                                        <Image Width="80" Height="80" Source="{Binding picture}"/>
                                                     </Border>
                                                 </StackPanel>
                                             </StackPanel>
@@ -63,13 +63,45 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
-                        <ListBox Height="0" x:Name="LB_ListBox">
-                            
+                        <ListBox Height="0" Background="Transparent"  BorderThickness="0" x:Name="LB_ListBox">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="Black" Width="550" Padding="5" CornerRadius="10">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Текст: "/>
+                                                    <TextBlock Width="298" TextWrapping="Wrap" Text="{Binding row_text}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Число: "/>
+                                                    <TextBlock Text="{Binding row_int}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Чекбокс: "/>
+                                                    <CheckBox IsChecked="{Binding row_bool}"/>
+                                                </StackPanel>
+
+                                                <Button HorizontalAlignment="Left" Style="{StaticResource MainBtn}" Content="Кнопка" Width="200"/>
+                                            </StackPanel>
+
+                                            <StackPanel Margin="5 0 0 0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Изображение: "/>
+                                                    <Border BorderThickness="1" BorderBrush="White" CornerRadius="5">
+                                                        <Image Width="80" Height="80" Source="{Binding picture}"/>
+                                                    </Border>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
                         </ListBox>
 
-                        <DataGrid Height="0" x:Name="DG_DateGrid" IsReadOnly="True" CanUserResizeColumns="False" AutoGenerateColumns="False">
+                        <DataGrid Height="0" x:Name="DG_DateGrid"  IsReadOnly="True" CanUserResizeColumns="False" AutoGenerateColumns="False">
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn>
                                     <DataGridTemplateColumn.Header>
                                         <TextBlock Foreground="Black" Text="id"/>
                                     </DataGridTemplateColumn.Header>
@@ -80,13 +112,24 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
-                                <DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="210">
                                     <DataGridTemplateColumn.Header>
                                         <TextBlock Foreground="Black" Text="row_text"/>
                                     </DataGridTemplateColumn.Header>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Foreground="{StaticResource darkcolor}" Text="{Binding row_text}"/>
+                                            <TextBlock TextWrapping="Wrap" Foreground="{StaticResource darkcolor}" Text="{Binding row_text}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Foreground="Black" Text="row_combo"/>
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="{StaticResource darkcolor}" Text="{Binding row_combo}"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -112,6 +155,18 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Width="90">
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock Foreground="Black" Text="row_image"/>
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Width="80" Height="80" Source="{Binding picture}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -172,6 +227,9 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+                            
+
+                            
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
