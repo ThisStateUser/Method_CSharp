@@ -1,0 +1,40 @@
+﻿<Page x:Class="MethodHelper.Pages.SystemPage.AddImagePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MethodHelper.Pages.SystemPage"
+      mc:Ignorable="d" 
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      SizeChanged="Page_SizeChanged"
+      Title="AddImagePage">
+
+    <StackPanel Background="{StaticResource darkcolor}">
+        <ScrollViewer x:Name="scrollbase">
+            <StackPanel Margin="5">
+                <Button x:Name="goBack" Style="{StaticResource MainBtn}" Content="Вернуться назад" Width="140" HorizontalAlignment="Right" Background="{StaticResource bluecolor}" Click="goBack_Click"/>
+                <TextBlock x:Name="t_page_id" Text="Добавление изображения для страницы: "/>
+
+                <TextBlock Text="*Изображение:" Margin="0 10"/>
+                <Button Style="{StaticResource MainBtn}" x:Name="selectImg" Click="selectImg_Click" HorizontalAlignment="Left" Width="auto" Margin="0 0 0 10" Content="Выберите изображение"/>
+                <Image x:Name="preview_img" Width="680"/>
+
+
+                <TextBlock Text="Описание изображения:" Margin="0 10"/>
+                <TextBox AcceptsReturn="True" x:Name="desc_img" Opacity="0.9" Padding="5" FontSize="14"/>
+
+                <TextBlock Text="*Тип изображения:" Margin="0 10"/>
+                <ComboBox Style="{StaticResource settingCB}" x:Name="cb_type" HorizontalAlignment="Left"  Width="200">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Foreground="White" Margin="0 4 0 0" Text="{Binding type}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Button x:Name="sendImg" Margin="0 30 0 0" Style="{StaticResource MainBtn}"  Content="Сохранить" HorizontalAlignment="Left" Background="{StaticResource greencolor}" Click="sendImg_Click"/>
+            </StackPanel>
+        </ScrollViewer>
+       
+    </StackPanel>
+</Page>

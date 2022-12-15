@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MethodHelper.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,7 @@ namespace MethodHelper.Controllers
     internal class Win
     {
         public static MainWindow method;
+
+        public static ImageView imageView;
     }
 }

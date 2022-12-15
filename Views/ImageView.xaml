@@ -1,0 +1,50 @@
+﻿<Window x:Class="MethodHelper.Views.ImageView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:MethodHelper.Views"
+        mc:Ignorable="d"
+        Icon="/Resources/UI/icon.ico"
+        WindowStartupLocation="CenterOwner"
+        Background="Transparent"
+        Title="" x:Name="ImageWin" Height="800" Width="1000">
+    <Grid Background="{StaticResource darkcolor}">
+        <ScrollViewer Margin="5" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto">
+            <StackPanel x:Name="CollectionImg">
+                <StackPanel Visibility="Collapsed" x:Name="s_xaml" Margin="0 10 0 0">
+                    <TextBlock Text="(Разметка) xaml" FontSize="22"/>
+                    <WrapPanel Width="{Binding ActualWidth, ElementName=s_xaml}" x:Name="xamlZone">
+                       
+                    </WrapPanel>
+                </StackPanel>
+
+                <StackPanel Visibility="Collapsed" x:Name="s_cs" Margin="0 10 0 0">
+                    <TextBlock Text="(Код) xaml.cs" FontSize="22"/>
+                    <WrapPanel Width="{Binding ActualWidth, ElementName=s_cs}" x:Name="csZone">
+
+                    </WrapPanel>
+                </StackPanel>
+
+                <StackPanel Visibility="Collapsed" x:Name="s_db" Margin="0 10 0 0">
+                    <TextBlock Text="(База данных) sql" FontSize="22"/>
+                    <WrapPanel Width="{Binding ActualWidth, ElementName=s_db}" x:Name="dbZone">
+
+                    </WrapPanel>
+                </StackPanel>
+
+                <StackPanel Visibility="Collapsed" x:Name="s_other" Margin="0 10 0 0">
+                    <TextBlock Text="Разное" FontSize="22"/>
+                    <WrapPanel Width="{Binding ActualWidth, ElementName=s_other}" x:Name="otherZone">
+
+                    </WrapPanel>
+                </StackPanel>
+
+                <Button VerticalAlignment="Bottom" Style="{StaticResource MainBtn}" Margin="0 20" Width="200" Height="40" x:Name="addImg" Click="addImg_Click" Content="Добавить изображение"/>
+            </StackPanel>
+        </ScrollViewer>
+        
+        <Frame Visibility="Collapsed" x:Name="ImgFrame" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

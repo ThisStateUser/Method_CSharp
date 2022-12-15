@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MethodHelper.BD;
 using MethodHelper.Controllers;
+using MethodHelper.Views;
 
 namespace MethodHelper.Pages.MethodElement
 {
@@ -29,7 +30,31 @@ namespace MethodHelper.Pages.MethodElement
             InitializeComponent();
             ListCrud = Connect.data.method_crud.ToList();
             LV_ListView.ItemsSource = Connect.data.method_crud.ToList();
+            deskHelp();
         }
+
+        private void deskHelp()
+        {
+            var desc_data = Connect.data.page_desc.Where(x => x.title == Title).FirstOrDefault();
+            if (desc_data == null)
+            {
+                s_description.HorizontalAlignment = HorizontalAlignment.Center;
+                s_description.VerticalAlignment = VerticalAlignment.Center;
+                description.Text = "Нет описания";
+                return;
+            }
+            if (desc_data.description.Length == 0)
+            {
+                s_description.HorizontalAlignment = HorizontalAlignment.Center;
+                s_description.VerticalAlignment = VerticalAlignment.Center;
+                description.Text = "Нет описания";
+                return;
+            }
+            description.Text = desc_data.description;
+            s_description.HorizontalAlignment = HorizontalAlignment.Stretch;
+            s_description.VerticalAlignment = VerticalAlignment.Top;
+        }
+
         private async void ListViewPage_Click(object sender, RoutedEventArgs e)
         {
             AllHide();
@@ -197,6 +222,70 @@ namespace MethodHelper.Pages.MethodElement
                 stackPanel_6.Children.Add(textBlock_6_1);
                 stackPanel_6.Children.Add(border1);
                 border1.Child = image_6_2;
+            }
+        }
+
+        private void ShowCode_Click(object sender, RoutedEventArgs e)
+        {
+            string winname = Title;
+            ImageView imageWin = new ImageView(winname);
+            imageWin.Show();
+        }
+
+        bool addred = false;
+        private void addDesc_Click(object sender, RoutedEventArgs e)
+        {
+            var pagetitle = Connect.data.page_desc.Where(x => x.title == Title).FirstOrDefault();
+            switch (addred)
+            {
+                case false:
+                    addDesc.Content = "Закончить редактирование";
+                    addDesc.Background = (SolidColorBrush)FindResource("cyancolor");
+                    description.Visibility = Visibility.Collapsed;
+                    textbox_desc.Visibility = Visibility.Visible;
+                    s_description.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    s_description.VerticalAlignment = VerticalAlignment.Top;
+                    if (pagetitle != null)
+                    {
+                        if (pagetitle.description != null)
+                        {
+                            textbox_desc.Text = pagetitle.description;
+                        }
+                    }
+                    addred = true;
+                    break;
+                default:
+                    addDesc.Content = "Редактировать описание";
+                    addDesc.Background = (SolidColorBrush)FindResource("greencolor");
+                    description.Visibility = Visibility.Visible;
+                    textbox_desc.Visibility = Visibility.Collapsed;
+                    addred = false;
+                    try
+                    {
+                        if (pagetitle == null)
+                        {
+                            page_desc page = new page_desc()
+                            {
+                                title = Title,
+                                description = textbox_desc.Text,
+                            };
+                            Connect.data.page_desc.Add(page);
+                            Connect.data.SaveChanges();
+
+                            Win.method.ShowErrorMessage("Успех", "Описание добавлено", "ok");
+                            return;
+                        }
+                        pagetitle.description = textbox_desc.Text;
+                        Connect.data.SaveChanges();
+
+                        Win.method.ShowErrorMessage("Успех", "Описание обновлено", "ok");
+                    }
+                    catch (Exception ex)
+                    {
+                        WinObj.fatalError(ex);
+                    }
+                    deskHelp();
+                    break;
             }
         }
     }

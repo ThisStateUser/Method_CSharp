@@ -1,13 +1,14 @@
 namespace MethodHelper.BD
 {
-    using System.Windows.Media.Imaging;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using System.Windows.Media;
     using System.IO;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Media;
+
     public partial class method_crud
     {
         public int id { get; set; }
@@ -21,6 +22,7 @@ namespace MethodHelper.BD
 
         [Column(TypeName = "image")]
         public byte[] row_image { get; set; }
+
         public ImageSource picture
         {
             get
@@ -46,15 +48,8 @@ namespace MethodHelper.BD
                 return notAviable as ImageSource;
             }
         }
-
         public int? row_combo { get; set; }
 
         public virtual method_crud_combobox method_crud_combobox { get; set; }
     }
 }
-
-
-
-
-
-

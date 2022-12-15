@@ -15,19 +15,19 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Preview" Grid.Column="0" FontSize="22"/>
+            <TextBlock Text="Превью" Grid.Column="0" FontSize="22"/>
 
             <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Border CornerRadius="10" Background="{StaticResource panelColor}" Width="600" Height="700" Padding="10">
                     <StackPanel Background="Transparent">
                         <StackPanel Margin="0 0 0 10" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button x:Name="ListViewPage" Style="{StaticResource MainBtn}" Background="{StaticResource cyancolor}" Content="ListView" Width="115" Click="ListViewPage_Click"/>
-                            <Button x:Name="ListBoxPage" Style="{StaticResource MainBtn}" Content="ListBox" Width="115" Margin="5 0 5 0" Click="ListBoxPage_Click"/>
-                            <Button x:Name="DataGridPage" Style="{StaticResource MainBtn}" Content="DataGrid" Width="115" Margin="0 0 5 0" Click="DataGridPage_Click"/>
-                            <Button x:Name="NativePage" Style="{StaticResource MainBtn}" Content="Native" Width="120" Click="NativePage_Click"/>
+                            <Button x:Name="ListViewPage" Style="{StaticResource MainBtn}" Background="{StaticResource cyancolor}" Content="ListView" Width="110" Click="ListViewPage_Click"/>
+                            <Button x:Name="ListBoxPage" Style="{StaticResource MainBtn}" Content="ListBox" Width="110" Margin="5 0 5 0" Click="ListBoxPage_Click"/>
+                            <Button x:Name="DataGridPage" Style="{StaticResource MainBtn}" Content="DataGrid" Width="110" Margin="0 0 5 0" Click="DataGridPage_Click"/>
+                            <Button x:Name="NativePage" Style="{StaticResource MainBtn}" Content="Native" Width="110" Click="NativePage_Click"/>
                         </StackPanel>
 
-                        <ListView Background="Transparent" BorderThickness="0" Width="580" Height="630" x:Name="LV_ListView">
+                        <ListView Background="Transparent"  BorderThickness="0" Width="580" Height="630" x:Name="LV_ListView">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Border Background="Black" Width="550" Padding="5" CornerRadius="10">
@@ -45,7 +45,7 @@
                                                     <TextBlock Text="Чекбокс: "/>
                                                     <CheckBox IsChecked="{Binding row_bool}"/>
                                                 </StackPanel>
-                                                
+
                                                 <Button HorizontalAlignment="Left" Style="{StaticResource MainBtn}" Content="Кнопка" Width="200"/>
                                             </StackPanel>
 
@@ -183,55 +183,27 @@
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0">
-                    <TextBlock Text="Code" FontSize="22"/>
-                    <TextBlock Text="5gsf56d dsgsdfg5 3dfs5g3sd"/>
+                    <DockPanel Margin="0 0 0 15" >
+                        <TextBlock DockPanel.Dock="Left" Text="Описание" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="22"/>
+                        <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Style="{StaticResource MainBtn}" x:Name="addDesc" Click="addDesc_Click" Background="{StaticResource greencolor}" Width="210" Content="Редактировать описание"/>
+                    </DockPanel>
+                    
+                    <ScrollViewer Height="700"  Width="740">
+                        <StackPanel x:Name="s_description">
+                            <TextBlock x:Name="description" TextWrapping="Wrap"/>
+                            <TextBox Visibility="Collapsed" TextWrapping="Wrap" AcceptsReturn="True" Width="740" Opacity="0.8" Height="700" FontSize="14" x:Name="textbox_desc" Padding="5"/>
+                        </StackPanel>
+
+                    </ScrollViewer>
+
                 </StackPanel>
 
                 <Grid Grid.Row="1">
-                    <TextBlock Text="DataBase" FontSize="22"/>
-                    <DataGrid x:Name="DataDG" Margin="0 50 0 0" IsReadOnly="True" CanUserResizeColumns="False" AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn Width="auto">
-                                <DataGridTemplateColumn.Header>
-                                    <TextBlock Text="id"/>
-                                </DataGridTemplateColumn.Header>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding id}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            <DataGridTemplateColumn>
-                                <DataGridTemplateColumn.Header>
-                                    <TextBlock Text="TextBox"/>
-                                </DataGridTemplateColumn.Header>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding TextBox}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            <DataGridTemplateColumn>
-                                <DataGridTemplateColumn.Header>
-                                    <TextBlock Text="ComboBox"/>
-                                </DataGridTemplateColumn.Header>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ComboBox}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            
-
-                            
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <Button Style="{StaticResource MainBtn}" Width="200" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Посмотреть код" x:Name="ShowCode" Click="ShowCode_Click" />
                 </Grid>
 
             </Grid>

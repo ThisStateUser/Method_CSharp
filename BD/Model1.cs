@@ -14,13 +14,17 @@ namespace MethodHelper.BD
 
         public virtual DbSet<app_settings> app_settings { get; set; }
         public virtual DbSet<basket> basket { get; set; }
+        public virtual DbSet<image_in_page> image_in_page { get; set; }
         public virtual DbSet<ip_address> ip_address { get; set; }
         public virtual DbSet<method_crud> method_crud { get; set; }
         public virtual DbSet<method_crud_combobox> method_crud_combobox { get; set; }
         public virtual DbSet<order> order { get; set; }
+        public virtual DbSet<page_desc> page_desc { get; set; }
         public virtual DbSet<point> point { get; set; }
         public virtual DbSet<product> product { get; set; }
         public virtual DbSet<start_page_desk> start_page_desk { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<type_image> type_image { get; set; }
         public virtual DbSet<user_class> user_class { get; set; }
         public virtual DbSet<user_role> user_role { get; set; }
         public virtual DbSet<users> users { get; set; }
@@ -32,6 +36,10 @@ namespace MethodHelper.BD
                 .WithRequired(e => e.basket)
                 .HasForeignKey(e => e.basket_id)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<image_in_page>()
+                .Property(e => e.description)
+                .IsUnicode(false);
 
             modelBuilder.Entity<ip_address>()
                 .Property(e => e.ip_auth_address)
@@ -49,6 +57,20 @@ namespace MethodHelper.BD
                 .HasMany(e => e.method_crud)
                 .WithOptional(e => e.method_crud_combobox)
                 .HasForeignKey(e => e.row_combo);
+
+            modelBuilder.Entity<page_desc>()
+                .Property(e => e.title)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<page_desc>()
+                .Property(e => e.description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<page_desc>()
+                .HasMany(e => e.image_in_page)
+                .WithRequired(e => e.page_desc)
+                .HasForeignKey(e => e.page_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<point>()
                 .HasMany(e => e.order)
@@ -78,6 +100,16 @@ namespace MethodHelper.BD
                 .HasMany(e => e.app_settings)
                 .WithOptional(e => e.start_page_desk)
                 .HasForeignKey(e => e.start_page);
+
+            modelBuilder.Entity<type_image>()
+                .Property(e => e.type)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<type_image>()
+                .HasMany(e => e.image_in_page)
+                .WithRequired(e => e.type_image)
+                .HasForeignKey(e => e.type_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<user_class>()
                 .Property(e => e._class)
