@@ -17,16 +17,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using MahApps.Metro.IconPacks;
+using System.Windows.Threading;
 
 namespace MethodHelper.Views
 {
     /// <summary>
     /// Логика взаимодействия для ImageView.xaml
     /// </summary>
+
     public partial class ImageView : Window
     {
         List<image_in_page> images = new List<image_in_page>();
         string pageName;
+        
         public ImageView(string winname)
         {
             InitializeComponent();
@@ -64,28 +68,25 @@ namespace MethodHelper.Views
             dbZone.Children.Clear();
             otherZone.Children.Clear();
 
-            int numEl = 0;
             foreach (var img in images)
             {
-                numEl++;
-                string nameObj = "imgObj" + numEl;
                 switch (img.type_id)
                 {
                     case 1:
                         s_xaml.Visibility = Visibility.Visible;
-                        generateZoneImg(xamlZone, img.image, nameObj);
+                        generateZoneImg(xamlZone, img.image, img.description);
                         break;
                     case 2:
                         s_cs.Visibility = Visibility.Visible;
-                        generateZoneImg(csZone, img.image, nameObj);
+                        generateZoneImg(csZone, img.image, img.description);
                         break;
                     case 3:
                         s_db.Visibility = Visibility.Visible;
-                        generateZoneImg(dbZone, img.image, nameObj);
+                        generateZoneImg(dbZone, img.image, img.description);
                         break;
                     case 4:
                         s_other.Visibility = Visibility.Visible;
-                        generateZoneImg(otherZone, img.image, nameObj);
+                        generateZoneImg(otherZone, img.image, img.description);
                         break;
                     default:
                         MessageBox.Show("Неизвестная ошибка");
@@ -94,7 +95,7 @@ namespace MethodHelper.Views
             }
         }
 
-        private void generateZoneImg(WrapPanel zone, byte[] img, string name)
+        private void generateZoneImg(WrapPanel zone, byte[] img, string content)
         {
             Border border = new Border()
             {
@@ -106,9 +107,8 @@ namespace MethodHelper.Views
                 CornerRadius = new CornerRadius(5),
                 Margin = new Thickness(5),
                 Padding = new Thickness(5),
-                Name = name,
             };
-            border.MouseDown += (o, e) => Border_MouseDown(o, e, name, zone);
+            border.MouseDown += (o, e) => Border_MouseDown(o, e);
 
             StackPanel stackPanel = new StackPanel();
 
@@ -126,6 +126,7 @@ namespace MethodHelper.Views
             TextBlock desc = new TextBlock()
             {
                 TextWrapping = TextWrapping.Wrap,
+                Text = content,
             };
 
             zone.Children.Add(border);
@@ -134,17 +135,36 @@ namespace MethodHelper.Views
             stackPanel.Children.Add(desc);
         }
 
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e, string name, WrapPanel zone)
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show(name);
-            // Border border = this.Name ;
-            // border.Name = name;
-            //if (border != null)
-            //{
-            //    border.Width = (double)new GridLength(1, GridUnitType.Auto).Value;
-            //    border.Height = (double)new GridLength(1, GridUnitType.Auto).Value;
-            //}
+            Border br = (Border)sender;
+            br.Width = sliderImg.Value - 20;
+            br.Height = double.NaN;
+            if (CollectionImg != null && (sliderImg.Value + 20) > ActualWidth)
+            {
+                CollectionImg.Width = sliderImg.Value;
+            }
+        }
 
+        private void ImageWin_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (sliderImg.Value < ActualWidth)
+            { 
+                CollectionImg.Width = ActualWidth;
+            } else
+            {
+                CollectionImg.Width = sliderImg.Value;
+            }
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            int slide = Convert.ToInt32(sliderImg.Value);
+            snapPixel.Text = slide.ToString() + " px";
+            if (CollectionImg != null && (sliderImg.Value + 20) > ActualWidth)
+            {
+                CollectionImg.Width = sliderImg.Value;
+            }
         }
     }
 }

@@ -6,12 +6,24 @@
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:MethodHelper.Views"
         mc:Ignorable="d"
+        SizeChanged="ImageWin_SizeChanged"
         Icon="/Resources/UI/icon.ico"
         WindowStartupLocation="CenterOwner"
         Background="Transparent"
-        Title="" x:Name="ImageWin" Height="800" Width="1000">
+        Title="" x:Name="ImageWin" Height="800" MinWidth="416" Width="1000">
     <Grid Background="{StaticResource darkcolor}">
-        <ScrollViewer Margin="5" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Размер изображений в раскрытом состоянии: "/>
+                <TextBlock x:Name="snapPixel"/>
+            </StackPanel>
+            <Slider HorizontalAlignment="Left" x:Name="sliderImg" ValueChanged="Slider_ValueChanged" Width="400" Minimum="138" Maximum="1910" Background="Transparent" Style="{DynamicResource SliderImg}"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" Background="{StaticResource darkcolor}" Margin="0 10 0 0" VerticalScrollBarVisibility="Hidden" x:Name="scrollV" HorizontalScrollBarVisibility="Auto">
             <StackPanel x:Name="CollectionImg">
                 <StackPanel Visibility="Collapsed" x:Name="s_xaml" Margin="0 10 0 0">
                     <TextBlock Text="(Разметка) xaml" FontSize="22"/>

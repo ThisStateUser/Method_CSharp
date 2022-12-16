@@ -33,6 +33,7 @@
                 </ComboBox>
 
                 <Button x:Name="sendImg" Margin="0 30 0 0" Style="{StaticResource MainBtn}"  Content="Сохранить" HorizontalAlignment="Left" Background="{StaticResource greencolor}" Click="sendImg_Click"/>
+
             </StackPanel>
         </ScrollViewer>
        

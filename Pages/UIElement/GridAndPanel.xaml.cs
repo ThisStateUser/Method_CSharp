@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MethodHelper.BD;
+using MethodHelper.Controllers;
+using MethodHelper.Views;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Media.Animation;
-using System.Xml.Linq;
-using System.Runtime.InteropServices;
 
 namespace MethodHelper.Pages.UIElement
 {
@@ -29,6 +22,18 @@ namespace MethodHelper.Pages.UIElement
             InitializeComponent();
             panel = GridUI;
             ShowWH();
+            WinObj.deskHelp(s_description, description, Title);
+        }
+
+        private void ShowCode_Click(object sender, RoutedEventArgs e)
+        {
+            WinObj.ShowCode(Title);
+        }
+
+        private void addDesc_Click(object sender, RoutedEventArgs e)
+        {
+            WinObj.addDesc(addDesc, description, textbox_desc, s_description, Title);
+            WinObj.deskHelp(s_description, description, Title);
         }
 
         private void AnimGridAndPanel(Panel UIelement, string WidthOrHeight, int property)
@@ -130,7 +135,7 @@ namespace MethodHelper.Pages.UIElement
             textBlockWidth.Text = "Width: ";
 
             TextBlock textWidth = new TextBlock();
-            textWidth.Margin = new Thickness(0,0,10,0);
+            textWidth.Margin = new Thickness(0, 0, 10, 0);
             textWidth.MaxWidth = (double)26;
             textWidth.SetBinding(TextBlock.TextProperty, bindingWidth);
 

@@ -180,33 +180,29 @@
                 </Border>
             </StackPanel>
 
+            <!--leftzone-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
-
                 <StackPanel Grid.Row="0">
                     <DockPanel Margin="0 0 0 15" >
                         <TextBlock DockPanel.Dock="Left" Text="Описание" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="22"/>
                         <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Style="{StaticResource MainBtn}" x:Name="addDesc" Click="addDesc_Click" Background="{StaticResource greencolor}" Width="210" Content="Редактировать описание"/>
                     </DockPanel>
-                    
                     <ScrollViewer Height="700"  Width="740">
                         <StackPanel x:Name="s_description">
                             <TextBlock x:Name="description" TextWrapping="Wrap"/>
                             <TextBox Visibility="Collapsed" TextWrapping="Wrap" AcceptsReturn="True" Width="740" Opacity="0.8" Height="700" FontSize="14" x:Name="textbox_desc" Padding="5"/>
                         </StackPanel>
-
                     </ScrollViewer>
-
                 </StackPanel>
-
                 <Grid Grid.Row="1">
                     <Button Style="{StaticResource MainBtn}" Width="200" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Посмотреть код" x:Name="ShowCode" Click="ShowCode_Click" />
                 </Grid>
-
             </Grid>
+            <!--leftzone-->
         </Grid>
     </Border>
 </Page>

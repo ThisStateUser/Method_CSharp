@@ -124,6 +124,7 @@ namespace MethodHelper.Pages.SystemPage
                 Connect.data.SaveChanges();
                 MessageBox.Show("Изображение добавлено", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
                 goBack_Click(null, null);
+                Win.imageView.showimg();
             }
             catch (Exception ex)
             {
@@ -139,7 +140,7 @@ namespace MethodHelper.Pages.SystemPage
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            scrollbase.Height = Win.imageView.ActualHeight;
+            scrollbase.Height = ActualHeight - 5;
         }
     }
 }
