@@ -67,7 +67,7 @@
                 <StackPanel Grid.Row="0">
                     <DockPanel Margin="0 0 0 15" >
                         <TextBlock DockPanel.Dock="Left" Text="Описание" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="22"/>
-                        <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Style="{StaticResource MainBtn}" x:Name="addDesc" Click="addDesc_Click" Background="{StaticResource greencolor}" Width="210" Content="Редактировать описание"/>
+                        <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Visibility="Collapsed" Style="{StaticResource MainBtn}" x:Name="addDesc" Click="addDesc_Click" Background="{StaticResource greencolor}" Width="210" Content="Редактировать описание"/>
                     </DockPanel>
                     <ScrollViewer Height="700"  Width="740">
                         <StackPanel x:Name="s_description">

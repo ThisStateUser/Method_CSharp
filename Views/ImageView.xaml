@@ -53,7 +53,7 @@
                     </WrapPanel>
                 </StackPanel>
 
-                <Button VerticalAlignment="Bottom" Style="{StaticResource MainBtn}" Margin="0 20" Width="200" Height="40" x:Name="addImg" Click="addImg_Click" Content="Добавить изображение"/>
+                <Button VerticalAlignment="Bottom" Style="{StaticResource MainBtn}" Margin="0 20" Width="200" Visibility="Collapsed" Height="40" x:Name="addImg" Click="addImg_Click" Content="Добавить изображение"/>
             </StackPanel>
         </ScrollViewer>
         

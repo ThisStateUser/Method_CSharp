@@ -23,6 +23,10 @@ namespace MethodHelper.Pages.UIElement
             panel = GridUI;
             ShowWH();
             WinObj.deskHelp(s_description, description, Title);
+            if (Connect.user.role_id != 3)
+            {
+                addDesc.Visibility = Visibility.Visible;
+            }
         }
 
         private void ShowCode_Click(object sender, RoutedEventArgs e)

@@ -31,6 +31,10 @@ namespace MethodHelper.Pages.MethodElement
             ListCrud = Connect.data.method_crud.ToList();
             LV_ListView.ItemsSource = Connect.data.method_crud.ToList();
             WinObj.deskHelp(s_description, description, Title);
+            if (Connect.user.role_id != 3)
+            {
+                addDesc.Visibility = Visibility.Visible;
+            }
         }
 
         private void ShowCode_Click(object sender, RoutedEventArgs e)

@@ -35,6 +35,11 @@ namespace MethodHelper.Views
         {
             InitializeComponent();
             Win.imageView = this;
+
+            if (Connect.user.role_id != 3)
+            {
+                addImg.Visibility = Visibility.Visible;
+            }
             ImageWin.Title = winname;
             pageName = winname;
             images = Connect.data.image_in_page.Where(x => x.page_id == Connect.data.page_desc.Where(z => z.title == winname).FirstOrDefault().id).ToList();
@@ -126,6 +131,7 @@ namespace MethodHelper.Views
             TextBlock desc = new TextBlock()
             {
                 TextWrapping = TextWrapping.Wrap,
+                Visibility = Visibility.Collapsed,
                 Text = content,
             };
 
@@ -138,7 +144,7 @@ namespace MethodHelper.Views
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Border br = (Border)sender;
-            br.Width = sliderImg.Value - 20;
+            br.Width = sliderImg.Value - 10;
             br.Height = double.NaN;
             if (CollectionImg != null && (sliderImg.Value + 20) > ActualWidth)
             {
