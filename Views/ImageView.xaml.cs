@@ -67,7 +67,8 @@ namespace MethodHelper.Views
         }
 
         public void showimg()
-        {                
+        {
+            MessageBox.Show("1");
             xamlZone.Children.Clear();
             csZone.Children.Clear();
             dbZone.Children.Clear();
@@ -104,14 +105,9 @@ namespace MethodHelper.Views
         {
             Border border = new Border()
             {
-                BorderThickness = new Thickness(1),
-                BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("AliceBlue"),
+                Style = (Style)FindResource("ImgBorder"),
                 Width = (double)138,
                 Height = (double)138,
-                Background = (SolidColorBrush)new BrushConverter().ConvertFromString("Transparent"),
-                CornerRadius = new CornerRadius(5),
-                Margin = new Thickness(5),
-                Padding = new Thickness(5),
             };
             border.MouseDown += (o, e) => Border_MouseDown(o, e);
 
@@ -141,25 +137,37 @@ namespace MethodHelper.Views
             stackPanel.Children.Add(desc);
         }
 
+
+        Border open_img;
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Border br = (Border)sender;
+            if (open_img == br)
+            {
+                br.Width = (double)138;
+                br.Height = (double)138;
+                open_img = null;
+                return;
+            }
+            if (open_img != br && open_img != null)
+            {
+                open_img.Width = (double)138;
+                open_img.Height = (double)138;
+                open_img = br;
+            }
             br.Width = sliderImg.Value - 10;
             br.Height = double.NaN;
-            if (CollectionImg != null && (sliderImg.Value + 20) > ActualWidth)
-            {
-                CollectionImg.Width = sliderImg.Value;
-            }
+            open_img = br;
         }
 
         private void ImageWin_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (sliderImg.Value < ActualWidth)
+            if (sliderImg.Value > ActualWidth)
             { 
-                CollectionImg.Width = ActualWidth;
+                CollectionImg.Width = sliderImg.Value + 10;
             } else
             {
-                CollectionImg.Width = sliderImg.Value;
+                CollectionImg.Width = ActualWidth;
             }
         }
 
@@ -167,9 +175,13 @@ namespace MethodHelper.Views
         {
             int slide = Convert.ToInt32(sliderImg.Value);
             snapPixel.Text = slide.ToString() + " px";
-            if (CollectionImg != null && (sliderImg.Value + 20) > ActualWidth)
+            if (CollectionImg != null && (sliderImg.Value) > ActualWidth)
             {
                 CollectionImg.Width = sliderImg.Value;
+            }
+            if (open_img != null)
+            {
+                open_img.Width = sliderImg.Value - 10;
             }
         }
     }
