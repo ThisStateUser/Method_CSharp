@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style x:Key="TitleTB" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
+        <Setter Property="Foreground" Value="{DynamicResource titleColor1}"/>
+        <Setter Property="Margin" Value="10 0 0 0"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
+        <Setter Property="Foreground" Value="AliceBlue"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="MPanelText">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{DynamicResource titleColor2}"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource titleColor1}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="TextSettings" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
+        <Setter Property="Foreground" Value="{StaticResource titleColor1}"/>
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Height" Value="30" />
+    </Style>
+
+</ResourceDictionary>

@@ -7,8 +7,14 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="./styles/uicolors.xaml"/>
-                <ResourceDictionary Source="./styles/MainStyle.xaml"/>
                 <ResourceDictionary Source="./styles/FullSt.xaml"/>
+
+                <ResourceDictionary Source="./styles/pack/Button.xaml"/>
+                <ResourceDictionary Source="./styles/pack/Border.xaml"/>
+                <ResourceDictionary Source="./styles/pack/Label.xaml"/>
+                <ResourceDictionary Source="./styles/pack/TextBlock.xaml"/>
+                <ResourceDictionary Source="./styles/pack/TextPasBox.xaml"/>
+                <ResourceDictionary Source="./styles/pack/Other.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

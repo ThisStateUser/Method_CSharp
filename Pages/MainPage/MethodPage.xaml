@@ -54,7 +54,7 @@
                     Tag="Удаление данных по кнопке. Определение объекта."/>
 
                 <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
-                    Content="Валидатор" 
+                    Content="Валидатор (if else)" 
                     Tag="Проверка на 'правильность' ввода/выбора данных в TextBox, ComboBox, CheckBox и тд."/>
 
                 <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"

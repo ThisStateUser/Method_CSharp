@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MethodHelper.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,22 @@ namespace MethodHelper.Pages.MethodElement
         public CRUD_Delete()
         {
             InitializeComponent();
+            WinObj.deskHelp(s_description, description, Title);
+            if (Connect.user.role_id != 3)
+            {
+                addDesc.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void ShowCode_Click(object sender, RoutedEventArgs e)
+        {
+            WinObj.ShowCode(Title);
+        }
+
+        private void addDesc_Click(object sender, RoutedEventArgs e)
+        {
+            WinObj.addDesc(addDesc, description, textbox_desc, s_description, Title);
+            WinObj.deskHelp(s_description, description, Title);
         }
     }
 }
