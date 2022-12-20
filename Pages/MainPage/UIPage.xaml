@@ -41,7 +41,7 @@
                     Content="Закругление" 
                     Tag="Закругленные края у Button, StackPanel, TextBox и тд."/>
 
-                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1" Click="Animation_Click"
                     Content="Анимация" 
                     Tag="Увеличение размеров, сдвиг предметов, обработчики событий"/>
 

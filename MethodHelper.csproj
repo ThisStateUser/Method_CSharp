@@ -168,6 +168,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\UIElement\Animation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Pack\Border.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -219,6 +223,9 @@
     <Compile Include="BD\type_image.cs" />
     <Compile Include="Pages\SystemPage\AddImagePage.xaml.cs">
       <DependentUpon>AddImagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UIElement\Animation.xaml.cs">
+      <DependentUpon>Animation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>

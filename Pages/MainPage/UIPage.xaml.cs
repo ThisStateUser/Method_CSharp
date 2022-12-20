@@ -32,11 +32,6 @@ namespace MethodHelper.Pages.MainPage
             };
         }
 
-        private void GridAndPanel_Click(object sender, RoutedEventArgs e)
-        {
-            FrameObj.MainFrame.Navigate(new GridAndPanel());
-        }
-
         private void SearchUI_TextChanged(object sender, TextChangedEventArgs e)
         {
             WrapUIBtn.Children.Clear();
@@ -50,6 +45,15 @@ namespace MethodHelper.Pages.MainPage
                     WrapUIBtn.Children.Add(item);
                 }
             }
+        }
+        
+        private void GridAndPanel_Click(object sender, RoutedEventArgs e)
+        {
+            FrameObj.MainFrame.Navigate(new GridAndPanel());
+        }
+        private void Animation_Click(object sender, RoutedEventArgs e)
+        {
+            FrameObj.MainFrame.Navigate(new Animation());
         }
     }
 }
