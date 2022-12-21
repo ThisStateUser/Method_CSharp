@@ -68,7 +68,6 @@ namespace MethodHelper.Views
 
         public void showimg()
         {
-            MessageBox.Show("1");
             xamlZone.Children.Clear();
             csZone.Children.Clear();
             dbZone.Children.Clear();

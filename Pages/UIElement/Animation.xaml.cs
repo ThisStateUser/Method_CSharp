@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -40,6 +41,65 @@ namespace MethodHelper.Pages.UIElement
         {
             WinObj.addDesc(addDesc, description, textbox_desc, s_description, Title);
             WinObj.deskHelp(s_description, description, Title);
+        }
+
+        private void start_Click(object sender, RoutedEventArgs e)
+        {
+            if (cb_height.IsChecked == true)
+            {
+                DoubleAnimation animation = new DoubleAnimation()
+                {
+                    From = anim_Border.Height,
+                    To = 450,
+                    Duration = TimeSpan.FromSeconds(2),
+                    EasingFunction = new QuadraticEase(),
+                };
+                anim_Border.BeginAnimation(HeightProperty, animation);
+            }
+            if (cb_width.IsChecked == true)
+            {
+                DoubleAnimation animation = new DoubleAnimation()
+                {
+                    From = anim_Border.Width,
+                    To = 450,
+                    Duration = TimeSpan.FromSeconds(2),
+                    EasingFunction = new QuadraticEase(),
+                };
+                anim_Border.BeginAnimation(WidthProperty, animation);
+            }
+            if (cb_rotate.IsChecked == true)
+            {
+                RotateTransform animation = new RotateTransform()
+                {
+                    Angle = 320,
+                };
+
+                DoubleAnimation animation1 = new DoubleAnimation()
+                {
+                    From = 0,
+                    To = 450,
+                    Duration = TimeSpan.FromSeconds(2),
+                };
+                // anim_Border.RenderTransform.Value;
+                anim_Border.RenderTransform.BeginAnimation(RotateTransform.AngleProperty, animation1);
+            }
+            if (cb_color.IsChecked == true)
+            {
+
+            }
+            if (cb_sinwidth.IsChecked == true)
+            {
+
+            }
+            if (cb_loop.IsChecked == true)
+            {
+
+            }
+        }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
