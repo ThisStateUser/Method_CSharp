@@ -28,10 +28,7 @@
                                 <Border x:Name="anim_Border" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="80" Background="Aquamarine" RenderTransformOrigin="0.5,0.5">
                                     <Border.RenderTransform>
                                         <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform Angle="0"/>
-                                            <TranslateTransform/>
+                                            <RotateTransform x:Name="borderAngle" Angle="0"/>
                                         </TransformGroup>
                                     </Border.RenderTransform>
                                 </Border>

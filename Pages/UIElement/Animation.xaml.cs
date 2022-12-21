@@ -49,8 +49,18 @@ namespace MethodHelper.Pages.UIElement
             {
                 DoubleAnimation animation = new DoubleAnimation()
                 {
-                    From = anim_Border.Height,
+                    From = anim_Border.ActualHeight,
                     To = 450,
+                    Duration = TimeSpan.FromSeconds(2),
+                    EasingFunction = new QuadraticEase(),
+                };
+                anim_Border.BeginAnimation(HeightProperty, animation);
+            } else
+            {
+                DoubleAnimation animation = new DoubleAnimation()
+                {
+                    From = anim_Border.ActualHeight,
+                    To = 80,
                     Duration = TimeSpan.FromSeconds(2),
                     EasingFunction = new QuadraticEase(),
                 };
@@ -60,8 +70,18 @@ namespace MethodHelper.Pages.UIElement
             {
                 DoubleAnimation animation = new DoubleAnimation()
                 {
-                    From = anim_Border.Width,
+                    From = anim_Border.ActualWidth,
                     To = 450,
+                    Duration = TimeSpan.FromSeconds(2),
+                    EasingFunction = new QuadraticEase(),
+                };
+                anim_Border.BeginAnimation(WidthProperty, animation);
+            } else
+            {
+                DoubleAnimation animation = new DoubleAnimation()
+                {
+                    From = anim_Border.ActualWidth,
+                    To = 80,
                     Duration = TimeSpan.FromSeconds(2),
                     EasingFunction = new QuadraticEase(),
                 };
@@ -69,19 +89,22 @@ namespace MethodHelper.Pages.UIElement
             }
             if (cb_rotate.IsChecked == true)
             {
-                RotateTransform animation = new RotateTransform()
+                DoubleAnimation animation = new DoubleAnimation()
                 {
-                    Angle = 320,
-                };
-
-                DoubleAnimation animation1 = new DoubleAnimation()
-                {
-                    From = 0,
-                    To = 450,
+                    From = borderAngle.Angle,
+                    To = 360,
                     Duration = TimeSpan.FromSeconds(2),
                 };
-                // anim_Border.RenderTransform.Value;
-                anim_Border.RenderTransform.BeginAnimation(RotateTransform.AngleProperty, animation1);
+                borderAngle.BeginAnimation(RotateTransform.AngleProperty, animation);
+            } else
+            {
+                DoubleAnimation animation = new DoubleAnimation()
+                {
+                    From = borderAngle.Angle,
+                    To = 0,
+                    Duration = TimeSpan.FromSeconds(2),
+                };
+                borderAngle.BeginAnimation(RotateTransform.AngleProperty, animation);
             }
             if (cb_color.IsChecked == true)
             {
