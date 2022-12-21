@@ -5,6 +5,9 @@ namespace MethodHelper.BD
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.IO;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Media;
 
     [Table("product")]
     public partial class product
@@ -30,6 +33,31 @@ namespace MethodHelper.BD
 
         [Column(TypeName = "image")]
         public byte[] image { get; set; }
+
+        public ImageSource picture
+        {
+            get
+            {   if (image == null)
+                {
+                    BitmapImage notAviable = new BitmapImage();
+                    MemoryStream memoryStream1 = new MemoryStream(File.ReadAllBytes(@"..\..\Resources\Images\not-available.png"));
+
+                    notAviable.BeginInit();
+                    notAviable.DecodePixelWidth = 64;
+                    notAviable.StreamSource = memoryStream1;
+                    notAviable.EndInit();
+                    return notAviable as ImageSource;
+                }
+                BitmapImage bitmap = new BitmapImage();
+                MemoryStream memoryStream = new MemoryStream(image);
+
+                bitmap.BeginInit();
+                bitmap.StreamSource = memoryStream;
+                bitmap.EndInit();
+
+                return bitmap as ImageSource;
+            }
+        }
 
         [StringLength(50)]
         public string article { get; set; }

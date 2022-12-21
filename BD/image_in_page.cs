@@ -20,6 +20,8 @@ namespace MethodHelper.BD
         {
             get
             {
+                if (image == null)
+                { return null; }
                 BitmapImage bitmap = new BitmapImage();
                 MemoryStream memoryStream = new MemoryStream(image);
 

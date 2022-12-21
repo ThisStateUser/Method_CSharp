@@ -32,10 +32,9 @@
             </Grid>
 
             <WrapPanel x:Name="WrapHomeBtn" Grid.Row="1">
-                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
-                    Content="CRUD" 
-                    Tag="(Create Read Update Delete) 
-                    Создание получение редактирование удаление объектов"/>
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1" Click="GoSortFiltSearch_Click"
+                    Content="Работа с выводом" 
+                    Tag="Поиск, сортировка и фильтрация для элементов ListView, DataGrid, ListBox и Native (Сгенерированный кодом)"/>
 
                 <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
                     Content="Валидатор" 

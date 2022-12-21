@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MethodHelper.Controllers;
+using MethodHelper.Pages.HomeElement;
 
 namespace MethodHelper.Pages.MainPage
 {
@@ -40,6 +41,11 @@ namespace MethodHelper.Pages.MainPage
                     WrapHomeBtn.Children.Add(item);
                 }
             }
+        }
+
+        private void GoSortFiltSearch_Click(object sender, RoutedEventArgs e)
+        {
+            FrameObj.MainFrame.Navigate(new SortFiltSearch());
         }
     }
 }

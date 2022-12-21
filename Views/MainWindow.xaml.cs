@@ -33,29 +33,35 @@ namespace MethodHelper
 
             profiletitle.Text = Connect.user.last_name + " " + Connect.user.first_name;
 
-            switch (WinObj.settings.start_page)
+            if (WinObj.settings != null)
             {
-                case 0:
-                    FrameObj.MainFrame.Navigate(new HomePage());
-                    HomePage.IsChecked = true;
-                    break;
-                case 1:
-                    FrameObj.MainFrame.Navigate(new UIPage());
-                    UIPage.IsChecked = true;
-                    break;
-                case 2:
-                    FrameObj.MainFrame.Navigate(new MethodPage());
-                    MethodPage.IsChecked = true;
-                    break;
-                case 3:
-                    FrameObj.MainFrame.Navigate(new SettingsPage());
-                    SettingsPage.IsChecked = true;
-                    break;
-                default:
-                    FrameObj.MainFrame.Navigate(new HomePage());
-                    HomePage.IsChecked = true;
-                    break;
+                switch (WinObj.settings.start_page)
+                {
+                    case 0:
+                        FrameObj.MainFrame.Navigate(new HomePage());
+                        HomePage.IsChecked = true;
+                        break;
+                    case 1:
+                        FrameObj.MainFrame.Navigate(new UIPage());
+                        UIPage.IsChecked = true;
+                        break;
+                    case 2:
+                        FrameObj.MainFrame.Navigate(new MethodPage());
+                        MethodPage.IsChecked = true;
+                        break;
+                    case 3:
+                        FrameObj.MainFrame.Navigate(new SettingsPage());
+                        SettingsPage.IsChecked = true;
+                        break;
+                    default:
+                        FrameObj.MainFrame.Navigate(new HomePage());
+                        HomePage.IsChecked = true;
+                        break;
+                }
+                return;
             }
+            FrameObj.MainFrame.Navigate(new HomePage());
+            HomePage.IsChecked = true;
         }
 
         private void Timer_Tick(object sender, EventArgs e)

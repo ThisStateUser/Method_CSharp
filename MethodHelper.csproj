@@ -164,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Pages\HomeElement\SortFiltSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SystemPage\AddImagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -221,6 +225,9 @@
     <Compile Include="BD\product.cs" />
     <Compile Include="BD\sysdiagrams.cs" />
     <Compile Include="BD\type_image.cs" />
+    <Compile Include="Pages\HomeElement\SortFiltSearch.xaml.cs">
+      <DependentUpon>SortFiltSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SystemPage\AddImagePage.xaml.cs">
       <DependentUpon>AddImagePage.xaml</DependentUpon>
     </Compile>
