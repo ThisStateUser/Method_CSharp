@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d" 
       d:DesignHeight="860" d:DesignWidth="1540"
       Title="Animation">
@@ -16,7 +17,7 @@
             <TextBlock Text="Превью" FontSize="22"/>
             <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Border CornerRadius="10" Background="{StaticResource panelColor}" Width="600" Height="700" Padding="10">
-                    <StackPanel Background="Transparent">
+                    <StackPanel Background="Transparent" RenderTransformOrigin="0.5,0.456">
                         <StackPanel Margin="0 0 0 10" Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button x:Name="CodeAnimation" Style="{StaticResource MainBtn}" Background="{StaticResource cyancolor}" Content="Анимация кодом" Width="200"/>
                             <Button x:Name="StyleAnimation" Style="{StaticResource MainBtn}" Content="Анимация стилем" Width="200" Margin="180 0 0 0"/>
@@ -29,8 +30,10 @@
                                     <Border.RenderTransform>
                                         <TransformGroup>
                                             <RotateTransform x:Name="borderAngle" Angle="0"/>
+                                            <TranslateTransform x:Name="borderPos" X="0" Y="0"/>
                                         </TransformGroup>
                                     </Border.RenderTransform>
+                                    <Border Width="40" Height="4" Margin="-10 0 0 0" Background="Red" HorizontalAlignment="Left"/>
                                 </Border>
                             </DockPanel>
 
@@ -50,39 +53,58 @@
 
                             </DockPanel>
 
-                            <Border Background="White" Height="60" Padding="5" CornerRadius="5">
-                                <StackPanel HorizontalAlignment="Center">
-                                    <StackPanel Orientation="Horizontal">
-                                        <CheckBox VerticalAlignment="Center" Margin="0 0 10 0" x:Name="cb_width" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
-                                            <TextBlock Text="По ширине" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
-                                        </CheckBox>
-                                        <CheckBox VerticalAlignment="Center" Margin="0 0 10 0" x:Name="cb_height" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
-                                            <TextBlock Text="По высоте" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
-                                        </CheckBox>
-                                        <CheckBox VerticalAlignment="Center" Margin="0 0 10 0" x:Name="cb_rotate" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
-                                            <TextBlock Text="Поворот" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
-                                        </CheckBox>
-                                        <CheckBox VerticalAlignment="Center" Margin="0 0 10 0" x:Name="cb_color" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
-                                            <TextBlock Text="Цвет" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
-                                        </CheckBox>
-                                        <CheckBox VerticalAlignment="Center" Margin="0 0 10 0" x:Name="cb_pos" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
-                                            <TextBlock Text="По позиции" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
-                                        </CheckBox>
-                                    </StackPanel>
-                                    <StackPanel Margin="0 10 0 0" Orientation="Horizontal">
-                                        <CheckBox VerticalAlignment="Center" Margin="0 0 10 0" x:Name="cb_loop" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
-                                            <TextBlock Text="Цикл поворот" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
-                                        </CheckBox>
-                                        <CheckBox VerticalAlignment="Center" Margin="0 0 10 0" x:Name="cb_sinwidth" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
-                                            <TextBlock Text="В одну сторону (Ширина)" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
-                                        </CheckBox>
-                                        <CheckBox VerticalAlignment="Center" Margin="0 0 10 0" x:Name="cb_sinheight" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
-                                            <TextBlock Text="В одну сторону (Высота)" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
-                                        </CheckBox>
-                                    </StackPanel>
-                                    
-                                </StackPanel>
-                            </Border>
+                            <Grid>
+                                <Border Background="White" x:Name="cb_value" Width="570" Height="60" Padding="5" CornerRadius="5">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <StackPanel Width="570" Orientation="Horizontal">
+                                            <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular" Text="Мин. высота: "/>
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="20" Height="20"/>                                        
+                                            <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular" Text="Макс. высота: "/>
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="20" Height="20"/>
+                                            <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular" Text="Время анимации: "/>
+                                            <TextBox Style="{StaticResource authTB}" Width="20" Height="20"/>
+                                        </StackPanel>
+                                        <StackPanel Width="570" Margin="0 10 0 0" Orientation="Horizontal">       
+                                            <TextBlock Foreground="#333" FontSize="14"  VerticalAlignment="Bottom" FontWeight="Regular" Text="Мин. ширина: "/>
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="20" Height="20"/>
+                                            <TextBlock Foreground="#333" FontSize="14"  VerticalAlignment="Bottom" FontWeight="Regular" Text="Макс. ширина: "/>
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="20" Height="20"/>
+                                            <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular" Text="Угол поворота "/>
+                                            <TextBox Style="{StaticResource authTB}" Width="20" Height="20"/>
+                                        </StackPanel>
+                                  </StackPanel>
+                                </Border>
+                                <Border Background="White" x:Name="cb_set" Width="570" Height="60" Padding="5" CornerRadius="5">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <StackPanel Width="570" Orientation="Horizontal">
+                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" x:Name="cb_width" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                                <TextBlock Text="По ширине" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                            </CheckBox>
+                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" x:Name="cb_height" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                                <TextBlock Text="По высоте" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                            </CheckBox>
+                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" x:Name="cb_rotate" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                                <TextBlock Text="Поворот" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                            </CheckBox>
+                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" x:Name="cb_pos" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                                <TextBlock Text="По позиции" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                            </CheckBox>
+                                            <CheckBox VerticalAlignment="Center"  x:Name="cb_loop" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                                <TextBlock Text="Повтор анимации" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                            </CheckBox>       
+                                        </StackPanel>
+                                      <DockPanel Margin="0 5 0 0">
+                                          <CheckBox VerticalAlignment="Center" Margin="0 5 0 0" x:Name="cb_reverse" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                              <TextBlock Text="Обратная анимация при повторе" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                          </CheckBox>
+                                      </DockPanel>
+                                  </StackPanel>
+                              </Border>
+                              <Button Margin="0 0 10 5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{StaticResource graycolor}" Foreground="{StaticResource darkcolor}" Style="{StaticResource MainBtn}" Width="25" Height="25">
+                                  <Icon:PackIconMaterialDesign Kind="Settings"  Width="19" Margin="1" Height="19"/>
+                              </Button>
+                            </Grid>
+                            
 
                         </StackPanel>
 

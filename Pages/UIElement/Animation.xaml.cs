@@ -45,79 +45,100 @@ namespace MethodHelper.Pages.UIElement
 
         private void start_Click(object sender, RoutedEventArgs e)
         {
-            if (cb_height.IsChecked == true)
+            void act_actualWidth(double size)
             {
                 DoubleAnimation animation = new DoubleAnimation()
                 {
-                    From = anim_Border.ActualHeight,
-                    To = 450,
+                    From = anim_Border.ActualWidth,
+                    To = size,
                     Duration = TimeSpan.FromSeconds(2),
                     EasingFunction = new QuadraticEase(),
                 };
-                anim_Border.BeginAnimation(HeightProperty, animation);
-            } else
-            {
-                DoubleAnimation animation = new DoubleAnimation()
+                if (cb_loop.IsChecked == true)
                 {
-                    From = anim_Border.ActualHeight,
-                    To = 80,
-                    Duration = TimeSpan.FromSeconds(2),
-                    EasingFunction = new QuadraticEase(),
-                };
-                anim_Border.BeginAnimation(HeightProperty, animation);
+                    animation.RepeatBehavior = RepeatBehavior.Forever;
+                    if (cb_reverse.IsChecked == true)
+                    {
+                        animation.AutoReverse = true;
+                    }
+                }
+                anim_Border.BeginAnimation(WidthProperty, animation);
             }
             if (cb_width.IsChecked == true)
             {
-                DoubleAnimation animation = new DoubleAnimation()
-                {
-                    From = anim_Border.ActualWidth,
-                    To = 450,
-                    Duration = TimeSpan.FromSeconds(2),
-                    EasingFunction = new QuadraticEase(),
-                };
-                anim_Border.BeginAnimation(WidthProperty, animation);
+                act_actualWidth(450);
             } else
+            {
+                act_actualWidth(80);
+            }
+
+
+            void act_actualHeigh(double size)
             {
                 DoubleAnimation animation = new DoubleAnimation()
                 {
-                    From = anim_Border.ActualWidth,
-                    To = 80,
+                    From = anim_Border.ActualHeight,
+                    To = size,
                     Duration = TimeSpan.FromSeconds(2),
                     EasingFunction = new QuadraticEase(),
                 };
-                anim_Border.BeginAnimation(WidthProperty, animation);
+                if (cb_loop.IsChecked == true)
+                {
+                    animation.RepeatBehavior = RepeatBehavior.Forever;
+                    if (cb_reverse.IsChecked == true)
+                    {
+                        animation.AutoReverse = true;
+                    }
+                }
+                anim_Border.BeginAnimation(HeightProperty, animation);
+            }
+            if (cb_height.IsChecked == true)
+            {
+                act_actualHeigh(450);
+            } else
+            {
+                act_actualHeigh(80);
+            }
+
+            void act_Angle(double angle)
+            {
+                DoubleAnimation animation = new DoubleAnimation()
+                {
+                    From = borderAngle.Angle,
+                    To = angle,
+                    Duration = TimeSpan.FromSeconds(2),
+                };
+                if (cb_loop.IsChecked == true)
+                {
+                    animation.RepeatBehavior = RepeatBehavior.Forever;
+                    if (cb_reverse.IsChecked == true)
+                    {
+                        animation.AutoReverse = true;
+                    }
+                }
+                borderAngle.BeginAnimation(RotateTransform.AngleProperty, animation);
             }
             if (cb_rotate.IsChecked == true)
             {
-                DoubleAnimation animation = new DoubleAnimation()
-                {
-                    From = borderAngle.Angle,
-                    To = 360,
-                    Duration = TimeSpan.FromSeconds(2),
-                };
-                borderAngle.BeginAnimation(RotateTransform.AngleProperty, animation);
+                act_Angle(360);
             } else
             {
-                DoubleAnimation animation = new DoubleAnimation()
-                {
-                    From = borderAngle.Angle,
-                    To = 0,
-                    Duration = TimeSpan.FromSeconds(2),
-                };
-                borderAngle.BeginAnimation(RotateTransform.AngleProperty, animation);
+                act_Angle(0);
             }
-            if (cb_color.IsChecked == true)
+            if (cb_pos.IsChecked == true)
             {
-
-            }
-            if (cb_sinwidth.IsChecked == true)
+                DoubleAnimation animationX = new DoubleAnimation(borderPos.X, 100, TimeSpan.FromSeconds(2));
+                borderPos.BeginAnimation(TranslateTransform.XProperty, animationX);
+                DoubleAnimation animationY = new DoubleAnimation(borderPos.Y, 50, TimeSpan.FromSeconds(2));
+                borderPos.BeginAnimation(TranslateTransform.YProperty, animationY);
+            } else
             {
-
+                DoubleAnimation animationX = new DoubleAnimation(borderPos.X, 0, TimeSpan.FromSeconds(2));
+                borderPos.BeginAnimation(TranslateTransform.XProperty, animationX);
+                DoubleAnimation animationY = new DoubleAnimation(borderPos.Y, 0, TimeSpan.FromSeconds(2));
+                borderPos.BeginAnimation(TranslateTransform.YProperty, animationY);
             }
-            if (cb_loop.IsChecked == true)
-            {
 
-            }
         }
 
         private void back_Click(object sender, RoutedEventArgs e)
