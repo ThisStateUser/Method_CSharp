@@ -17,7 +17,7 @@
             <TextBlock Text="Превью" FontSize="22"/>
             <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Border CornerRadius="10" Background="{StaticResource panelColor}" Width="600" Height="700" Padding="10">
-                    <StackPanel Background="Transparent" RenderTransformOrigin="0.5,0.456">
+                    <StackPanel Background="Transparent">
                         <StackPanel Margin="0 0 0 10" Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button x:Name="CodeAnimation" Style="{StaticResource MainBtn}" Background="{StaticResource cyancolor}" Content="Анимация кодом" Width="200"/>
                             <Button x:Name="StyleAnimation" Style="{StaticResource MainBtn}" Content="Анимация стилем" Width="200" Margin="180 0 0 0"/>
@@ -41,10 +41,11 @@
 
                             <DockPanel Margin="0 0 0 10">
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="start" Style="{StaticResource MainBtn}" Width="170" Content="Запустить анимацию" Click="start_Click"/>
+                                    <Button x:Name="start" Style="{StaticResource MainBtn}" Width="120" Content="Запустить" Click="start_Click"/>
+                                    <Button x:Name="stop" IsEnabled="False" Style="{StaticResource MainBtn}" Width="120" Margin="10 0 0 0"  Content="Остановить" Click="stop_Click"/>
                                     <Button x:Name="back" Style="{StaticResource MainBtn}" Content="Откат" Margin="10 0 0 0" Click="back_Click"/>
                                 </StackPanel>
-                                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
                                     <TextBlock Text="Width: "/>
                                     <TextBlock Width="26" Text="{Binding ActualWidth, ElementName=anim_Border}" Margin="0 0 10 0"/>
                                     <TextBlock Text="Height: "/>
@@ -54,55 +55,55 @@
                             </DockPanel>
 
                             <Grid>
-                                <Border Background="White" x:Name="cb_value" Width="570" Height="60" Padding="5" CornerRadius="5">
+                                <Border Background="White" x:Name="cb_value" Width="0" HorizontalAlignment="Right" Height="60" Padding="5" CornerRadius="5">
                                     <StackPanel HorizontalAlignment="Center">
                                         <StackPanel Width="570" Orientation="Horizontal">
                                             <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular" Text="Мин. высота: "/>
-                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="20" Height="20"/>                                        
-                                            <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular" Text="Макс. высота: "/>
-                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="20" Height="20"/>
-                                            <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular" Text="Время анимации: "/>
-                                            <TextBox Style="{StaticResource authTB}" Width="20" Height="20"/>
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="4" Text="80" x:Name="min_height"  Height="20"/>                                        
+                                            <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular"  Text="Макс. высота: "/>
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="4" Text="450" x:Name="max_height" Height="20"/>
+                                            <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular"  Text="Время анимации: "/>
+                                            <TextBox Style="{StaticResource authTB}" Width="50" Padding="0 2 0 0" x:Name="time_anim" MaxLength="4" Text="2" Height="20"/>
                                         </StackPanel>
-                                        <StackPanel Width="570" Margin="0 10 0 0" Orientation="Horizontal">       
-                                            <TextBlock Foreground="#333" FontSize="14"  VerticalAlignment="Bottom" FontWeight="Regular" Text="Мин. ширина: "/>
-                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="20" Height="20"/>
-                                            <TextBlock Foreground="#333" FontSize="14"  VerticalAlignment="Bottom" FontWeight="Regular" Text="Макс. ширина: "/>
-                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="20" Height="20"/>
-                                            <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular" Text="Угол поворота "/>
-                                            <TextBox Style="{StaticResource authTB}" Width="20" Height="20"/>
+                                        <StackPanel Width="570" Margin="0 10 0 0" Orientation="Horizontal">
+                                            <TextBlock Foreground="#333" FontSize="14"  VerticalAlignment="Bottom" FontWeight="Regular"  Text="Мин. ширина: "/>
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="4" Text="80" x:Name="min_width" Height="20"/>
+                                            <TextBlock Foreground="#333" FontSize="14"  VerticalAlignment="Bottom" FontWeight="Regular"  Text="Макс. ширина: "/>
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="4" Text="450" x:Name="max_width" Height="20"/>
+                                            <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular"  Text="Угол поворота "/>
+                                            <TextBox Style="{StaticResource authTB}" Width="50" Padding="0 2 0 0" x:Name="angle_d" MaxLength="4" Text="360" Height="20"/>
                                         </StackPanel>
                                   </StackPanel>
                                 </Border>
-                                <Border Background="White" x:Name="cb_set" Width="570" Height="60" Padding="5" CornerRadius="5">
+                                <Border Background="White" x:Name="cb_set" Width="580" HorizontalAlignment="Left" Height="60" Padding="5" CornerRadius="5">
                                     <StackPanel HorizontalAlignment="Center">
                                         <StackPanel Width="570" Orientation="Horizontal">
-                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" x:Name="cb_width" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" Click="cb_width_Click" x:Name="cb_width" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
                                                 <TextBlock Text="По ширине" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
                                             </CheckBox>
-                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" x:Name="cb_height" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" Click="cb_height_Click" x:Name="cb_height" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
                                                 <TextBlock Text="По высоте" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
                                             </CheckBox>
-                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" x:Name="cb_rotate" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
-                                                <TextBlock Text="Поворот" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" Click="cb_rotate_Click" x:Name="cb_rotate" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                                <TextBlock Text="Вращение" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
                                             </CheckBox>
-                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" x:Name="cb_pos" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                            <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" Click="cb_pos_Click" x:Name="cb_pos" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
                                                 <TextBlock Text="По позиции" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
                                             </CheckBox>
-                                            <CheckBox VerticalAlignment="Center"  x:Name="cb_loop" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                            <CheckBox VerticalAlignment="Center" Click="cb_loop_Click" x:Name="cb_loop" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
                                                 <TextBlock Text="Повтор анимации" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
                                             </CheckBox>       
                                         </StackPanel>
                                       <DockPanel Margin="0 5 0 0">
-                                          <CheckBox VerticalAlignment="Center" Margin="0 5 0 0" x:Name="cb_reverse" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                          <CheckBox Visibility="Hidden" VerticalAlignment="Center" Margin="0 5 0 0" Click="cb_reverse_Click" x:Name="cb_reverse" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
                                               <TextBlock Text="Обратная анимация при повторе" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
                                           </CheckBox>
                                       </DockPanel>
                                   </StackPanel>
                               </Border>
-                              <Button Margin="0 0 10 5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{StaticResource graycolor}" Foreground="{StaticResource darkcolor}" Style="{StaticResource MainBtn}" Width="25" Height="25">
-                                  <Icon:PackIconMaterialDesign Kind="Settings"  Width="19" Margin="1" Height="19"/>
-                              </Button>
+                              <Button Margin="0 0 10 5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{StaticResource graycolor}" Foreground="{StaticResource darkcolor}" Style="{StaticResource MainBtn}" Width="25" Height="25" Click="OpenSettings_Click">
+                                    <Icon:PackIconMaterialDesign Kind="Settings" Width="19" Margin="1" x:Name="setting_icon" Height="19" RenderTransformOrigin="0.5,0.5"/>
+                                </Button>
                             </Grid>
                             
 

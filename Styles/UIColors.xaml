@@ -31,11 +31,11 @@
     <SolidColorBrush x:Key="titleColor3" Color="#BCBEE0"/>
     <SolidColorBrush x:Key="textColor1" Color="#9497CD"/>
     <SolidColorBrush x:Key="textColor2" Color="#7C80C2"/>
-    <SolidColorBrush x:Key="textColor3" Color="#7376BD"/>
+
     
     <!--Panel-->
     <SolidColorBrush x:Key="panelColor" Color="#200F53"/>
-    <SolidColorBrush x:Key="panelOverColor" Color="#281269"/>
+    <SolidColorBrush x:Key="panelOverColor" Color="#3E1DA1"/>
     <SolidColorBrush x:Key="panelActiveColor" Color="#2B1372"/>
     
     <!--Bootstrap color-->    
@@ -55,8 +55,13 @@
     
     <!--Button color-->
     <SolidColorBrush x:Key="buttonColor" Color="#34208F"/>
-    <SolidColorBrush x:Key="buttonOverColor" Color="#44209F"/>
-    <SolidColorBrush x:Key="buttonPressedColor" Color="#24105F"/>
+    <SolidColorBrush x:Key="buttonOverColor" Color="#5030DB"/>
+    <SolidColorBrush x:Key="buttonPressedColor" Color="#2B1A75"/>
+    <SolidColorBrush x:Key="buttonDisableColor" Color="#565599"/>
+
+    <SolidColorBrush x:Key="radioBtnColor" Color="#7376BD"/>
+    <SolidColorBrush x:Key="radioBtnOverColor" Color="#3E1DA1"/>
+    <SolidColorBrush x:Key="radioBtnActiveColor" Color="#2B1372"/>
 
     <!--Цветовая палитра 2-->
     <Color x:Key="scolor1">#E285DE</Color>

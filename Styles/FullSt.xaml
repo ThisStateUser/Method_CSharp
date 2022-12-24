@@ -6,7 +6,7 @@
         <Setter Property="Margin" Value="-5 0 0 5"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="FontFamily" Value="Bahnschrift"/>
-        <Setter Property="Foreground" Value="{StaticResource textColor3}"/>
+        <Setter Property="Foreground" Value="{StaticResource radioBtnColor}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -22,13 +22,13 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Margin" Value="0 0 0 5"/>
-                <Setter Property="Background" Value="{StaticResource panelOverColor}"/>
+                <Setter Property="Background" Value="{StaticResource radioBtnOverColor}"/>
                 <Setter Property="Foreground" Value="{StaticResource titleColor3}"/>
                 <Setter Property="BorderBrush" Value="{Binding Tag, RelativeSource={RelativeSource Self}}"/>
             </Trigger>
             <Trigger Property="IsChecked" Value="true">
                 <Setter Property="Margin" Value="0 0 0 5"/>
-                <Setter Property="Background" Value="{StaticResource panelActiveColor}"/>
+                <Setter Property="Background" Value="{StaticResource radioBtnActiveColor}"/>
                 <Setter Property="Foreground" Value="{Binding Tag, RelativeSource={RelativeSource Self}}"/>
                 <Setter Property="BorderBrush" Value="{Binding Tag, RelativeSource={RelativeSource Self}}"/>
             </Trigger>
@@ -301,10 +301,9 @@
         </Style.Triggers>
     </Style>
 
-
     <Style x:Key="Remember" TargetType="{x:Type CheckBox}">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="{StaticResource buttonOverColor}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource buttonColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource darkcolor}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="3 1 0 0" />
