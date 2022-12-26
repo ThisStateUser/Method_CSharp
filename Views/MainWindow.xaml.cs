@@ -255,7 +255,5 @@ namespace MethodHelper
             this.Close();
             WinObj.settings = null;
         }
-
-
     }
 }

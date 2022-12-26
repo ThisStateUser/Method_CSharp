@@ -41,8 +41,9 @@
 
                             <DockPanel Margin="0 0 0 10">
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="start" Style="{StaticResource MainBtn}" Width="120" Content="Запустить" Click="start_Click"/>
-                                    <Button x:Name="stop" IsEnabled="False" Style="{StaticResource MainBtn}" Width="120" Margin="10 0 0 0"  Content="Остановить" Click="stop_Click"/>
+                                    <Button x:Name="start" Style="{StaticResource MainBtn}" Width="50" Click="start_Click">
+                                        <Icon:PackIconMaterial x:Name="iconinbtn" Kind="Play"/>
+                                    </Button>
                                     <Button x:Name="back" Style="{StaticResource MainBtn}" Content="Откат" Margin="10 0 0 0" Click="back_Click"/>
                                 </StackPanel>
                                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
@@ -59,17 +60,17 @@
                                     <StackPanel HorizontalAlignment="Center">
                                         <StackPanel Width="570" Orientation="Horizontal">
                                             <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular" Text="Мин. высота: "/>
-                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="4" Text="80" x:Name="min_height"  Height="20"/>                                        
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="3" Text="80" x:Name="min_height"  Height="20"/>                                        
                                             <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular"  Text="Макс. высота: "/>
-                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="4" Text="450" x:Name="max_height" Height="20"/>
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="3" Text="450" x:Name="max_height" Height="20"/>
                                             <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular"  Text="Время анимации: "/>
                                             <TextBox Style="{StaticResource authTB}" Width="50" Padding="0 2 0 0" x:Name="time_anim" MaxLength="4" Text="2" Height="20"/>
                                         </StackPanel>
                                         <StackPanel Width="570" Margin="0 10 0 0" Orientation="Horizontal">
                                             <TextBlock Foreground="#333" FontSize="14"  VerticalAlignment="Bottom" FontWeight="Regular"  Text="Мин. ширина: "/>
-                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="4" Text="80" x:Name="min_width" Height="20"/>
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="3" Text="80" x:Name="min_width" Height="20"/>
                                             <TextBlock Foreground="#333" FontSize="14"  VerticalAlignment="Bottom" FontWeight="Regular"  Text="Макс. ширина: "/>
-                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="4" Text="450" x:Name="max_width" Height="20"/>
+                                            <TextBox Style="{StaticResource authTB}" Margin="0 0 10 0" Width="50" Padding="0 2 0 0" MaxLength="3" Text="450" x:Name="max_width" Height="20"/>
                                             <TextBlock Foreground="#333" FontSize="14" VerticalAlignment="Bottom" FontWeight="Regular"  Text="Угол поворота "/>
                                             <TextBox Style="{StaticResource authTB}" Width="50" Padding="0 2 0 0" x:Name="angle_d" MaxLength="4" Text="360" Height="20"/>
                                         </StackPanel>
@@ -90,11 +91,12 @@
                                             <CheckBox VerticalAlignment="Center" Margin="0 0 20 0" Click="cb_pos_Click" x:Name="cb_pos" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
                                                 <TextBlock Text="По позиции" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
                                             </CheckBox>
-                                            <CheckBox VerticalAlignment="Center" Click="cb_loop_Click" x:Name="cb_loop" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
-                                                <TextBlock Text="Повтор анимации" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
-                                            </CheckBox>       
+      
                                         </StackPanel>
                                       <DockPanel Margin="0 5 0 0">
+                                            <CheckBox VerticalAlignment="Center" Click="cb_loop_Click" Margin="0 0 20 0" x:Name="cb_loop" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
+                                                <TextBlock Text="Повтор анимации" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                            </CheckBox> 
                                           <CheckBox Visibility="Hidden" VerticalAlignment="Center" Margin="0 5 0 0" Click="cb_reverse_Click" x:Name="cb_reverse" Style="{DynamicResource Remember}" HorizontalAlignment="Left">
                                               <TextBlock Text="Обратная анимация при повторе" Padding="0 2 0 0" FontSize="14" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
                                           </CheckBox>

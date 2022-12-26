@@ -1,4 +1,5 @@
-﻿using MethodHelper.Controllers;
+﻿using MahApps.Metro.IconPacks;
+using MethodHelper.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace MethodHelper.Pages.UIElement
     /// </summary>
     public partial class Animation : Page
     {
+        bool sp = false;
         public Animation()
         {
             InitializeComponent();
@@ -45,19 +47,30 @@ namespace MethodHelper.Pages.UIElement
 
         private void start_Click(object sender, RoutedEventArgs e)
         {
-            stop.IsEnabled = true;
-            start.IsEnabled = false;
-        }
-        private void stop_Click(object sender, RoutedEventArgs e)
-        {
-            stop.IsEnabled = false;
-            start.IsEnabled = true;
+            switch (sp)
+            {
+                case true:
+                    iconinbtn.Kind = PackIconMaterialKind.Play;
+                    cb_loop.IsChecked = false;
+                    cb_reverse.Visibility = Visibility.Hidden;
+                    sp = false;
+                    break;
+                case false:
+                    iconinbtn.Kind = PackIconMaterialKind.Pause;                    
+                    sp = true;
+                    break;
+            }
+
+            cb_width_Click(null, null);
+            cb_height_Click(null, null);
+            cb_rotate_Click(null, null);
+            cb_pos_Click(null, null);
         }
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            bool temp = start.IsEnabled;
-            start.IsEnabled = false;
+            bool temp = sp;
+            sp = true;
             max_width.Text = "450";
             min_width.Text = "80";
             max_height.Text = "450";
@@ -78,12 +91,12 @@ namespace MethodHelper.Pages.UIElement
             cb_reverse_Click(null, null);
             cb_loop_Click(null, null);
             cb_rotate_Click(null, null);
-            start.IsEnabled = temp;
+            sp = temp;
         }
 
         private void cb_width_Click(object sender, RoutedEventArgs e)
         {
-            if (start.IsEnabled == false)
+            if (sp == true)
             {
                 void act_actualWidth(double size)
                 {
@@ -116,7 +129,7 @@ namespace MethodHelper.Pages.UIElement
 
         private void cb_height_Click(object sender, RoutedEventArgs e)
         {
-            if (start.IsEnabled == false)
+            if (sp == true)
             {
                 void act_actualHeigh(double size)
                 {
@@ -144,13 +157,11 @@ namespace MethodHelper.Pages.UIElement
                 }
                 act_actualHeigh(Convert.ToInt32(min_height.Text));
             }
-
-
         }
 
         private void cb_rotate_Click(object sender, RoutedEventArgs e)
         {
-            if (start.IsEnabled == false)
+            if (sp == true)
             {
                 void act_Angle(double angle)
                 {
@@ -177,13 +188,11 @@ namespace MethodHelper.Pages.UIElement
                 }
                 act_Angle(0);
             }
-
-
         }
 
         private void cb_pos_Click(object sender, RoutedEventArgs e)
         {
-            if (start.IsEnabled == false)
+            if (sp == true)
             {
                 if (cb_pos.IsChecked == true)
                 {
@@ -198,12 +207,11 @@ namespace MethodHelper.Pages.UIElement
                 DoubleAnimation animationY2 = new DoubleAnimation(borderPos.Y, 0, TimeSpan.FromSeconds(Convert.ToInt32(time_anim.Text)));
                 borderPos.BeginAnimation(TranslateTransform.YProperty, animationY2);
             }
-
         }
 
         private void cb_loop_Click(object sender, RoutedEventArgs e)
         {
-            if (start.IsEnabled == false)
+            if (sp == true)
             {
                 cb_width_Click(null, null);
                 cb_height_Click(null, null);
@@ -219,12 +227,11 @@ namespace MethodHelper.Pages.UIElement
                 return;
             }
             cb_reverse.Visibility = Visibility.Hidden;
-
         }
 
         private void cb_reverse_Click(object sender, RoutedEventArgs e)
         {
-            if (cb_loop.IsChecked == true && start.IsEnabled == false)
+            if (cb_loop.IsChecked == true && sp == true)
             {
                 cb_width_Click(null, null);
                 cb_height_Click(null, null);
