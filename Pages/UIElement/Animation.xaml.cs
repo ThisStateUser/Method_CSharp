@@ -278,6 +278,23 @@ namespace MethodHelper.Pages.UIElement
                     break;
             }
         }
+        private void CodeAnimation_Click(object sender, RoutedEventArgs e)
+        {
+            anim_CodePage.Visibility = Visibility.Visible;
+            anim_StylePage.Visibility = Visibility.Collapsed;
+            CodeAnimation.Background = (SolidColorBrush)FindResource("cyancolor");
+            StyleAnimation.Background = (SolidColorBrush)FindResource("buttonColor");
+
+        }
+
+        private void StyleAnimation_Click(object sender, RoutedEventArgs e)
+        {
+            anim_CodePage.Visibility = Visibility.Collapsed;
+            anim_StylePage.Visibility = Visibility.Visible;
+            CodeAnimation.Background = (SolidColorBrush)FindResource("buttonColor");
+            StyleAnimation.Background = (SolidColorBrush)FindResource("cyancolor");
+        }
+
 
     }
 }

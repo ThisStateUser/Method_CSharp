@@ -15,4 +15,35 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="animBorder" TargetType="Border">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="Background" Value="Aquamarine"/>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:2" Storyboard.TargetProperty="Width" To="450" From="80"/>
+                            <DoubleAnimation Duration="0:0:2" Storyboard.TargetProperty="Height" To="450" From="80"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:2" Storyboard.TargetProperty="Width" To="80" From="450"/>
+                            <DoubleAnimation Duration="0:0:2" Storyboard.TargetProperty="Height" To="80" From="450"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>
