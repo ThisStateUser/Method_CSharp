@@ -63,7 +63,7 @@
                             <ComboBox Width="145" SelectionChanged="Filter_SelectionChanged" x:Name="Filter" Style="{StaticResource settingCB}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Margin="0 3 0 0" Text="{Binding category}"/>
+                                        <TextBlock Margin="0 3 0 0" Text="{Binding category1}"/>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
