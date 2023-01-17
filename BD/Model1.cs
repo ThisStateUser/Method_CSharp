@@ -11,6 +11,7 @@ namespace MethodHelper.BD
             : base("name=Model1")
         {
         }
+
         public static Model1 BaseContext;
         public static Model1 GetContext()
         {
@@ -28,6 +29,7 @@ namespace MethodHelper.BD
             else
                 return GetContext();
         }
+
 
         public virtual DbSet<app_settings> app_settings { get; set; }
         public virtual DbSet<basket> basket { get; set; }
@@ -53,6 +55,10 @@ namespace MethodHelper.BD
                 .WithRequired(e => e.basket)
                 .HasForeignKey(e => e.basket_id)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<category>()
+                .Property(e => e.category_name)
+                .IsUnicode(false);
 
             modelBuilder.Entity<category>()
                 .HasMany(e => e.product)

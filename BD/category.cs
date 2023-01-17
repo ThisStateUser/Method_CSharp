@@ -17,10 +17,9 @@ namespace MethodHelper.BD
 
         public int id { get; set; }
 
-        [Column("category")]
         [Required]
         [StringLength(50)]
-        public string category1 { get; set; }
+        public string category_name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<product> product { get; set; }

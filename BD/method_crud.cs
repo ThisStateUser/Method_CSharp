@@ -1,5 +1,6 @@
 namespace MethodHelper.BD
 {
+    using MethodHelper.Controllers;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -23,7 +24,7 @@ namespace MethodHelper.BD
         [Column(TypeName = "image")]
         public byte[] row_image { get; set; }
 
-        public ImageSource picture
+        public ImageSource method_crud_picture
         {
             get
             {

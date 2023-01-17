@@ -17,10 +17,9 @@ namespace MethodHelper.BD
 
         public int id { get; set; }
 
-        [Column("point")]
         [Required]
         [StringLength(50)]
-        public string point1 { get; set; }
+        public string point_name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> order { get; set; }

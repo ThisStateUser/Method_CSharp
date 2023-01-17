@@ -2,6 +2,7 @@
 using MethodHelper.BD;
 using MethodHelper.Controllers;
 using System;
+using System.Collections.Generic;
 using System.IO.Pipes;
 using System.Linq;
 using System.Net;
@@ -22,7 +23,7 @@ namespace MethodHelper
         bool TbOrPb_pass = false;
         bool r_TbOrPb_pass = false;
         bool PageAorR = true;
-
+        List<int> BugsBD = new List<int>();
 
         public AuthWindow()
         {
@@ -54,11 +55,198 @@ namespace MethodHelper
             login_tb.Focus();
         }
 
+        public void CheckBD()
+        {
+            var BugsBDmsg = "Таблицы \"";
+            BugsBD.Clear();
+            var validBD = Connect.data;
+
+            if (validBD != null)
+            {
+                MessageBox.Show("База данных отсутствует, подключите ее в проект.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Close();
+                return;
+            }
+            if (validBD.user_class == null)
+            {
+                BugsBDmsg += "user_class, ";
+                BugsBD.Add(1);
+            }
+            if (validBD.user_role == null)
+            {
+                BugsBDmsg += "user_role, ";
+                BugsBD.Add(2);
+            }
+            if (validBD.point == null)
+            {
+                BugsBDmsg += "point, ";
+                BugsBD.Add(3);
+            }
+            if (validBD.category == null)
+            {
+                BugsBDmsg += "category, ";
+                BugsBD.Add(4);
+            }
+            if (validBD.product == null)
+            {
+                BugsBDmsg += "product, ";
+                BugsBD.Add(5);
+            }
+            if (validBD.type_image == null)
+            {
+                BugsBDmsg += "type_image, ";
+                BugsBD.Add(6);
+            }
+
+            BugsBDmsg = "\" являются обязательными, но в них отсутствуют данные. Заполнить их автоматически? (если отказаться - приложение будет закрыто.)";
+            MessageBoxResult result = MessageBox.Show(BugsBDmsg, "Ошибка", MessageBoxButton.YesNo, MessageBoxImage.Error);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    foreach (var item in BugsBD)
+                    {
+                        switch (item)
+                        {
+                            case 1:
+                                user_class user_Class = new user_class()
+                                {
+                                    id = 0,
+                                    _class = "(Не выбрано)"
+                                };
+                                user_class user_Class1 = new user_class()
+                                {
+                                    id = 1,
+                                    _class = "1и1"
+                                };
+                                user_class user_Class2 = new user_class()
+                                {
+                                    id = 2,
+                                    _class = "2и1"
+                                };
+                                user_class user_Class3 = new user_class()
+                                {
+                                    id = 3,
+                                    _class = "3и1"
+                                };
+                                user_class user_Class4 = new user_class()
+                                {
+                                    id = 4,
+                                    _class = "4и1"
+                                };
+                                user_class user_Class5 = new user_class()
+                                {
+                                    id = 5,
+                                    _class = "Преподаватель"
+                                };
+
+                                Connect.data.user_class.Add(user_Class);
+                                Connect.data.user_class.Add(user_Class1);
+                                Connect.data.user_class.Add(user_Class2);
+                                Connect.data.user_class.Add(user_Class3);
+                                Connect.data.user_class.Add(user_Class4);
+                                Connect.data.user_class.Add(user_Class5);
+                                break;
+                            case 2:
+                                user_role user_Role = new user_role()
+                                {
+                                    role = "Администратор"
+                                };
+                                user_role user_Role1 = new user_role()
+                                {
+                                    role = "Преподаватель"
+                                };
+                                user_role user_Role2 = new user_role()
+                                {
+                                    role = "Студент"
+                                };
+
+                                Connect.data.user_role.Add(user_Role);
+                                Connect.data.user_role.Add(user_Role1);
+                                Connect.data.user_role.Add(user_Role2);
+                                break;
+                            case 3:
+                                point point_name = new point()
+                                {
+                                    point_name = "example",
+                                };
+                                Connect.data.point.Add(point_name);
+                                break;
+                            case 4:
+                                category category_ = new category()
+                                {
+                                    category_name = "Без фильтров" 
+                                };
+                                category category_1 = new category()
+                                {
+                                    category_name = "Еда"
+                                };
+                                category category_2 = new category()
+                                {
+                                    category_name = "Не еда"
+                                };
+                                Connect.data.category.Add(category_);
+                                Connect.data.category.Add(category_1);
+                                Connect.data.category.Add(category_2);
+                                break;
+                            case 5:
+                                product product_ = new product()
+                                {
+                                    price = 1000,
+                                    article = "EXAMPL",
+                                    count = 1,
+                                    title = "Пример названия",
+                                    desk = "Пример описания",
+                                    category_id = 3,
+                                };
+
+                                Connect.data.product.Add(product_);
+                                break;
+                            case 6:
+                                type_image type_Image = new type_image()
+                                {
+                                    type = "(Разметка) xaml"
+                                };
+                                type_image type_Image1 = new type_image()
+                                {
+                                    type = "(Код) xaml.cs"
+                                };
+                                type_image type_Image2 = new type_image()
+                                {
+                                    type = "(База данных) sql"
+                                };
+                                type_image type_Image3 = new type_image()
+                                {
+                                    type = "Разное"
+                                };
+
+                                Connect.data.type_image.Add(type_Image);
+                                Connect.data.type_image.Add(type_Image1);
+                                Connect.data.type_image.Add(type_Image2);
+                                Connect.data.type_image.Add(type_Image3);
+                                break;
+                            default:
+                                break;
+                        }
+                    };
+                    Connect.data.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    WinObj.fatalError(ex);
+                }
+
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+
         private void CloseWin_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
 
         private void CollapseWin_Click(object sender, RoutedEventArgs e)
         {

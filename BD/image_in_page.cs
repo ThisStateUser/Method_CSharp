@@ -19,7 +19,7 @@ namespace MethodHelper.BD
         [Required]
         public byte[] image { get; set; }
 
-        public ImageSource picture
+        public ImageSource image_in_page_picture
         {
             get
             {

@@ -186,7 +186,7 @@ namespace MethodHelper.Pages.MethodElement
                 { 
                     Width = (double)80,
                     Height = (double)80,
-                    Source = item.picture, 
+                    Source = item.method_crud_picture, 
                 };
 
                 NV_StackPanel.Children.Add(border);

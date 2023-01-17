@@ -226,6 +226,7 @@
     <Compile Include="BD\product.cs" />
     <Compile Include="BD\sysdiagrams.cs" />
     <Compile Include="BD\type_image.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Pages\HomeElement\SortFiltSearch.xaml.cs">
       <DependentUpon>SortFiltSearch.xaml</DependentUpon>
     </Compile>

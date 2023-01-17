@@ -34,7 +34,7 @@ namespace MethodHelper.BD
         [Column(TypeName = "image")]
         public byte[] image { get; set; }
 
-        public ImageSource picture
+        public ImageSource product_picture
         {
             get
             {
@@ -59,6 +59,7 @@ namespace MethodHelper.BD
                 return bitmap as ImageSource;
             }
         }
+
         [StringLength(50)]
         public string article { get; set; }
 
