@@ -6,8 +6,8 @@ namespace MethodHelper.BD
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
     using System.IO;
-    using System.Windows.Media.Imaging;
     using System.Windows.Media;
+    using System.Windows.Media.Imaging;
 
     [Table("product")]
     public partial class product
@@ -37,7 +37,8 @@ namespace MethodHelper.BD
         public ImageSource picture
         {
             get
-            {   if (image == null)
+            {
+                if (image == null)
                 {
                     BitmapImage notAviable = new BitmapImage();
                     MemoryStream memoryStream1 = new MemoryStream(File.ReadAllBytes(@"..\..\Resources\Images\not-available.png"));
@@ -58,11 +59,14 @@ namespace MethodHelper.BD
                 return bitmap as ImageSource;
             }
         }
-
         [StringLength(50)]
         public string article { get; set; }
 
+        public int category_id { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<basket> basket { get; set; }
+
+        public virtual category category { get; set; }
     }
 }

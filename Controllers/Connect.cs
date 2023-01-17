@@ -21,7 +21,33 @@ namespace MethodHelper.Controllers
     }
 }
 
-//public ImageSource picture
+//public ImageSource picture product
+//{
+//    get
+//    {
+//        if (image == null)
+//        {
+//            BitmapImage notAviable = new BitmapImage();
+//            MemoryStream memoryStream1 = new MemoryStream(File.ReadAllBytes(@"..\..\Resources\Images\not-available.png"));
+
+//            notAviable.BeginInit();
+//            notAviable.DecodePixelWidth = 64;
+//            notAviable.StreamSource = memoryStream1;
+//            notAviable.EndInit();
+//            return notAviable as ImageSource;
+//        }
+//        BitmapImage bitmap = new BitmapImage();
+//        MemoryStream memoryStream = new MemoryStream(image);
+
+//        bitmap.BeginInit();
+//        bitmap.StreamSource = memoryStream;
+//        bitmap.EndInit();
+
+//        return bitmap as ImageSource;
+//    }
+//}
+
+//public ImageSource picture method_crud
 //{
 //    get
 //    {
@@ -44,5 +70,22 @@ namespace MethodHelper.Controllers
 //        notAviable.StreamSource = memoryStream1;
 //        notAviable.EndInit();
 //        return notAviable as ImageSource;
+//    }
+//}
+
+//public ImageSource picture image_in_page
+//{
+//    get
+//    {
+//        if (image == null)
+//        { return null; }
+//        BitmapImage bitmap = new BitmapImage();
+//        MemoryStream memoryStream = new MemoryStream(image);
+
+//        bitmap.BeginInit();
+//        bitmap.StreamSource = memoryStream;
+//        bitmap.EndInit();
+
+//        return bitmap as ImageSource;
 //    }
 //}

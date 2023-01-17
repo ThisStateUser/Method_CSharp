@@ -11,9 +11,27 @@ namespace MethodHelper.BD
             : base("name=Model1")
         {
         }
+        public static Model1 BaseContext;
+        public static Model1 GetContext()
+        {
+            if (BaseContext == null)
+                BaseContext = new Model1();
+            return BaseContext;
+        }
+        public static Model1 UpdateContext()
+        {
+            if (BaseContext != null)
+            {
+                BaseContext = null;
+                return GetContext();
+            }
+            else
+                return GetContext();
+        }
 
         public virtual DbSet<app_settings> app_settings { get; set; }
         public virtual DbSet<basket> basket { get; set; }
+        public virtual DbSet<category> category { get; set; }
         public virtual DbSet<image_in_page> image_in_page { get; set; }
         public virtual DbSet<ip_address> ip_address { get; set; }
         public virtual DbSet<method_crud> method_crud { get; set; }
@@ -23,7 +41,6 @@ namespace MethodHelper.BD
         public virtual DbSet<point> point { get; set; }
         public virtual DbSet<product> product { get; set; }
         public virtual DbSet<start_page_desk> start_page_desk { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<type_image> type_image { get; set; }
         public virtual DbSet<user_class> user_class { get; set; }
         public virtual DbSet<user_role> user_role { get; set; }
@@ -35,6 +52,12 @@ namespace MethodHelper.BD
                 .HasMany(e => e.order)
                 .WithRequired(e => e.basket)
                 .HasForeignKey(e => e.basket_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<category>()
+                .HasMany(e => e.product)
+                .WithRequired(e => e.category)
+                .HasForeignKey(e => e.category_id)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<image_in_page>()

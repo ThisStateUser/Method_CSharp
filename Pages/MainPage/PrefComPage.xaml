@@ -32,7 +32,7 @@
             </Grid>
 
             <WrapPanel x:Name="WrapMethodBtn" Grid.Row="1">
-                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1"
+                <Button Style="{DynamicResource MPanel}" MinWidth="100" BorderThickness="1" Click="GoBasket_Click"
                     Content="Корзина" 
                     Tag="Простая корзина"/>
 

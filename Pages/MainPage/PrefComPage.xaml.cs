@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MethodHelper.Controllers;
+using MethodHelper.Pages.PrefComElement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,11 @@ namespace MethodHelper.Pages.MainPage
         public PrefComPage()
         {
             InitializeComponent();
+        }
+
+        private void GoBasket_Click(object sender, RoutedEventArgs e)
+        {
+            FrameObj.MainFrame.Navigate(new Basket());
         }
     }
 }

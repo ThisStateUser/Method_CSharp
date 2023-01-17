@@ -6,9 +6,8 @@ namespace MethodHelper.BD
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
     using System.IO;
-    using System.Windows.Media.Imaging;
     using System.Windows.Media;
-    using System.Windows;
+    using System.Windows.Media.Imaging;
 
     public partial class method_crud
     {
@@ -49,6 +48,7 @@ namespace MethodHelper.BD
                 return notAviable as ImageSource;
             }
         }
+
         public int? row_combo { get; set; }
 
         public virtual method_crud_combobox method_crud_combobox { get; set; }

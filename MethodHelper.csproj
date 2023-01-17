@@ -217,6 +217,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BD\basket.cs" />
+    <Compile Include="BD\category.cs" />
     <Compile Include="BD\image_in_page.cs" />
     <Compile Include="BD\Model1.cs" />
     <Compile Include="BD\order.cs" />

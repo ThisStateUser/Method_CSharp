@@ -21,99 +21,169 @@
             <StackPanel>
                 <TextBlock Text="Preview" FontSize="22"/>
                 <StackPanel Margin="0 10" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource MainBtn}" Margin="10 0" Background="{StaticResource color2}" x:Name="StoreBtn">
-                        <StackPanel Orientation="Horizontal">
+                    <Button Style="{StaticResource MainBtn}" Margin="10 0" Background="{StaticResource cyancolor}" x:Name="StoreBtn" Click="StoreBtn_Click">
+                        <StackPanel Margin="0 2 0 0" Orientation="Horizontal">
                             <Icon:PackIconMaterial Kind="Store"/>
                             <TextBlock Margin="10 0 0 0" Text="Магазин"/>
                         </StackPanel>
                     </Button>
 
-                    <Button Style="{StaticResource MainBtn}" Margin="10 0" Background="{StaticResource color2}" x:Name="BasketBtn" Click="BasketBtn_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <Icon:PackIconMaterial Kind="Basket"/>
+                    <Button Style="{StaticResource MainBtn}" Margin="10 0" Background="{StaticResource buttonColor}" x:Name="BasketBtn" Click="BasketBtn_Click">
+                        <StackPanel Margin="0 2 0 0" Orientation="Horizontal">
+                            <Icon:PackIconMaterial  Kind="Basket"/>
                             <TextBlock Margin="10 0 0 0" Text="Корзина"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Border CornerRadius="10" Background="{StaticResource panelOverColor}" Padding="10">
-                    <ScrollViewer Background="Transparent" Width="500" Height="600" HorizontalScrollBarVisibility="Disabled" Style="{DynamicResource ScrollViewerStyle1}">
-                        <StackPanel>
-                            <Border >
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="64"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="100"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image/>
-                                    <StackPanel>
-                                        <TextBlock Text="adsfsd"/>
-                                        <TextBlock Text="sdfsdf"/>
-                                        <TextBlock Text="dfssd"/>
-
-                                    </StackPanel>
-                                </Grid>
+            <StackPanel Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <Border CornerRadius="10" Width="650" Height="720" Background="{StaticResource panelOverColor}" Padding="10">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                            <Border Margin="0 0 10 0" BorderThickness="0" Grid.Column="1" Height="32" CornerRadius="10" Width="315" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox Padding="5 0 0 0" Text="" x:Name="SearchMB" VerticalAlignment="Center" FontSize="16" Grid.Row="0" BorderThickness="0" Width="275" HorizontalAlignment="Left" Background="Transparent"/>
+                                    <Icon:PackIconMaterial Kind="Magnify" Width="40" Height="20" VerticalAlignment="Center" Foreground="{StaticResource graycolor}" HorizontalAlignment="Center"/>
+                                </StackPanel>
                             </Border>
+                            
+                            <ComboBox Width="150" SelectionChanged="Sorting_SelectionChanged" x:Name="Sorting" Margin="0 0 10 0" Style="{StaticResource settingCB}">
+                                <ComboBoxItem>
+                                    <TextBlock Margin="0 3 0 0" Text="Без сортировки"/>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock Margin="0 3 0 0" Text="По убыванию"/>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock Margin="0 3 0 0" Text="По возрастанию"/>
+                                </ComboBoxItem>
+                            </ComboBox>
+
+                            <ComboBox Width="145" SelectionChanged="Filter_SelectionChanged" x:Name="Filter" Style="{StaticResource settingCB}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Margin="0 3 0 0" Text="{Binding category}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </StackPanel>
-                    </ScrollViewer>
+                        
+                        <ScrollViewer Background="Transparent" Width="630" Height="660" VerticalAlignment="Bottom" HorizontalScrollBarVisibility="Disabled">
+                            <StackPanel>
+                                <ListView x:Name="Lv_magazine" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="Transparent" BorderThickness="0" Width="620">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                             <Border Padding="5" CornerRadius="10" Width="600" HorizontalAlignment="Left" Background="AliceBlue">
+                                                 <Grid>
+                                                     <Grid.ColumnDefinitions>
+                                                         <ColumnDefinition Width="84"/>
+                                                         <ColumnDefinition Width="*"/>
+                                                         <ColumnDefinition Width="130"/>
+                                                     </Grid.ColumnDefinitions>
+                                                     <Image Grid.Column="0" Source="{Binding picture}" Width="64" Margin="10" Height="64"/>
+                                                     <StackPanel Grid.Column="1">
+                                                        <TextBlock Text="{Binding title}" Width="370" Foreground="{StaticResource darkcolor}"/>
+                                                        <TextBlock Text="{Binding desk}" TextWrapping="Wrap" Height="50" Width="370" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                                        <StackPanel VerticalAlignment="Bottom" Width="370" Orientation="Horizontal">
+                                                            <TextBlock Text="В наличии: " FontSize="12" Foreground="{StaticResource graycolor}"/>
+                                                            <TextBlock Text="{Binding count}" FontSize="12" Foreground="{StaticResource graycolor}"/>
+                                                        </StackPanel>
+                                                     </StackPanel>
+                                                     <StackPanel Grid.Column="2">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="{Binding price}" Foreground="{StaticResource darkcolor}" HorizontalAlignment="Center"/>
+                                                            <TextBlock Text=" руб." Foreground="{StaticResource darkcolor}" HorizontalAlignment="Center"/>
+                                                        </StackPanel>
+                                                        <Border Background="{StaticResource darkcolor}" CornerRadius="5" Margin="0 10 0 5"  Width="100" Height="25">
+                                                            <StackPanel Orientation="Horizontal" Width="100">
+                                                                <Button Width="25" Background="Transparent" BorderThickness="0">
+                                                                    <Icon:PackIconMaterial Kind="Minus" Width="10" Height="10" Foreground="AliceBlue"/>
+                                                                </Button>
+                                                                <TextBox Text="1" Foreground="{StaticResource darkcolor}" MaxLength="4" Height="25" FontSize="19" VerticalAlignment="Center" Width="50" BorderThickness="0"/>
+                                                                <Button Width="25" Background="Transparent" BorderThickness="0">
+                                                                    <Icon:PackIconMaterial Kind="Plus" Width="10" Height="10" Foreground="AliceBlue"/>
+                                                                </Button>
+                                                            </StackPanel>
+                                                        </Border>
+                                                        <Button Style="{StaticResource MainBtn}" Background="{StaticResource yellowcolor}" Foreground="{StaticResource darkcolor}" Width="100" Height="25" VerticalAlignment="Bottom" Content="В корзину"/>
+                                                     </StackPanel>
+                                                 </Grid>
+                                             </Border>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                <ListView x:Name="Lv_Basket" Background="Transparent" BorderThickness="0" Width="600" Visibility="Collapsed" Height="700">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Padding="5" CornerRadius="10" Width="600" HorizontalAlignment="Left" Background="AliceBlue">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="84"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="130"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Grid.Column="0" Source="{Binding picture}" Width="64" Margin="10" Height="64"/>
+                                                    <StackPanel Grid.Column="1">
+                                                        <TextBlock Text="{Binding title}" Width="370" Foreground="{StaticResource darkcolor}"/>
+                                                        <TextBlock Text="{Binding desk}" TextWrapping="Wrap" Height="50" Width="370" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                                        <StackPanel VerticalAlignment="Bottom" Width="370" Orientation="Horizontal">
+                                                            <TextBlock Text="В наличии: " FontSize="12" Foreground="{StaticResource graycolor}"/>
+                                                            <TextBlock Text="{Binding count}" FontSize="12" Foreground="{StaticResource graycolor}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <StackPanel Grid.Column="2">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="{Binding price}" Foreground="{StaticResource darkcolor}" HorizontalAlignment="Center"/>
+                                                            <TextBlock Text="руб." Foreground="{StaticResource darkcolor}" HorizontalAlignment="Center"/>
+                                                        </StackPanel>
+                                                        <Border Background="{StaticResource darkcolor}" CornerRadius="5" Margin="0 10 0 5"  Width="100" Height="25">
+                                                            <StackPanel Orientation="Horizontal" Width="100">
+                                                                <Button Width="25" Background="Transparent" BorderThickness="0">
+                                                                    <Icon:PackIconMaterial Kind="Minus" Width="10" Height="10" Foreground="AliceBlue"/>
+                                                                </Button>
+                                                                <TextBox Text="1" Foreground="{StaticResource darkcolor}" MaxLength="4" Height="25" FontSize="19" VerticalAlignment="Center" Width="50" BorderThickness="0"/>
+                                                                <Button Width="25" Background="Transparent" BorderThickness="0">
+                                                                    <Icon:PackIconMaterial Kind="Plus" Width="10" Height="10" Foreground="AliceBlue"/>
+                                                                </Button>
+                                                            </StackPanel>
+                                                        </Border>
+                                                        <Button Style="{StaticResource MainBtn}" Background="{StaticResource yellowcolor}" Foreground="{StaticResource darkcolor}" Width="100" Height="25" VerticalAlignment="Bottom" Content="Купить"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </StackPanel>
                 </Border>
             </StackPanel>
 
+            <!--leftzone-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
-
                 <StackPanel Grid.Row="0">
-                    <TextBlock Text="Code" FontSize="22"/>
-                    <TextBlock Text="5gsf56d dsgsdfg5 3dfs5g3sd"/>
+                    <DockPanel Margin="0 0 0 15" >
+                        <TextBlock DockPanel.Dock="Left" Text="Описание" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="22"/>
+                        <Button DockPanel.Dock="Right" HorizontalAlignment="Right" Visibility="Collapsed" Style="{StaticResource MainBtn}" x:Name="addDesc" Click="addDesc_Click" Background="{StaticResource greencolor}" Width="210" Content="Редактировать описание"/>
+                    </DockPanel>
+                    <ScrollViewer Height="700"  Width="740">
+                        <StackPanel x:Name="s_description">
+                            <TextBlock x:Name="description" TextWrapping="Wrap"/>
+                            <TextBox Visibility="Collapsed" TextWrapping="Wrap" AcceptsReturn="True" Width="740" Opacity="0.8" Height="700" FontSize="14" x:Name="textbox_desc" Padding="5"/>
+                        </StackPanel>
+                    </ScrollViewer>
                 </StackPanel>
-
                 <Grid Grid.Row="1">
-                    <TextBlock Text="DataBase" FontSize="22"/>
-                    <DataGrid x:Name="DataDG" Margin="0 50 0 0" IsReadOnly="True" CanUserResizeColumns="False" AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn Width="auto">
-                                <DataGridTemplateColumn.Header>
-                                    <TextBlock Text="id"/>
-                                </DataGridTemplateColumn.Header>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding id}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            <DataGridTemplateColumn>
-                                <DataGridTemplateColumn.Header>
-                                    <TextBlock Text="TextBox"/>
-                                </DataGridTemplateColumn.Header>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding TextBox}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            <DataGridTemplateColumn>
-                                <DataGridTemplateColumn.Header>
-                                    <TextBlock Text="ComboBox"/>
-                                </DataGridTemplateColumn.Header>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ComboBox}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <Button Style="{StaticResource MainBtn}" Width="200" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Посмотреть код" x:Name="ShowCode" Click="ShowCode_Click" />
                 </Grid>
-
             </Grid>
+            <!--leftzone-->
         </Grid>
     </Border>
 </Page>

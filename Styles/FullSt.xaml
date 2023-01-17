@@ -181,7 +181,7 @@
                 <Setter Property="Padding" Value="2"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="true">
-                
+                <Setter Property="Cursor" Value="Hand"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -198,7 +198,7 @@
                             Background="{StaticResource graycolor}" BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
                         <Border x:Name="splitBorder" BorderBrush="Transparent" BorderThickness="1" 
-                                HorizontalAlignment="Right" Margin="0 0 4 0" SnapsToDevicePixels="true" 
+                                HorizontalAlignment="Right" Margin="0 1 4 0" SnapsToDevicePixels="true" 
                                 Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}">
                             <Path x:Name="arrow" Data="F1 M1.4644.201a.9.9 0 00-1.1087 1.418l4.0966 3.2033a.9.9 0 001.1085.0002l4.0999-3.2032a.9.9 0 10-1.1082-1.4185L5.0069 2.971l-3.5425-2.77Z" 
                                   Fill="{StaticResource whitecolor}" HorizontalAlignment="Center" 
@@ -286,7 +286,7 @@
         <Setter Property="MinWidth" Value="{Binding ActualWidth, RelativeSource={RelativeSource Mode=Self}}"/>
         <Setter Property="Foreground" Value="{StaticResource darkcolor}"/>
         <Setter Property="BorderBrush" Value="{StaticResource whitecolor}"/>
-        <Setter Property="BorderThickness" Value="0 0 0 1"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
