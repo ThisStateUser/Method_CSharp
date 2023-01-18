@@ -226,11 +226,6 @@ namespace MethodHelper
             FrameObj.MainFrame.Navigate(new PrefComPage());
         }
 
-        private void Favorit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void SettingsPage_Click(object sender, RoutedEventArgs e)
         {
             FrameObj.MainFrame.Navigate(new SettingsPage());

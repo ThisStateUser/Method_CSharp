@@ -108,12 +108,6 @@
                             <TextBlock Width="auto" Text="Готовые решения"/>
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton DockPanel.Dock="Top" Tag="{StaticResource color6}" Style="{StaticResource MenuBtn}" x:Name="Favorit" Click="Favorit_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <Icon:PackIconMaterial Kind="Star" Style="{StaticResource menuBtnIcon}"/>
-                            <TextBlock Width="auto" Text="Избранное"/>
-                        </StackPanel>
-                    </RadioButton>
                     <RadioButton DockPanel.Dock="Top" Tag="{StaticResource color7}" Style="{StaticResource MenuBtn}" x:Name="SettingsPage" Click="SettingsPage_Click">
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial Kind="Cog" Style="{StaticResource menuBtnIcon}"/>

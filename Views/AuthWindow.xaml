@@ -64,12 +64,26 @@
             <DockPanel Grid.Row="1">
                 <Border VerticalAlignment="Center" CornerRadius="10" Padding="10" Background="{StaticResource whitecolor}" Width="300" Height="auto">
                     <StackPanel>
+                        <Grid x:Name="LoadPage" Visibility="Collapsed" Height="280">
+                            <Icon:PackIconMaterial Kind="Loading" Width="25" Height="25" Foreground="{StaticResource darkcolor}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="1.02,1.02">
+                                <Icon:PackIconMaterial.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform x:Name="RotateLoad" Angle="0"/>
+                                        <TranslateTransform X="-13" Y="-13"/>
+                                    </TransformGroup>
+                                </Icon:PackIconMaterial.RenderTransform>
+                            </Icon:PackIconMaterial>
+                        </Grid>
+
+
                         <StackPanel x:Name="AuthPage" Height="195">
                             <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock FontSize="24" Text="Method and UI helper" Foreground="{StaticResource darkcolor}"/>
                                 <Image Source="/Resources/UI/icon.ico" Height="24" Margin="10 0 0 20"/>
                             </DockPanel>
-                            
+
                             <TextBlock Text="Логин" Foreground="{StaticResource darkcolor}"/>
                             <DockPanel Margin="0 0 0 10">
                                 <Icon:PackIconMaterial Kind="Account" Width="20" Height="20" Margin="0 6 -20 0" Foreground="{StaticResource darkcolor}"/>
@@ -123,7 +137,7 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="login_er" FontSize="12" Foreground="{StaticResource redcolor}"/>
                             </DockPanel>
                             <TextBox x:Name="r_login_tb" MaxLength="50" Padding="5 8 5 0" KeyDown="r_login_tb_KeyDown" Style="{StaticResource authTB}" Margin="0 0 0 10"/>
-                            
+
                             <DockPanel>
                                 <TextBlock Text="Введите пароль" Foreground="{StaticResource darkcolor}"/>
                                 <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Right" x:Name="pass_er" FontSize="12" Foreground="{StaticResource redcolor}"/>
@@ -140,12 +154,12 @@
                                 <Button HorizontalAlignment="Right" Width="170" Content="Зарегистрироваться" x:Name="GoReg" Click="GoReg_Click" Style="{StaticResource MainBtn}"/>
                             </DockPanel>
                         </StackPanel>
-                        
+
                     </StackPanel>
                 </Border>
             </DockPanel>
 
-            <DockPanel Grid.Row="2">
+            <DockPanel x:Name="SwapPage" Grid.Row="2">
                 <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Margin="0 0 0 10" Width="300">
                     <TextBlock x:Name="downauthtext" Text="Нет аккаунта?" Margin="0 0 0 10" Foreground="{StaticResource whitecolor}" FontSize="16"/>
                     <Button Style="{StaticResource MainBtn}" x:Name="GoPage" Click="GoPage_Click" Content="Перейти к регистрации" Width="300"/>

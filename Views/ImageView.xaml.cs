@@ -34,15 +34,16 @@ namespace MethodHelper.Views
         public ImageView(string winname)
         {
             InitializeComponent();
+            
             Win.imageView = this;
+            ImageWin.Title = winname;
+            pageName = winname;
+            images = Connect.data.image_in_page.Where(x => x.page_id == Connect.data.page_desc.Where(z => z.title == winname).FirstOrDefault().id).ToList();
 
             if (Connect.user.role_id != 3)
             {
                 addImg.Visibility = Visibility.Visible;
             }
-            ImageWin.Title = winname;
-            pageName = winname;
-            images = Connect.data.image_in_page.Where(x => x.page_id == Connect.data.page_desc.Where(z => z.title == winname).FirstOrDefault().id).ToList();
 
             if (images.Count == 0)
             {
@@ -154,6 +155,7 @@ namespace MethodHelper.Views
             {
                 open_img.Width = (double)138;
                 open_img.Height = (double)138;
+                ((TextBlock)((StackPanel)open_img.Child).Children[1]).Visibility = Visibility.Collapsed;
                 open_img = br;
             }
             br.Width = sliderImg.Value - 10;
