@@ -141,10 +141,12 @@ namespace MethodHelper.Views
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Border br = (Border)sender;
+            TextBlock img_desc = (TextBlock)((StackPanel)br.Child).Children[1];
             if (open_img == br)
             {
                 br.Width = (double)138;
                 br.Height = (double)138;
+                img_desc.Visibility = Visibility.Collapsed;
                 open_img = null;
                 return;
             }
@@ -157,6 +159,7 @@ namespace MethodHelper.Views
             br.Width = sliderImg.Value - 10;
             br.Height = double.NaN;
             open_img = br;
+            img_desc.Visibility = Visibility.Visible;
         }
 
         private void ImageWin_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -174,7 +177,7 @@ namespace MethodHelper.Views
         {
             int slide = Convert.ToInt32(sliderImg.Value);
             snapPixel.Text = slide.ToString() + " px";
-            if (CollectionImg != null && (sliderImg.Value) > ActualWidth)
+            if (CollectionImg != null && sliderImg.Value > ActualWidth)
             {
                 CollectionImg.Width = sliderImg.Value;
             }

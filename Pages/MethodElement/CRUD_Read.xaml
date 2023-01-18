@@ -53,7 +53,7 @@
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="Изображение: "/>
                                                     <Border BorderThickness="1" BorderBrush="White" CornerRadius="5">
-                                                        <Image Width="80" Height="80" Source="{Binding picture}"/>
+                                                        <Image Width="80" Height="80" Source="{Binding method_crud_picture}"/>
                                                     </Border>
                                                 </StackPanel>
                                             </StackPanel>
@@ -89,7 +89,7 @@
                                                 <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="Изображение: "/>
                                                     <Border BorderThickness="1" BorderBrush="White" CornerRadius="5">
-                                                        <Image Width="80" Height="80" Source="{Binding picture}"/>
+                                                        <Image Width="80" Height="80" Source="{Binding method_crud_picture}"/>
                                                     </Border>
                                                 </StackPanel>
                                             </StackPanel>
@@ -162,7 +162,7 @@
                                     </DataGridTemplateColumn.Header>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Image Width="80" Height="80" Source="{Binding picture}"/>
+                                            <Image Width="80" Height="80" Source="{Binding method_crud_picture}"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

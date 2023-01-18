@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MethodHelper.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -9,10 +10,8 @@ using System.Threading.Tasks;
 using System.Windows;
 
 namespace MethodHelper
-{     
-
+{
     public partial class App : Application
     {
-            
     }
 }

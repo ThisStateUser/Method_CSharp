@@ -24,16 +24,15 @@ namespace MethodHelper
         bool r_TbOrPb_pass = false;
         bool PageAorR = true;
         List<int> BugsBD = new List<int>();
+        int erMas;
 
         public AuthWindow()
         {
             InitializeComponent();
-
             Connect.data = new Model1();
-
+            CheckBD();
             string host = Dns.GetHostName();
-            IPAddress address = Dns.GetHostEntry(host).AddressList[1];
-            string sip = IPAddress.Parse(address.ToString()).ToString();
+            string sip = IPAddress.Parse(Dns.GetHostEntry(host).AddressList[1].ToString()).ToString();
 
             Connect.host = host;
             Connect.ip = sip;
@@ -41,10 +40,21 @@ namespace MethodHelper
             var auth = Connect.data.ip_address.Where(x => x.computer_name == host && x.ip_auth_address == sip).FirstOrDefault();
             if (auth != null)
             {
-                Connect.user = Connect.data.users.Where(x => x.id == auth.user_id).FirstOrDefault();
-                WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == auth.user_id).FirstOrDefault();
-                MainWindow window = new MainWindow();
-                window.Show();
+                try
+                {
+                    var user = Connect.data.users.Where(x => x.id == auth.user_id).FirstOrDefault();
+                    user.token = WinObj.generateToken();
+                    Connect.data.SaveChanges();
+
+                    Connect.user = user;
+                    WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == auth.user_id).FirstOrDefault();
+                    new MainWindow().Show();
+                }
+                catch (Exception ex)
+                {
+                    WinObj.fatalError(ex);
+                    throw;
+                }
                 this.Close();
                 return;
             }
@@ -61,44 +71,55 @@ namespace MethodHelper
             BugsBD.Clear();
             var validBD = Connect.data;
 
-            if (validBD != null)
+            try
             {
-                MessageBox.Show("База данных отсутствует, подключите ее в проект.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                this.Close();
-                return;
+                if (validBD.user_class.ToList().Count == 0)
+                {
+                    BugsBDmsg += "user_class, ";
+                    BugsBD.Add(1);
+                }
+
+                if (validBD.user_role.ToList().Count == 0)
+                {
+                    BugsBDmsg += "user_role, ";
+                    BugsBD.Add(2);
+                }
+
+                if (validBD.point.ToList().Count == 0)
+                {
+                    BugsBDmsg += "point, ";
+                    BugsBD.Add(3);
+                }
+
+                if (validBD.category.ToList().Count == 0)
+                {
+                    BugsBDmsg += "category, ";
+                    BugsBD.Add(4);
+                }
+
+                if (validBD.product.ToList().Count == 0)
+                {
+                    BugsBDmsg += "product, ";
+                    BugsBD.Add(5);
+                }
+
+                if (validBD.type_image.ToList().Count == 0)
+                {
+                    BugsBDmsg += "type_image, ";
+                    BugsBD.Add(6);
+                }
             }
-            if (validBD.user_class == null)
+            catch
             {
-                BugsBDmsg += "user_class, ";
-                BugsBD.Add(1);
-            }
-            if (validBD.user_role == null)
-            {
-                BugsBDmsg += "user_role, ";
-                BugsBD.Add(2);
-            }
-            if (validBD.point == null)
-            {
-                BugsBDmsg += "point, ";
-                BugsBD.Add(3);
-            }
-            if (validBD.category == null)
-            {
-                BugsBDmsg += "category, ";
-                BugsBD.Add(4);
-            }
-            if (validBD.product == null)
-            {
-                BugsBDmsg += "product, ";
-                BugsBD.Add(5);
-            }
-            if (validBD.type_image == null)
-            {
-                BugsBDmsg += "type_image, ";
-                BugsBD.Add(6);
+                MessageBox.Show("Отсутствуют некоторые таблицы", "Ошибка", MessageBoxButton.YesNo, MessageBoxImage.Error);
             }
 
-            BugsBDmsg = "\" являются обязательными, но в них отсутствуют данные. Заполнить их автоматически? (если отказаться - приложение будет закрыто.)";
+            if (BugsBD.Count == 0)
+            {
+                return;
+            }
+
+            BugsBDmsg += "\" являются обязательными, но в них отсутствуют данные. Заполнить их автоматически? (если отказаться - приложение будет закрыто.)";
             MessageBoxResult result = MessageBox.Show(BugsBDmsg, "Ошибка", MessageBoxButton.YesNo, MessageBoxImage.Error);
             if (result == MessageBoxResult.Yes)
             {
@@ -175,7 +196,7 @@ namespace MethodHelper
                             case 4:
                                 category category_ = new category()
                                 {
-                                    category_name = "Без фильтров" 
+                                    category_name = "Без фильтров"
                                 };
                                 category category_1 = new category()
                                 {
@@ -235,7 +256,6 @@ namespace MethodHelper
                 {
                     WinObj.fatalError(ex);
                 }
-
             }
             else
             {
@@ -367,11 +387,9 @@ namespace MethodHelper
                     MessageBox.Show("Неверный логин или пароль");
                     return;
                 }
-                var ip = Connect.data.ip_address.Where(x => x.user_id == auth.id && x.ip_auth_address == Connect.ip).FirstOrDefault();
-
                 if (remember.IsChecked == true)
                 {
-                    if (ip == null)
+                    if (Connect.data.ip_address.Where(x => x.user_id == auth.id && x.ip_auth_address == Connect.ip).FirstOrDefault() == null)
                     {
                         ip_address adress = new ip_address()
                         {
@@ -395,8 +413,7 @@ namespace MethodHelper
                 Connect.data.SaveChanges();
                 WinObj.settings = Connect.data.app_settings.Where(x => x.user_id == auth.id).FirstOrDefault();
 
-                MainWindow window = new MainWindow();
-                window.Show();
+                new MainWindow().Show();
                 this.Close();
             }
             catch (Exception ex)
@@ -406,7 +423,6 @@ namespace MethodHelper
 
         }
 
-        int erMas;
         private void validator()
         {
             erMas = 0;
@@ -516,7 +532,6 @@ namespace MethodHelper
         }
 
         //Переход по полям на кнопку
-
         private void login_tb_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -559,6 +574,7 @@ namespace MethodHelper
                 r_login_tb.Focus();
             }
         }
+
         private void r_login_tb_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
