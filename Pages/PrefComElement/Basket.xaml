@@ -22,7 +22,7 @@
                 <TextBlock Text="Preview" FontSize="22"/>
                 <DockPanel Width="650">
                     <StackPanel Margin="0 10" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Style="{StaticResource MainBtn}" Margin="0 0 10 0" Background="{StaticResource cyancolor}" x:Name="StoreBtn" Click="StoreBtn_Click">
+                        <Button Style="{StaticResource MainBtn}" Background="{StaticResource cyancolor}" x:Name="StoreBtn" Click="StoreBtn_Click">
                             <StackPanel Margin="0 2 0 0" Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Store"/>
                                 <TextBlock Margin="10 0 0 0" Text="Магазин"/>
@@ -33,6 +33,13 @@
                             <StackPanel Margin="0 2 0 0" Orientation="Horizontal">
                                 <Icon:PackIconMaterial  Kind="Basket"/>
                                 <TextBlock Margin="10 0 0 0" Text="Корзина"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource MainBtn}" Margin="10 0 0 0" Background="{StaticResource buttonColor}" x:Name="OrderBtn">
+                            <StackPanel Margin="0 2 0 0" Orientation="Horizontal">
+                                <Icon:PackIconMaterial  Kind="TruckDelivery"/>
+                                <TextBlock Margin="10 0 0 0" Text="Заказ"/>
                             </StackPanel>
                         </Button>
                     </StackPanel>
@@ -100,21 +107,19 @@
                                                         </StackPanel>
                                                      </StackPanel>
                                                      <StackPanel Grid.Column="2">
-                                                        <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                                             <TextBlock Text="{Binding price}" Foreground="{StaticResource darkcolor}" HorizontalAlignment="Center"/>
                                                             <TextBlock Text=" руб." Foreground="{StaticResource darkcolor}" HorizontalAlignment="Center"/>
                                                         </StackPanel>
-                                                        <Border Background="{StaticResource darkcolor}" CornerRadius="5" Margin="0 10 0 5"  Width="100" Height="25">
-                                                            <StackPanel Orientation="Horizontal" Width="100">
-                                                                <Button Width="25" Background="Transparent" BorderThickness="0">
-                                                                    <Icon:PackIconMaterial Kind="Minus" Width="10" Height="10" Foreground="AliceBlue"/>
-                                                                </Button>
-                                                                <TextBox Text="1" Foreground="{StaticResource darkcolor}" MaxLength="4" Height="25" FontSize="19" VerticalAlignment="Center" Width="50" BorderThickness="0"/>
-                                                                <Button Width="25" Background="Transparent" BorderThickness="0">
-                                                                    <Icon:PackIconMaterial Kind="Plus" Width="10" Height="10" Foreground="AliceBlue"/>
-                                                                </Button>
-                                                            </StackPanel>
-                                                        </Border>
+                                                        <StackPanel Orientation="Horizontal" Margin="0 10 0 5" Width="100">
+                                                            <Button Style="{StaticResource DeCountProduct}">
+                                                                <Icon:PackIconMaterial Kind="Minus" Width="10" Height="10" Foreground="AliceBlue"/>
+                                                            </Button>
+                                                            <TextBox Text="1" Foreground="{StaticResource darkcolor}" MaxLength="4" Height="25" FontSize="19" VerticalAlignment="Center" Width="50" BorderThickness="0"/>
+                                                            <Button Style="{StaticResource AddCountProduct}">
+                                                                <Icon:PackIconMaterial Kind="Plus" Width="10" Height="10" Foreground="AliceBlue"/>
+                                                            </Button>
+                                                        </StackPanel>
                                                         <Button Style="{StaticResource MainBtn}" Background="{StaticResource yellowcolor}" Click="AddBasket_Click" Tag="{Binding id}" Foreground="{StaticResource darkcolor}" Width="100" Height="25" VerticalAlignment="Bottom" Content="В корзину"/>
                                                      </StackPanel>
                                                  </Grid>
@@ -128,42 +133,47 @@
                                             <Border Padding="5" CornerRadius="10" Width="600" HorizontalAlignment="Left" Background="AliceBlue">
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="84"/>
+                                                        <ColumnDefinition Width="52"/>
                                                         <ColumnDefinition Width="*"/>
                                                         <ColumnDefinition Width="130"/>
+                                                        <ColumnDefinition Width="30"/>
                                                     </Grid.ColumnDefinitions>
-                                                    <Image Grid.Column="0" Source="{Binding picture}" Width="64" Margin="10" Height="64"/>
+                                                    <Image Grid.Column="0" Source="{Binding picture}" Width="45" Margin="2.5" Height="45"/>
                                                     <StackPanel Grid.Column="1">
                                                         <TextBlock Text="{Binding title}" Width="370" Foreground="{StaticResource darkcolor}"/>
-                                                        <TextBlock Text="{Binding desk}" TextWrapping="Wrap" Height="50" Width="370" FontWeight="Light" Foreground="{StaticResource darkcolor}"/>
+                                                        <TextBlock Height="20"/>
                                                         <StackPanel VerticalAlignment="Bottom" Width="370" Orientation="Horizontal">
                                                             <TextBlock Text="В наличии: " FontSize="12" Foreground="{StaticResource graycolor}"/>
                                                             <TextBlock Text="{Binding count}" FontSize="12" Foreground="{StaticResource graycolor}"/>
                                                         </StackPanel>
                                                     </StackPanel>
                                                     <StackPanel Grid.Column="2">
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <TextBlock Text="{Binding price}" Foreground="{StaticResource darkcolor}" HorizontalAlignment="Center"/>
+                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                            <TextBlock Text="100" Foreground="{StaticResource darkcolor}" HorizontalAlignment="Center"/>
                                                             <TextBlock Text="руб." Foreground="{StaticResource darkcolor}" HorizontalAlignment="Center"/>
                                                         </StackPanel>
-                                                        <Border Background="{StaticResource darkcolor}" CornerRadius="5" Margin="0 10 0 5"  Width="100" Height="25">
-                                                            <StackPanel Orientation="Horizontal" Width="100">
-                                                                <Button Width="25" Background="Transparent" BorderThickness="0">
-                                                                    <Icon:PackIconMaterial Kind="Minus" Width="10" Height="10" Foreground="AliceBlue"/>
-                                                                </Button>
-                                                                <TextBox Text="1" Foreground="{StaticResource darkcolor}" MaxLength="4" Height="25" FontSize="19" VerticalAlignment="Center" Width="50" BorderThickness="0"/>
-                                                                <Button Width="25" Background="Transparent" BorderThickness="0">
-                                                                    <Icon:PackIconMaterial Kind="Plus" Width="10" Height="10" Foreground="AliceBlue"/>
-                                                                </Button>
-                                                            </StackPanel>
-                                                        </Border>
-                                                        <Button Style="{StaticResource MainBtn}" Background="{StaticResource yellowcolor}" Foreground="{StaticResource darkcolor}" Width="100" Height="25" VerticalAlignment="Bottom" Content="Купить"/>
+                                                        <StackPanel Orientation="Horizontal" Margin="0 10 0 0" Width="100">
+                                                            <Button Style="{StaticResource DeCountProduct}">
+                                                                <Icon:PackIconMaterial Kind="Minus" Width="10" Height="10" Foreground="AliceBlue"/>
+                                                            </Button>
+                                                            <TextBox Text="1" Foreground="{StaticResource darkcolor}" MaxLength="4" Height="25" FontSize="19" VerticalAlignment="Center" Width="50" BorderThickness="0"/>
+                                                            <Button Style="{StaticResource AddCountProduct}">
+                                                                <Icon:PackIconMaterial Kind="Plus" Width="10" Height="10" Foreground="AliceBlue"/>
+                                                            </Button>
+                                                        </StackPanel>
                                                     </StackPanel>
+                                                    <DockPanel Grid.Column="3">
+                                                        <CheckBox Style="{StaticResource Remember}" VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Right" Padding="0" Width="19" Height="19"/>
+                                                        <Button Style="{StaticResource MainBtn}" HorizontalAlignment="Right" VerticalAlignment="Bottom" DockPanel.Dock="Top" Background="{StaticResource redcolor}" Width="20" Height="20">
+                                                            <Icon:PackIconMaterial Kind="Delete"/>
+                                                        </Button>
+                                                    </DockPanel>
                                                 </Grid>
                                             </Border>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
+                                
                             </StackPanel>
                         </ScrollViewer>
                     </StackPanel>
