@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MethodHelper.Pages.PrefComElement
 {
@@ -26,11 +28,17 @@ namespace MethodHelper.Pages.PrefComElement
     /// </summary>
     public partial class Basket : Page
     {
+        List<product> BasketData = new List<product>();
         public Basket()
         {
             InitializeComponent();
-            var prod = Connect.data.product.ToList();
+            List<product> prod = Connect.data.product.ToList();
             Lv_magazine.ItemsSource = prod;
+            
+            UpdateBasket();
+            Lv_Basket.ItemsSource = BasketData;
+
+
             Filter.ItemsSource = Connect.data.category.ToList();
 
             AllCard.Text = prod.Count.ToString();
@@ -55,10 +63,23 @@ namespace MethodHelper.Pages.PrefComElement
             WinObj.deskHelp(s_description, description, Title);
         }
 
+        private void UpdateBasket()
+        {
+            BasketData.Clear();
+            foreach (var basket in Connect.data.basket)
+            {
+                if (basket.users.id == Connect.user.id)
+                {
+                    BasketData.Add(Connect.data.product.Where(x => x.id == basket.product_id).FirstOrDefault());
+                }
+
+            }
+        }
+
         private void Update()
         {
             Model1.UpdateContext();
-            var product = BD.Model1.GetContext().product.ToList();
+            List<product> product = Model1.GetContext().product.ToList();
 
             switch (Sorting.SelectedIndex)
             {
@@ -91,6 +112,8 @@ namespace MethodHelper.Pages.PrefComElement
         {
             Lv_magazine.Visibility = Visibility.Visible;
             Lv_Basket.Visibility = Visibility.Collapsed;
+            ProductValue.Visibility = Visibility.Visible;
+            BasketValue.Visibility = Visibility.Collapsed;
 
             BasketBtn.Background = (SolidColorBrush)FindResource("buttonColor");
             StoreBtn.Background = (SolidColorBrush)FindResource("cyancolor");
@@ -100,6 +123,12 @@ namespace MethodHelper.Pages.PrefComElement
         {
             Lv_magazine.Visibility = Visibility.Collapsed;
             Lv_Basket.Visibility = Visibility.Visible;
+            ProductValue.Visibility = Visibility.Collapsed;
+            BasketValue.Visibility = Visibility.Visible;
+
+            UpdateBasket();
+            Lv_Basket.ItemsSource = BasketData;
+            BasketCard.Text = BasketData.Count.ToString();
 
             BasketBtn.Background = (SolidColorBrush)FindResource("cyancolor");
             StoreBtn.Background = (SolidColorBrush)FindResource("buttonColor");
@@ -133,8 +162,13 @@ namespace MethodHelper.Pages.PrefComElement
         private void AddBasket_Click(object sender, RoutedEventArgs e)
         {
             int ProductId = Convert.ToInt32(((Button)sender).Tag);
-            int ProductCount = Convert.ToInt32(((TextBox)((StackPanel)((Border)((StackPanel)((Button)sender).Parent).Children[1]).Child).Children[1]).Text);
+            int ProductCount = Convert.ToInt32(((TextBox)((StackPanel)((StackPanel)((Button)sender).Parent).Children[1]).Children[1]).Text);
             var Product = Connect.data.product.Where(x => x.id == ProductId).FirstOrDefault();
+
+            if (Connect.data.basket.Where(X => X.user_id == Connect.user.id && X.product_id == Product.id).FirstOrDefault() != null)
+            {
+                
+            }
 
             if (ProductCount > Product.count)
             {
@@ -166,7 +200,53 @@ namespace MethodHelper.Pages.PrefComElement
                 WinObj.fatalError(ex);
             }
         }
+        private void AddCountProduct_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)((StackPanel)((Button)sender).Parent).Children[0]).IsEnabled = true;
+            var textCount = (TextBox)((StackPanel)((Button)sender).Parent).Children[1];
+            int.TryParse(textCount.Text, out int Count);
+            if (Count < 0)
+            {
+                MessageBox.Show("В колличестве допускаются только числа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Stop);
+                return;
+            }
+                textCount.Text = (Count + 1).ToString();
+        }
 
+        private void DeCountProduct_Click(object sender, RoutedEventArgs e)
+        {
 
+            var textCount = (TextBox)((StackPanel)((Button)sender).Parent).Children[1];
+            int.TryParse(textCount.Text, out int Count);
+            if (Count == 0)
+            {
+                MessageBox.Show("В колличестве допускаются только числа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Stop);
+                return;
+            }
+            if (Count > 2)
+            {
+                textCount.Text = (Count - 1).ToString();
+            } else
+            {
+                textCount.Text = (Count - 1).ToString();
+                ((Button)sender).IsEnabled = false;
+            }
+
+        }
+
+        private void Count_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            var TextB = (TextBox)sender;
+            var ValidCount = int.TryParse(TextB.Text, out int Count);
+            int Save = Convert.ToInt32(TextB.Text);
+            if (ValidCount == true)
+            {
+                return;
+            }
+            e.Handled = true;
+            TextB.Text = Save.ToString();
+            TextB.SelectionStart = TextB.Text.Length;
+            
+        }
     }
 }

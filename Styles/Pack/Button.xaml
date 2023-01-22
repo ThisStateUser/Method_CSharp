@@ -169,6 +169,9 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Cursor" Value="Hand"/>
             </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#5e6166"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -189,6 +192,9 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#5e6166"/>
             </Trigger>
         </Style.Triggers>
     </Style>
