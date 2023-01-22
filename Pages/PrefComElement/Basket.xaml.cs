@@ -204,23 +204,30 @@ namespace MethodHelper.Pages.PrefComElement
         {
             ((Button)((StackPanel)((Button)sender).Parent).Children[0]).IsEnabled = true;
             var textCount = (TextBox)((StackPanel)((Button)sender).Parent).Children[1];
+            var prod = Connect.data.product.Where(x => x.article == ((Button)sender).Tag.ToString()).FirstOrDefault();
             int.TryParse(textCount.Text, out int Count);
             if (Count < 0)
             {
-                MessageBox.Show("В колличестве допускаются только числа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Stop);
                 return;
             }
+            if ((Count + 1) < prod.count)
+            {
                 textCount.Text = (Count + 1).ToString();
+            } else
+            {
+                textCount.Text = prod.count.ToString();
+                ((Button)sender).IsEnabled = false;
+                return;
+            }
         }
 
         private void DeCountProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            ((Button)((StackPanel)((Button)sender).Parent).Children[2]).IsEnabled = true;
             var textCount = (TextBox)((StackPanel)((Button)sender).Parent).Children[1];
             int.TryParse(textCount.Text, out int Count);
             if (Count == 0)
             {
-                MessageBox.Show("В колличестве допускаются только числа", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Stop);
                 return;
             }
             if (Count > 2)
@@ -231,22 +238,30 @@ namespace MethodHelper.Pages.PrefComElement
                 textCount.Text = (Count - 1).ToString();
                 ((Button)sender).IsEnabled = false;
             }
-
         }
 
-        private void Count_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void Count_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            var TextB = (TextBox)sender;
-            var ValidCount = int.TryParse(TextB.Text, out int Count);
-            int Save = Convert.ToInt32(TextB.Text);
-            if (ValidCount == true)
+            string artprod = ((Button)((StackPanel)((TextBox)sender).Parent).Children[2]).Tag.ToString();
+            var prod = Connect.data.product.Where(x => x.article == artprod).FirstOrDefault();
+            TextBox tbText = (TextBox)sender;
+            if (!(Char.IsDigit(e.Text, 0) || (e.Text == ".") 
+                && (!tbText.Text.Contains(".") 
+                && tbText.Text.Length != 0)))
+            {
+                e.Handled = true;
+            }
+            if (tbText.Text.Length == 0)
             {
                 return;
             }
+            if (Convert.ToInt32(tbText.Text) > prod.count - 1)
+            {
+                e.Handled = true;
+                tbText.Text = prod.count.ToString();
+            }
+            tbText.SelectionStart = tbText.Text.Length;
             e.Handled = true;
-            TextB.Text = Save.ToString();
-            TextB.SelectionStart = TextB.Text.Length;
-            
         }
     }
 }

@@ -123,8 +123,8 @@
                                                             <Button IsEnabled="False" Style="{StaticResource DeCountProduct}" Click="DeCountProduct_Click">
                                                                 <Icon:PackIconMaterial Kind="Minus" Width="10" Height="10" Foreground="AliceBlue"/>
                                                             </Button>
-                                                            <TextBox PreviewKeyDown="Count_PreviewKeyDown" Text="1" Foreground="{StaticResource darkcolor}" MaxLength="4" Height="25" FontSize="19" VerticalAlignment="Center" Width="50" BorderThickness="0"/>
-                                                            <Button Style="{StaticResource AddCountProduct}" Click="AddCountProduct_Click">
+                                                            <TextBox PreviewTextInput="Count_PreviewTextInput" Text="1" Foreground="{StaticResource darkcolor}" MaxLength="4" Height="25" FontSize="19" VerticalAlignment="Center" Width="50" BorderThickness="0"/>
+                                                            <Button Style="{StaticResource AddCountProduct}" Tag="{Binding article}" Click="AddCountProduct_Click">
                                                                 <Icon:PackIconMaterial Kind="Plus" Width="10" Height="10" Foreground="AliceBlue"/>
                                                             </Button>
                                                         </StackPanel>
