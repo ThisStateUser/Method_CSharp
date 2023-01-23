@@ -28,7 +28,7 @@ namespace MethodHelper.Pages.PrefComElement
     /// </summary>
     public partial class Basket : Page
     {
-        List<product> BasketData = new List<product>();
+        List<basket> BasketData = new List<basket>();
         public Basket()
         {
             InitializeComponent();
@@ -36,8 +36,6 @@ namespace MethodHelper.Pages.PrefComElement
             Lv_magazine.ItemsSource = prod;
             
             UpdateBasket();
-            Lv_Basket.ItemsSource = BasketData;
-
 
             Filter.ItemsSource = Connect.data.category.ToList();
 
@@ -70,10 +68,10 @@ namespace MethodHelper.Pages.PrefComElement
             {
                 if (basket.users.id == Connect.user.id)
                 {
-                    BasketData.Add(Connect.data.product.Where(x => x.id == basket.product_id).FirstOrDefault());
+                    BasketData.Add(Connect.data.basket.Where(x => x.product_id == basket.product_id).FirstOrDefault());
                 }
-
             }
+            Lv_Basket.ItemsSource = BasketData;
         }
 
         private void Update()
@@ -127,7 +125,6 @@ namespace MethodHelper.Pages.PrefComElement
             BasketValue.Visibility = Visibility.Visible;
 
             UpdateBasket();
-            Lv_Basket.ItemsSource = BasketData;
             BasketCard.Text = BasketData.Count.ToString();
 
             BasketBtn.Background = (SolidColorBrush)FindResource("cyancolor");
@@ -167,7 +164,7 @@ namespace MethodHelper.Pages.PrefComElement
 
             if (Connect.data.basket.Where(X => X.user_id == Connect.user.id && X.product_id == Product.id).FirstOrDefault() != null)
             {
-                
+                return;
             }
 
             if (ProductCount > Product.count)
@@ -235,7 +232,7 @@ namespace MethodHelper.Pages.PrefComElement
                 textCount.Text = (Count - 1).ToString();
             } else
             {
-                textCount.Text = (Count - 1).ToString();
+                textCount.Text = "1";
                 ((Button)sender).IsEnabled = false;
             }
         }
@@ -246,8 +243,8 @@ namespace MethodHelper.Pages.PrefComElement
             var prod = Connect.data.product.Where(x => x.article == artprod).FirstOrDefault();
             TextBox tbText = (TextBox)sender;
             if (!(Char.IsDigit(e.Text, 0) || (e.Text == ".") 
-                && (!tbText.Text.Contains(".") 
-                && tbText.Text.Length != 0)))
+                && !tbText.Text.Contains(".") 
+                && tbText.Text.Length != 0))
             {
                 e.Handled = true;
             }
@@ -261,7 +258,6 @@ namespace MethodHelper.Pages.PrefComElement
                 tbText.Text = prod.count.ToString();
             }
             tbText.SelectionStart = tbText.Text.Length;
-            e.Handled = true;
         }
     }
 }
