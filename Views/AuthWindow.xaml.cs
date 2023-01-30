@@ -80,6 +80,7 @@ namespace MethodHelper
             Model1 validBD = Connect.data;
             BugsBD.Clear();
             Loading(true);
+            Dispatcher.Invoke(() => msgload.Text = "Соединение с базой данных");
             BugsBDmsg = "Таблицы \"";
             try
             {
@@ -87,9 +88,11 @@ namespace MethodHelper
             }
             catch
             {
-                MessageBox.Show("Отсутствуют обязательная база или таблица", "Ошибка", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                MessageBox.Show("Отсутствует обязательная база или таблица", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 Dispatcher.Invoke(() => Application.Current.Shutdown());
+                return;
             }
+            Dispatcher.Invoke(() => msgload.Text = "Проверка базы данных");
 
             if (BugsBD.Count == 0)
             {
